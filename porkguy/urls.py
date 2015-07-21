@@ -7,4 +7,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    ( r'^js/(?P<path>.*)$', 'map.views.static.serve',
+    	{ 'document_root': 'D:/WORK/DMEATGUY/working/map/js' }),
+	url(r'^$', 'map.views.home'),
 )
