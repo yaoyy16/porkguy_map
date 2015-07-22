@@ -1,0 +1,906 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"gene",
+				"general"
+			],
+			[
+				"p",
+				"php"
+			],
+			[
+				"_",
+				"_SESSION"
+			],
+			[
+				"row",
+				"row_event"
+			],
+			[
+				"member",
+				"memberType"
+			],
+			[
+				"mysqli_fet",
+				"mysqli_fetch_array"
+			],
+			[
+				"q",
+				"query_sum"
+			],
+			[
+				"user",
+				"user_activity"
+			],
+			[
+				"d",
+				"div	Tag"
+			],
+			[
+				"h",
+				"h4	Tag"
+			],
+			[
+				"acc",
+				"account"
+			],
+			[
+				"A",
+				"Account_id"
+			],
+			[
+				"orde",
+				"order"
+			],
+			[
+				"co",
+				"connect"
+			],
+			[
+				"OR",
+				"order_id"
+			],
+			[
+				"dona",
+				"donateStats"
+			],
+			[
+				"don",
+				"donateStats"
+			],
+			[
+				"ROW",
+				"row_T_mon"
+			],
+			[
+				"dont",
+				"donate"
+			],
+			[
+				"use",
+				"user_activity"
+			],
+			[
+				"R",
+				"RecFindUser"
+			],
+			[
+				"or",
+				"order"
+			],
+			[
+				"quer",
+				"query_order"
+			],
+			[
+				"gett",
+				"gettype"
+			],
+			[
+				"qu",
+				"query_money"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"order",
+				"orderid"
+			],
+			[
+				"ro",
+				"row_Seat"
+			],
+			[
+				"TICK",
+				"Ticket_type_id"
+			],
+			[
+				"row_T",
+				"row_tktinfo3"
+			],
+			[
+				"row_",
+				"row_order"
+			],
+			[
+				"QU",
+				"query_insert"
+			],
+			[
+				"NU",
+				"number"
+			],
+			[
+				"row_Tktin",
+				"row_tktinfo2"
+			],
+			[
+				"event",
+				"eventdetail"
+			],
+			[
+				"t",
+				"tkttype"
+			],
+			[
+				"S",
+				"SELECT"
+			],
+			[
+				"Tick",
+				"Ticket_type_id"
+			],
+			[
+				"e",
+				"events"
+			],
+			[
+				"mem",
+				"memberType"
+			],
+			[
+				"CON",
+				"concertid"
+			],
+			[
+				"concert",
+				"concertid"
+			],
+			[
+				"X",
+				"x"
+			],
+			[
+				"D",
+				"Description"
+			],
+			[
+				"con",
+				"concert"
+			],
+			[
+				"c",
+				"conname"
+			],
+			[
+				"desc",
+				"descp"
+			],
+			[
+				"conn",
+				"conname"
+			],
+			[
+				"C",
+				"Concert"
+			],
+			[
+				"W",
+				"WHERE"
+			],
+			[
+				"is",
+				"is_null"
+			],
+			[
+				"isn",
+				"is_null"
+			],
+			[
+				"TR",
+				"tr"
+			],
+			[
+				"E",
+				"echo"
+			],
+			[
+				"T",
+				"Tkttype"
+			],
+			[
+				"ac",
+				"action	Attr"
+			],
+			[
+				"Conc",
+				"concert"
+			],
+			[
+				"in",
+				"input"
+			],
+			[
+				"for",
+				"form	Tag"
+			],
+			[
+				"mo",
+				"move_uploaded_file"
+			],
+			[
+				"conc",
+				"Concert_id"
+			],
+			[
+				"mana",
+				"manage_activity"
+			],
+			[
+				"add",
+				"addevent"
+			],
+			[
+				"edi",
+				"editprofile"
+			],
+			[
+				"ib",
+				"ibcf"
+			],
+			[
+				"ge",
+				"general"
+			],
+			[
+				"sp",
+				"sparse2014"
+			],
+			[
+				"glod",
+				"gold"
+			],
+			[
+				"m",
+				"member_type"
+			],
+			[
+				"DA",
+				"dyna"
+			],
+			[
+				"re",
+				"recomlist"
+			],
+			[
+				"stor",
+				"store1min"
+			],
+			[
+				"stro",
+				"store1"
+			],
+			[
+				"f",
+				"for	For Loop"
+			],
+			[
+				"i",
+				"i"
+			],
+			[
+				"n",
+				"nvmax"
+			],
+			[
+				"data20",
+				"data2012"
+			],
+			[
+				"dat",
+				"data2012"
+			],
+			[
+				"reg",
+				"regfit"
+			],
+			[
+				"da",
+				"data2011"
+			],
+			[
+				"data",
+				"data2012"
+			],
+			[
+				"spar",
+				"sparse2013"
+			],
+			[
+				"ib_",
+				"ib_item"
+			],
+			[
+				"I",
+				"itemnum"
+			],
+			[
+				"per",
+				"performance"
+			],
+			[
+				"to",
+				"total_score"
+			],
+			[
+				"sc",
+				"score"
+			],
+			[
+				"ub_",
+				"ub_item"
+			],
+			[
+				"a",
+				"alpha"
+			],
+			[
+				"no",
+				"norm"
+			],
+			[
+				"s",
+				"stdev"
+			],
+			[
+				"nor",
+				"norm_row"
+			],
+			[
+				"sd",
+				"stdev"
+			],
+			[
+				"ub",
+				"ub_score"
+			],
+			[
+				"u",
+				"ub_item"
+			],
+			[
+				"rec",
+				"recom_score"
+			],
+			[
+				"recom",
+				"recom_item"
+			],
+			[
+				"sco",
+				"score_order"
+			],
+			[
+				"rte",
+				"rate"
+			],
+			[
+				"sim",
+				"sim_list"
+			],
+			[
+				"sor",
+				"sort"
+			],
+			[
+				"it",
+				"itemid"
+			],
+			[
+				"score",
+				"scorelist"
+			],
+			[
+				"item",
+				"itemidx"
+			],
+			[
+				"scor",
+				"scorelist"
+			],
+			[
+				"li",
+				"list"
+			],
+			[
+				"l",
+				"list"
+			],
+			[
+				"de",
+				"decreasing"
+			],
+			[
+				"ite",
+				"item_list"
+			],
+			[
+				"itme",
+				"item_list"
+			],
+			[
+				"lis",
+				"list_len"
+			],
+			[
+				"IT",
+				"item_list"
+			],
+			[
+				"items_",
+				"item_list"
+			],
+			[
+				"P",
+				"performanceList"
+			],
+			[
+				"spa",
+				"sparse2013"
+			],
+			[
+				"sparse",
+				"sparse2013"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"temp",
+				"temp_sum"
+			],
+			[
+				"na",
+				"names"
+			],
+			[
+				"base",
+				"baseline1"
+			],
+			[
+				"spae",
+				"sparse2013"
+			],
+			[
+				"ra",
+				"rate_temp"
+			],
+			[
+				"fl",
+				"flt2014"
+			],
+			[
+				"im",
+				"itemid"
+			],
+			[
+				"flt",
+				"flt2013"
+			],
+			[
+				"ITEM",
+				"itemid"
+			],
+			[
+				"db",
+				"dbGetQuery"
+			],
+			[
+				"n_",
+				"n_item"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 146.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": true,
+		"show_open_files": true,
+		"show_tabs": true,
+		"side_bar_visible": true,
+		"status_bar_visible": true
+	},
+	"file_history":
+	[
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/iu_member.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/membership.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/統計學習初論/final project/bike sharing behavior/bike sharing behavior.r",
+		"/C/Users/Phoebe Hung/Downloads/environment",
+		"/C/Users/Phoebe Hung/tagtoo/Vagrantfile",
+		"/C/wamp/www/eticketing/user_home.php",
+		"/C/wamp/www/eticketing/eventdetail.php",
+		"/C/wamp/www/eticketing/u_eventdetail2.php",
+		"/C/wamp/www/eticketing/events.php",
+		"/C/wamp/www/eticketing/addevent2.php",
+		"/C/wamp/www/eticketing/editprofile.php",
+		"/C/wamp/www/eticketing/manage_activity.php",
+		"/C/wamp/www/eticketing/DON",
+		"/C/wamp/www/eticketing/manager_home.php",
+		"/C/wamp/www/eticketing/index.php",
+		"/C/wamp/www/eticketing/css/manage.css",
+		"/C/wamp/www/eticketing/addevent.php",
+		"/C/wamp/www/eticketing/connMysql.php",
+		"/C/wamp/www/eticketing/logout.php",
+		"/C/Users/Phoebe Hung/Downloads/新文字文件-4.txt",
+		"/C/wamp/bin/php/php5.5.12/php.ini-production",
+		"/C/wamp/bin/php/php5.5.12/php.ini-development",
+		"/C/wamp/bin/php/php5.5.12/php.ini.install",
+		"/C/wamp/www/eticketing/upload.php",
+		"/C/Users/Phoebe Hung/Downloads/querys.jpg",
+		"/C/wamp/tmp/sess_ebjelgh3sfelt4n3lav4jd6ihv8ub1v1",
+		"/C/wamp/tmp/sess_3tqk911eaidg1b03q6i4hdivf6",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/ea2",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/ea_heavy",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/member performance",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/ibcf_sim_2840.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/sparse2013.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/ubcf_member.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/iu_combine_weight1-20.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/sparse2014.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/統計學習初論/final project/0607.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/統計學習初論/final project/final_first.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/統計學習初論/0607_1.r",
+		"/C/Users/Phoebe Hung/Documents/GitHub/ci/performance.R",
+		"/C/Users/Phoebe Hung/Documents/GitHub/ci/popular_2840.R",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/ibcf_sim.r",
+		"/C/Users/Phoebe Hung/Documents/GitHub/ci/README.md",
+		"/C/Users/Phoebe Hung/Documents/GitHub/ci/popular_new.R",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/baseline_new.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/ea_21_30",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/iu_combine_weightsim.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/popular.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/baseline.R",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/item_user_combine_weighted.r",
+		"/C/Users/Phoebe Hung/Downloads/UBCF_evie.R",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/UBCF_simweighted.r",
+		"/C/wamp/www/IMvolleyball/index.php",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/ea_holicode.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/finding of ea21_30",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/統計學習初論/hw4-8",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/統計學習初論/hw4-8.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/cf_rating.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/IBCFratingtop20.r",
+		"/C/Users/Phoebe Hung/Downloads/baseline.R",
+		"/C/Users/Phoebe Hung/Downloads/baseline_1.R",
+		"/C/wamp/bin/apache/apache2.4.9/conf/httpd.conf",
+		"/C/wamp/apps/phpmyadmin4.1.14/config.inc.php",
+		"/C/Users/Phoebe Hung/Downloads/hw3.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/cf_item.r",
+		"/C/Users/Phoebe Hung/Downloads/ci_cf.R",
+		"/C/Users/Phoebe Hung/Downloads/ci_cf (1).R",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/cb_try.r",
+		"/C/Users/Phoebe Hung/Downloads/popular.r",
+		"/C/Users/Phoebe Hung/Downloads/popular (2).R",
+		"/C/Users/Phoebe Hung/Downloads/pop1.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/統計學習初論/2-13.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/cb_prob.r",
+		"/C/Users/Phoebe Hung/Downloads/pop.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/統計學習初論/ch4lab.r",
+		"/C/Users/Phoebe Hung/Downloads/holidays.txt",
+		"/C/Users/Phoebe Hung/Downloads/popular.R",
+		"/C/Users/PHOEBE~1/AppData/Local/Temp/Rar$DRa0.857/ml-100k/README",
+		"/C/Users/PHOEBE~1/AppData/Local/Temp/Rar$DRa0.783/ml-100k/u.data",
+		"/C/Users/PHOEBE~1/AppData/Local/Temp/Rar$DRa0.118/ml-100k/u.item",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/cb_probabilistic.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/cb_basic.r",
+		"/C/Users/Phoebe Hung/Downloads/BIND.R",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/cb_basic2.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/cb_basic_readme.txt",
+		"/C/Users/Phoebe Hung/Downloads/ifelse.R",
+		"/C/Users/Phoebe Hung/Downloads/data.R",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/cb_trytry.r",
+		"/C/Users/Phoebe Hung/Downloads/sparse_R__update_.r",
+		"/C/Users/Phoebe Hung/Dropbox/school/大三下/LULU Project/try.r",
+		"/C/xampp/htdocs/try/test2.php",
+		"/C/xampp/apache/conf/httpd.conf",
+		"/C/xampp/htdocs/try/test.php",
+		"/C/Users/PHOEBE~1/AppData/Local/Temp/Rar$DRa0.001/ml-100k/u.data",
+		"/C/Users/Phoebe Hung/Downloads/燈表規範.pages",
+		"/C/xampp/htdocs/index.php",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/wamp/www/IMvolleyball/captain_home.php",
+		"/C/wamp/www/IMvolleyball/manager_home.php",
+		"/C/wamp/www/IMvolleyball/register.php",
+		"/C/wamp/www/IMvolleyball/editProfile.php",
+		"/C/wamp/www/IMvolleyball/member_home.php",
+		"/C/wamp/www/IMvolleyball/memberlist.php",
+		"/C/wamp/www/IMvolleyball/captain_attendance.php",
+		"/C/wamp/www/IMvolleyball/compDetail.php",
+		"/C/wamp/www/IMvolleyball/competition.php",
+		"/C/wamp/www/IMvolleyball/editProfile .php",
+		"/C/wamp/www/IMvolleyball/semantic.css",
+		"/C/wamp/www/IMvolleyball/homepage.html",
+		"/C/Users/Phoebe Hung/Downloads/editProfile.php",
+		"/C/wamp/bin/apache/apache2.4.9/conf/original/extra/httpd-manual.conf",
+		"/C/wamp/www/IMvolleyball/logout.php",
+		"/C/wamp/www/IMvolleyball/try.php",
+		"/C/wamp/www/IMvolleyball/dropdown.min.js",
+		"/C/wamp/www/IMvolleyball/dropdown.min.css",
+		"/C/wamp/www/IMvolleyball/connMysql.php",
+		"/C/wamp/www/IMvolleyball/login.php",
+		"/C/wamp/www/IMvolleyball/Semantic-UI-1.7.3/dist/components/dropdown.js",
+		"/C/wamp/www/IMvolleyball/dropdown.css",
+		"/C/wamp/www/Semantic-UI-1.7.3/dist/components/dropdown.js",
+		"/C/wamp/www/Semantic-UI-1.7.3/dist/semantic.js",
+		"/C/wamp/apps/phpmyadmin4.1.14/libraries/Util.class.php",
+		"/C/wamp/www/IMvolleyball/jquery.js",
+		"/C/wamp/www/IMvolleyball/jquery.datetimepicker.js",
+		"/C/wamp/www/IMvolleyball/jquery.datetimepicker.css",
+		"/C/wamp/www/Semantic-UI-1.7.3/dist/components/reset.css",
+		"/C/wamp/www/connect.php",
+		"/C/wamp/www/testmysql.php",
+		"/C/wamp/www/name.php"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"checkbox",
+			"u_eventdetail",
+			"eventdetail",
+			"errMsg",
+			"submit",
+			"form",
+			"editprofile",
+			"DONATE",
+			"errMsg",
+			"errMsg=2",
+			"u_",
+			"upload",
+			"\\",
+			"upload",
+			"fileupload",
+			"email",
+			"account",
+			"acc",
+			"file_uploads",
+			"formReg",
+			"form",
+			"submit1",
+			"submit",
+			"login",
+			"account",
+			"para",
+			"scorelist",
+			"itemid",
+			"rowSums(hits)",
+			"))",
+			"apply",
+			"sparse2013",
+			"join",
+			"outer",
+			"cir",
+			"TRAIN",
+			"111",
+			"111 328",
+			"111",
+			"item",
+			"593",
+			"wizard",
+			"dav",
+			">",
+			"listen",
+			"DAV",
+			"ATHZ_SVN",
+			"DAV",
+			"repos",
+			"Location",
+			"location",
+			"dav",
+			"attendance.php",
+			"127",
+			"Order",
+			"Order Deny, Allow",
+			"login",
+			"DATE",
+			"SESSION",
+			"action",
+			"md5",
+			"formReg",
+			"formJoin",
+			"formjoin",
+			"Login",
+			"loginst",
+			"sixteen",
+			"checked",
+			"md5",
+			"MD5",
+			"err",
+			"list_len",
+			"lis_len",
+			"getchar",
+			"getcahr",
+			"c_addr",
+			"lis_num",
+			"lsi_num",
+			"new",
+			"char stor",
+			"chatlist",
+			"username",
+			"user",
+			"lisP",
+			"cli_addr",
+			"int ",
+			"int to char",
+			"lis_l",
+			"SEARCH",
+			"ip",
+			"cliarr",
+			"c_addr",
+			"caddr",
+			"close",
+			"CLOSE",
+			"caddr",
+			"THREADS",
+			"chatter",
+			"myself",
+			"lisporT",
+			"lisport",
+			"myport",
+			"chatlist",
+			"list",
+			"lis_port",
+			"myport",
+			"cli_port",
+			"lis_port",
+			"myport",
+			"STOREc",
+			"//$"
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "index.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 202.0,
+	"status_bar_visible": false,
+	"template_settings":
+	{
+	}
+}

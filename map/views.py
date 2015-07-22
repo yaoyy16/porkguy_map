@@ -4,4 +4,4 @@ def PageWithJquery( request ):
     return render( 'home.html')
 # Create your views here.
 def home(request):
-    return render(request, "home.html")
+    return render(request, "front/index.html")
