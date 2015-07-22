@@ -48,6 +48,11 @@
 		-webkit-text-size-adjust: none;
 	}
 
+	html, body, #map-canvas {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
 /* Box Model */
 
 	*, *:before, *:after {

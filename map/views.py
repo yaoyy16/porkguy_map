@@ -1,7 +1,11 @@
 from django.shortcuts import render
  
 def PageWithJquery( request ):
-    return render( 'home.html')
+	return render( 'home.html')
 # Create your views here.
-def home(request):
-    return render(request, "front/index.html")
+def index(request):
+	return render(request, "index.html")
+def generic(request):
+    return render(request, "generic.html")
+def elements(request):
+    return render(request, "elements.html")
