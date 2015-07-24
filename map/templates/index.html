@@ -32,8 +32,40 @@
 									<li><a href="{% url 'map.views.index' %}">Home</a></li>
 									<li><a href="{% url 'map.views.generic' %}">Generic</a></li>
 									<li><a href="elements.html">Elements</a></li>
-									<li><a href="#">Sign Up</a></li>
-									<li><a href="#">Log In</a></li>
+									<li><div class="select-wrapper">
+											<select name="demo-category" id="demo-category">
+												<option value="">- 年度 -</option>
+												<option value="1">2014</option>
+												<option value="1">2013</option>
+												<option value="1">2012</option>
+												<option value="1">2011</option>
+											</select>
+									</div></li>
+									<li>
+										<div class="6u 12u$(small)">
+											<input type="checkbox" id="profit-distribut" name="profit-distribut" checked>
+											<label for="profit-distribut">彩券盈餘分配金</label>
+										</div>
+										<div class="6u$ 12u$(small)">
+											<input type="checkbox" id="charity" name="charity" >
+											<label for="charity">社福機構獲得補助回饋金</label>
+										</div>
+									</li>
+									<li>
+										中頭獎彩券種類
+										<div class="6u 12u$(small)">
+											<input type="checkbox" id="big" name="big" checked>
+											<label for="big">大樂透</label>
+										</div>
+										<div class="6u$ 12u$(small)">
+											<input type="checkbox" id="power" name="power">
+											<label for="power">威力彩</label>
+										</div>
+										<div class="6u$ 12u$(small)">
+											<input type="checkbox" id="539" name="539">
+											<label for="539">今彩539</label>
+										</div>
+									</li>
 								</ul>
 							</div>
 						</li>
