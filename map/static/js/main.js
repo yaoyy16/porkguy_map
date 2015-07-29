@@ -127,7 +127,6 @@ skel.on('-medium',function(){
 	$body.addClass('is-menu-visible');
 	$body.removeClass('is-menu-invisible');
 	$('.close').remove();
-	console.log(456)
 })
 
 skel.on('+medium',function(){
@@ -146,13 +145,10 @@ skel.on('+medium',function(){
 		});
 	$body.removeClass('is-menu-visible');
 	$body.addClass('is-menu-invisible');	
-
-	console.log(123)
 });
 $('.menuToggle').on('click',function(){	
 	$body.removeClass('is-menu-invisible');
 	$body.addClass('is-menu-visible');
-	console.log("haha");
 });
 
 
