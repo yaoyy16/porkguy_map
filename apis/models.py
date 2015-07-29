@@ -8,3 +8,9 @@ class FundGet(models.Model):
 	org_name = models.CharField(max_length=30)
 	money = models.IntegerField()
 	content = models.TextField(blank=True)
+
+class Surplus(models.Model):
+	year = models.IntegerField()
+	month = models.IntegerField()
+	location = models.CharField(max_length=10)
+	surplus = models.IntegerField()
