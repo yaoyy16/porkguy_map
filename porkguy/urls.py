@@ -8,6 +8,4 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
 	url(r'^$', views.index),
-	url(r'^generic', views.generic),
-	url(r'^elements', views.elements),
 ]
