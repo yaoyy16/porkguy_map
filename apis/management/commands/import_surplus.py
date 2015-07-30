@@ -1,42 +1,36 @@
 from django.core.management.base import BaseCommand
-from pyPdf import PdfFileReader
-# from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
-# from pdfminer.converter import TextConverter
-# from pdfminer.layout import LAParams
-# from pdfminer.pdfpage import PDFPage
-# from cStringIO import StringIO
+from pdfminer.pdfparser import PDFParser, PDFDocument
+from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
+from pdfminer.converter import PDFPageAggregator
+from pdfminer.layout import LAParams, LTTextBox, LTTextLine
 from apis.models import Surplus, City
 
 class Command(BaseCommand):
     help = 'create surplus table'
-    with open('./docs/surplus/1031.pdf') as f:
-...    doc = slate.PDF(f)
-
-    # def convert(fname, pages=None):
-    #     if not pages:
-    #         pagenums = set()
-    #     else:
-    #         pagenums = set(pages)
-    #     output = StringIO()
-    #     manager = PDFResourceManager()
-    #     converter = TextConverter(manager, output, laparams=LAParams())
-    #     interpreter = PDFPageInterpreter(manager, converter)
-    #     infile = file(fname, 'rb')
-    #     for page in PDFPage.get_pages(infile, pagenums):
-    #         interpreter.process_page(page)
-    #     infile.close()
-    #     converter.close()
-    #     text = output.getvalue()
-    #     output.close
-    #     return text 
 
     def handle(self, *args, **options):
+
         location = ['臺北市', '新北市', '臺中市', '臺南市', '高雄市', '宜蘭縣','桃園縣','新竹縣',
         '苗栗縣', '彰化縣', '南投縣', '雲林縣', '嘉義縣', '屏東縣', '臺東縣', '花蓮縣', '澎湖縣',
         '基隆市', '新竹市', '嘉義市', '金門縣', '連江縣']
 
-        content = PdfFileReader("./docs/surplus/1031.pdf")
-        print(content)
+        fp = open("./docs/surplus/1031.pdf", 'rb')
+        parser = PDFParser(fp)
+        doc = PDFDocument()
+        parser.set_document(doc)
+        doc.set_parser(parser)
+        doc.initialize('')
+        rsrcmgr = PDFResourceManager()
+        laparams = LAParams()
+        device = PDFPageAggregator(rsrcmgr, laparams=laparams)
+        interpreter = PDFPageInterpreter(rsrcmgr, device)
+        # Process each page contained in the document.
+        for page in doc.get_pages():
+            interpreter.process_page(page)
+            layout = device.get_result()
+            for lt_obj in layout:
+                if isinstance(lt_obj, LTTextBox) or isinstance(lt_obj, LTTextLine):
+                    print(lt_obj.get_text())
 
         # for i in range(1,13) :
         #     if i == 12 :
