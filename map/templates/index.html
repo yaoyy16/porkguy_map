@@ -1,90 +1,92 @@
 <!DOCTYPE HTML>
 <!--
-	Spectral by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+    Spectral by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Spectral by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="/static/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="/static/css/main.css"/>
-		<!-- <link rel="stylesheet" href="/static/css/main.css" /> -->
-		<!--[if lte IE 8]><link rel="stylesheet" href="/static/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="/static/css/ie9.css" /><![endif]-->
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdBGirrj9hw_otpuv9lih8bMHufgaovqc">
-		</script>
-		<script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
-		<script type="text/javascript" src="/static/js/map.js"></script>
-	</head>
-	<body class="landing is-menu-visible">
-		<!-- Header -->
-			<header id="header" class="alt">
-				<h1><a href="{% url 'map.views.index' %}">Spectral</a></h1>
-				<nav id="nav">
-					<ul>
-						<li class="special">
-							<!--<a href="#menu" class="menuToggle"><span>Menu</span></a> -->
-							<button class="menuToggle button small">Menu</button>
-							<div id="menu">
-								<ul>
-									<li><a href="{% url 'map.views.index' %}">Home</a></li>
-									<li><a href="{% url 'map.views.generic' %}">Generic</a></li>
-									<li><a href="elements.html">Elements</a></li>
-									<li><div class="select-wrapper">
-											<select name="demo-category" id="demo-category">
-												<option value="">- 年度 -</option>
-												<option value="1">2014</option>
-												<option value="1">2013</option>
-												<option value="1">2012</option>
-												<option value="1">2011</option>
-											</select>
-									</div></li>
-									<li>
-										<div class="6u 12u$(small)">
-											<input type="checkbox" id="profit-distribut" name="profit-distribut" checked>
-											<label for="profit-distribut">彩券盈餘分配金</label>
-										</div>
-										<div class="6u$ 12u$(small)">
-											<input type="checkbox" id="charity" name="charity" >
-											<label for="charity">社福機構獲得補助回饋金</label>
-										</div>
-									</li>
-									<li>
-										中頭獎彩券種類
-										<div class="6u 12u$(small)">
-											<input type="checkbox" id="big" name="big" checked>
-											<label for="big">大樂透</label>
-										</div>
-										<div class="6u$ 12u$(small)">
-											<input type="checkbox" id="power" name="power">
-											<label for="power">威力彩</label>
-										</div>
-										<div class="6u$ 12u$(small)">
-											<input type="checkbox" id="539" name="539">
-											<label for="539">今彩539</label>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</li>
-					</ul>
-				</nav>
-			</header>
-		<!-- Page Wrapper -->
-			<div id="map-canvas-1"></div>
-			<div id="map-canvas-2"></div>
-			<div id="map-canvas-3"></div>
-			<div id="blocker"></div>
-		<!-- Scripts -->
-			<script src="/static/js/jquery.min.js"></script>
-			<script src="/static/js/jquery.scrollex.min.js"></script>
-			<script src="/static/js/jquery.scrolly.min.js"></script>
-			<script src="/static/js/skel.min.js"></script>
-			<script src="/static/js/util.js"></script>
-			<!--[if lte IE 8]><script src="/static/js/ie/respond.min.js"></script><![endif]-->
-			<script src="/static/js/main.js"></script>			
-	</body>
+    <head>
+        <title>Spectral by HTML5 UP</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="/static/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="/static/css/main.css"/>
+        <!-- <link rel="stylesheet" href="/static/css/main.css" /> -->
+        <!--[if lte IE 8]><link rel="stylesheet" href="/static/css/ie8.css" /><![endif]-->
+        <!--[if lte IE 9]><link rel="stylesheet" href="/static/css/ie9.css" /><![endif]-->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdBGirrj9hw_otpuv9lih8bMHufgaovqc">
+        </script>
+        <script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
+        <script type="text/javascript">
+            var fund_103 = {{ fund_list_103|safe }};
+            var county = {{location_list|safe}};
+        </script>
+        <script type="text/javascript" src="/static/js/map.js"></script>
+
+    </head>
+    <body class="landing is-menu-visible">
+        <!-- Header -->
+            <header id="header" class="alt">
+                <h1><a href="{% url 'map.views.index' %}">Spectral</a></h1>
+                <nav id="nav">
+                    <ul>
+                        <li class="special">
+                            <!--<a href="#menu" class="menuToggle"><span>Menu</span></a> -->
+                            <button class="menuToggle button small">Menu</button>
+                            <div id="menu">
+                                <ul>
+                                    <li><div class="select-wrapper">
+                                            <select name="demo-category" id="demo-category">
+                                                <option value="">- 年度 -</option>
+                                                <option value="1">2014</option>
+                                                <option value="1">2013</option>
+                                                <option value="1">2012</option>
+                                                <option value="1">2011</option>
+                                            </select>
+                                    </div></li>
+                                    <li>
+                                        <div class="6u 12u$(small)">
+                                            <input type="checkbox" id="profit-distribut" name="profit-distribut" checked>
+                                            <label for="profit-distribut">彩券盈餘分配金</label>
+                                        </div>
+                                        <div class="6u$ 12u$(small)">
+                                            <input type="checkbox" id="charity" name="charity" >
+                                            <label for="charity">社福機構獲得補助回饋金</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        中頭獎彩券種類
+                                        <div class="6u 12u$(small)">
+                                            <input type="checkbox" id="big" name="big" checked>
+                                            <label for="big">大樂透</label>
+                                        </div>
+                                        <div class="6u$ 12u$(small)">
+                                            <input type="checkbox" id="power" name="power">
+                                            <label for="power">威力彩</label>
+                                        </div>
+                                        <div class="6u$ 12u$(small)">
+                                            <input type="checkbox" id="539" name="539">
+                                            <label for="539">今彩539</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+        <!-- Page Wrapper -->
+            <div id="map-canvas-1"></div>
+            <div id="map-canvas-2"></div>
+            <div id="map-canvas-3"></div>
+            <div id="blocker"></div>
+        <!-- Scripts -->
+            <script src="/static/js/jquery.min.js"></script>
+            <script src="/static/js/jquery.scrollex.min.js"></script>
+            <script src="/static/js/jquery.scrolly.min.js"></script>
+            <script src="/static/js/skel.min.js"></script>
+            <script src="/static/js/util.js"></script>
+            <!--[if lte IE 8]><script src="/static/js/ie/respond.min.js"></script><![endif]-->
+            <script src="/static/js/main.js"></script>          
+    </body>
 </html>

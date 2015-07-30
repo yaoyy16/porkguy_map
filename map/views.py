@@ -1,11 +1,16 @@
+# coding=UTF-8
 from django.shortcuts import render
- 
+from apis.models import FundGet
+from apis.models import City
+from django.db.models import Count
+from django.db.models import Sum
+import json
 def PageWithJquery( request ):
-	return render( 'home.html')
+    return render( 'home.html')
 # Create your views here.
 def index(request):
-	return render(request, "index.html")
-def generic(request):
-    return render(request, "generic.html")
-def elements(request):
-    return render(request, "elements.html")
+    fund_list_103 = FundGet.objects.filter(year=103).exclude(city=23).values('city').annotate(Sum('money'))
+    fund_list_103 = json.dumps([v for v in fund_list_103.values('city', 'money__sum')])
+    location_list = City.objects.exclude(name='全國性')
+    location_list = json.dumps([v for v in location_list.values('name', 'center_longitude', 'center_latitude', 'ne_longitude', 'ne_latitude', 'sw_longitude', 'sw_latitude')])
+    return render(request, "index.html", {'fund_list_103': fund_list_103, 'location_list': location_list})

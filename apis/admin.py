@@ -7,4 +7,7 @@ from apis.models import Surplus
 admin.site.register(City)
 admin.site.register(FundGet)
 admin.site.register(Surplus)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3ccdf4a1805de4e29cc9f875372a3c0c2306ca55
