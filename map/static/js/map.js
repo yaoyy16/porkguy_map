@@ -15,8 +15,6 @@ function initialize() {
             mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
         },
         backgroundColor:'#ffffff',
-        zoom: 8,
-        center: {lat: 24.167622, lng: 119.391408},
         scrollwheel: false,
         draggable: false,
         panControl: false,
@@ -32,8 +30,6 @@ function initialize() {
             mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
         },
         backgroundColor:'#ffffff',
-        zoom: 10,
-        center: {lat: 26.210017, lng: 120.144776},
         scrollwheel: false,
         draggable: false,
         panControl: false,
@@ -49,8 +45,6 @@ function initialize() {
             mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
         },
         backgroundColor:'#ffffff',
-        zoom: 10,
-        center: {lat: 24.447879, lng: 118.338818},
         scrollwheel: false,
         draggable: false,
         panControl: false,
@@ -68,15 +62,30 @@ function initialize() {
     //Associate the styled map with the MapTypeId and set it to display.
     map1.mapTypes.set('map_style', styledMap);
     map1.setMapTypeId('map_style');
-    
     map2.mapTypes.set('map_style', styledMap);
     map2.setMapTypeId('map_style');
     map3.mapTypes.set('map_style', styledMap);
     map3.setMapTypeId('map_style');
 
+    var map1_sw = new google.maps.LatLng(36.90731625763393,-86.51778523864743);
+    var map1_ne = new google.maps.LatLng(37.02763411292923,-86.37183015289304);
+    var map1_bounds = new google.maps.LatLngBounds(map1_sw,map1_ne);
+    map1.fitBounds(map1_bounds);
+
+    var map2_sw = new google.maps.LatLng(county[21]['sw_latitude'], county[21]['sw_longitude']);
+    var map2_ne = new google.maps.LatLng(county[21]['ne_latitude'], county[21]['ne_longitude']);
+    var map2_bounds = new google.maps.LatLngBounds(map2_sw,map2_ne);
+    map2.fitBounds(map2_bounds);
+
+    var map3_sw = new google.maps.LatLng(county[20]['sw_latitude'], county[20]['sw_longitude']);
+    var map3_ne = new google.maps.LatLng(county[20]['ne_latitude'], county[20]['ne_longitude']);
+    var map3_bounds = new google.maps.LatLngBounds(map3_sw,map3_ne);
+    map3.fitBounds(map3_bounds);
+
+    var features;
     $.getJSON("static/county1.json", function(data){
         geoJsonObject1 = topojson.feature(data, data.objects["1031225_big5"])
-        map1.data.addGeoJson(geoJsonObject1); 
+        features = map1.data.addGeoJson(geoJsonObject1); 
       });
     $.getJSON("static/county2.json", function(data){
         geoJsonObject2 = topojson.feature(data, data.objects["1031225_big5"])
@@ -122,14 +131,19 @@ function initialize() {
         google.maps.event.addListener(markers[i], 'click', function() {
             map1.setZoom(10);
             map1.setCenter(this.getPosition());
-            this.setVisible(false);
+            markers.map(function(obj){ 
+                obj.setVisible(false);
+                return obj;
+            });
             var styles = [{
                 stylers: [{ visibility: "on" }]
             }];
             var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
             map1.mapTypes.set('map_style', styledMap);
             map1.setMapTypeId('map_style');
-            // map1.data.remove(map1.data.feature[0]);
+            for (var i = 0; i < features.length; i++){
+                map1.data.remove(features[i]);
+            };
             $('#map-canvas-2').hide();
             $('#map-canvas-3').hide();
             $('#blocker').hide();
@@ -182,6 +196,5 @@ function dataVisual (map1, map2, map3, markers) {
                 position : new google.maps.LatLng(lat, lng)
             });
         };
-        
     };
 }
