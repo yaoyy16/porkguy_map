@@ -139,28 +139,28 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 function dataVisual (map1, map2, map3, markers) {
-    var maxheight = 0;
-    for (var i = fund_103.length - 1; i >= 0; i--) {
-        var height = fund_103[i]['money__sum'];
-        if (height > maxheight) {maxheight = height;}        
+    var maxfund = 0;
+    var maxsurp = 0;
+    for (var i = 21; i >= 0; i--) {
+        var fund = fund_103[i]['money__sum'];
+        var surp = surp_103[i]['surplus__sum'];
+        if (fund > maxfund) {maxfund = fund;}
+        if (surp > maxsurp) {maxsurp = surp;}  
     };
     for (var i = fund_103.length - 1; i >= 0; i--) {
         var j = fund_103[i]['city'] - 1;
-        if (county[j]) {
-            var lat = county[j]['center_latitude'], lng = county[j]['center_longitude'];
-        } else{
-            console.log(j);
-        };
+        var lat = county[j]['center_latitude'], lng = county[j]['center_longitude'];
         
-        height = Math.round(fund_103[i]['money__sum']*100/maxheight);
+        var height1 = Math.round(fund_103[i]['money__sum']*100/maxfund);
+        var height2 = Math.round(surp_103[i]['surplus__sum']*100/maxsurp);
         var canvas = document.createElement('canvas');
         canvas.width=15;
         canvas.height=100;
         var context = canvas.getContext('2d');
         context.fillStyle = "orange";
-        context.fillRect(0,100 - height,5, height);
+        context.fillRect(0,100 - height1,5,height1);
         context.fillStyle = "brown";
-        context.fillRect(10,20,5,80);
+        context.fillRect(10,100 - height2,5,height2);
         if (j > 19) {
             if (j == 20) {
                 markers[i] = new google.maps.Marker({
