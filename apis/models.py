@@ -29,8 +29,8 @@ class Lottery_store(models.Model):
     name = models.CharField(max_length=15)
     city = models.ForeignKey(City)
     address = models.CharField(max_length=50)
-    longitude = models.FloatField()
-    latitude = models.FloatField()
+    longitude = models.FloatField(default=0)
+    latitude = models.FloatField(default=0)
     firstprize_times = models.IntegerField(default=0)
 
 class Organization(models.Model):
