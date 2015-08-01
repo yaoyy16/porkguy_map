@@ -24,6 +24,8 @@ class Command(BaseCommand):
                 location = "臺南市"
             elif location == "臺中縣":
                 location = "臺中市"
+            elif location == "桃園縣":
+                location = "桃園市"
 
             print(location)
             sh = wb.sheet_by_index(i)
@@ -45,6 +47,8 @@ class Command(BaseCommand):
             wb = xlrd.open_workbook('./docs/fundget/'+file101[j])
             sh = wb.sheet_by_index(0) 
             location = file101[j].replace("101", "").replace(".xls", "")
+            if location == "桃園縣" :
+                location = "桃園市"
             city = City.objects.get(name=location)
             print(location)
             for r in range(5,sh.nrows-1):
@@ -63,6 +67,8 @@ class Command(BaseCommand):
 
         for i in range(0, len(sh_namelist)):
             location = sh_namelist[i]
+            if location == "桃園縣" :
+                location = "桃園市"
             print(location)
             sh = wb.sheet_by_index(i)
             city = City.objects.get(name=location) 
@@ -83,6 +89,8 @@ class Command(BaseCommand):
             wb = xlrd.open_workbook('./docs/fundget/'+file103[j])
             sh = wb.sheet_by_index(0) 
             location = file103[j].replace("103", "").replace(".xls", "")
+            if location == "桃園縣" :
+                location = "桃園市"
             city = City.objects.get(name=location)
             print(location)
             for r in range(5,sh.nrows-1):
