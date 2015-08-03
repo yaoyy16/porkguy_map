@@ -8,7 +8,10 @@ class Command(BaseCommand):
     help = ''
 
     def handle(self, *args, **options):
+        import time 
+
         stores = Lottery_store.objects.all()
+        i = 0
         for store in stores:
             if store.latitude == 0:
                 # print(store.name)
@@ -19,3 +22,7 @@ class Command(BaseCommand):
                 store.latitude = lat
                 store.longitude = lng
                 store.save()
+                i +=1
+                if i == 10 :
+                    time.sleep(5)
+                    i = 0
