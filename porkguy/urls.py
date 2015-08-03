@@ -1,11 +1,14 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from map import views
+from map.views import index
+from pages.views import home
+
 urlpatterns = [
     # Examples:
     # url(r'^$', 'porkguy.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-	url(r'^$', views.index),
+	url(r'^$', index),
+	url(r'^home/', home),
 ]
