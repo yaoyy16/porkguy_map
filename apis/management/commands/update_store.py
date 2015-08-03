@@ -26,5 +26,3 @@ class Command(BaseCommand):
                 if i == 10 :
                     time.sleep(5)
                     i = 0
-
-

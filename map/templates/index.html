@@ -6,7 +6,7 @@
 -->
 <html>
     <head>
-        <title>Spectral by HTML5 UP</title>
+        <title>豬肉俠公益地圖</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!--[if lte IE 8]><script src="/static/js/ie/html5shiv.js"></script><![endif]-->
@@ -19,9 +19,17 @@
         <script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
         <script type="text/javascript">
             var fund_103 = {{ fund_list_103|safe }};
+            var fund_org_103 = {{ fund_org_103|safe }};
             var fund_102 = {{ fund_list_102|safe }};
-            var surp_103 = {{ surp_list_103|safe }}
-            var county = {{location_list|safe}};
+            var fund_101 = {{ fund_list_101|safe }};
+            var fund_100 = {{ fund_list_100|safe }};
+            var surp_103 = {{ surp_list_103|safe }};
+            var prizes = {{ prize_list|safe }};
+            var county = {{ location_list|safe }};
+            var store = {{ store_list|safe }};
+            var store_count = {{ store_count_list|safe }}
+            var organization = {{ organization_list|safe }};
+            var org_count = {{ organization_count_list|safe }};
         </script>
         <script type="text/javascript" src="/static/js/map.js"></script>
 
@@ -37,38 +45,30 @@
                             <button class="menuToggle button small">Menu</button>
                             <div id="menu">
                                 <ul>
-                                    <li><div class="select-wrapper">
-                                            <select name="demo-category" id="demo-category">
-                                                <option value="">- 年度 -</option>
-                                                <option value="1">2014</option>
-                                                <option value="1">2013</option>
-                                                <option value="1">2012</option>
-                                                <option value="1">2011</option>
-                                            </select>
-                                    </div></li>
+                                    <li>
+                                        <img src="/static/img/pigman.png" />
+                                    </li>
                                     <li>
                                         <div class="6u 12u$(small)">
                                             <input type="checkbox" id="profit-distribut" name="profit-distribut" checked>
-                                            <label for="profit-distribut">彩券盈餘分配金</label>
+                                            <label for="profit-distribut">社福機構獲得補助回饋金-橘色</label>
+                                            <div class="select-wrapper">
+                                                <select name="demo-category" id="demo-category">
+                                                    <option value="">- 年度 -</option>
+                                                    <option value="103" selected>民國103年</option>
+                                                    <option value="102">民國102年</option>
+                                                    <option value="101">民國101年</option>
+                                                    <option value="100">民國100年</option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="6u$ 12u$(small)">
-                                            <input type="checkbox" id="charity" name="charity" >
-                                            <label for="charity">社福機構獲得補助回饋金</label>
+                                            <input type="checkbox" id="charity" name="charity" checked>
+                                            <label for="charity">103年彩券盈餘分配金-棕色</label>
                                         </div>
-                                    </li>
-                                    <li>
-                                        中頭獎彩券種類
                                         <div class="6u 12u$(small)">
-                                            <input type="checkbox" id="big" name="big" checked>
-                                            <label for="big">大樂透</label>
-                                        </div>
-                                        <div class="6u$ 12u$(small)">
-                                            <input type="checkbox" id="power" name="power">
-                                            <label for="power">威力彩</label>
-                                        </div>
-                                        <div class="6u$ 12u$(small)">
-                                            <input type="checkbox" id="539" name="539">
-                                            <label for="539">今彩539</label>
+                                            <input type="checkbox" id="prize" name="prize" checked>
+                                            <label for="prize">103年起中頭獎次數-綠色</label>
                                         </div>
                                     </li>
                                 </ul>
@@ -82,6 +82,14 @@
             <div id="map-canvas-2"></div>
             <div id="map-canvas-3"></div>
             <div id="blocker"></div>
+            <div id="return">
+                回大地圖
+            </div>
+            <div id="detail">
+                <div id="county_detail"></div>
+                <div id="store_detail"></div>
+                <div id="org_detail"></div>
+            </div>
         <!-- Scripts -->
             <script src="/static/js/jquery.min.js"></script>
             <script src="/static/js/jquery.scrollex.min.js"></script>
