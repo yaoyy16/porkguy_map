@@ -65,7 +65,6 @@
     	left: 450px;
 		margin: 0;
 		padding: 0;
-		border: 1px solid #000;
 		z-index: 1;
 	}
 
@@ -77,7 +76,6 @@
     	left: 450px;
 		margin: 0;
 		padding: 0;
-		border: 1px solid #000;
 		z-index: 2;
 	}
 
@@ -85,13 +83,67 @@
 		width: 400px;
 		height: 100px;
 		position: absolute;
-    	top: 580px;
-    	background-color: white;
+    	top: 575px;
+    	background-color: #ffe24d;
        	left: 450px;
 		margin: 0;
 		padding: 0;
-		border-top: 1px solid #000;
 		z-index: 3;
+	}
+
+	#return {
+		line-height:97px;
+		width:100px;
+		height:97px;
+		background-color: green;
+		border: 1px none #000;
+		border-radius: 50%;
+		display: none;
+		z-index: 3;
+		position: absolute;
+		top: 50px;
+    	left: 450px;
+    	cursor: pointer;
+    	text-align: center;
+    	font-size: 13px;
+	}
+
+	#county_detail {
+		display: none;
+		position: relative;
+    	font-size: 13px;
+    	color: #000;
+    	background-color: white;
+    	padding: 10px;
+    	margin-bottom: 10px;
+	}
+
+	#store_detail {
+		display: none;
+		position: relative;
+    	font-size: 13px;
+    	color: #000;
+    	background-color: white;
+    	padding: 10px;
+    	margin-bottom: 10px;
+	}
+
+	#org_detail {
+		display: none;
+		position: relative;
+    	font-size: 13px;
+    	color: #000;
+    	background-color: white;
+    	padding: 10px;
+    	width: 400px;
+    	margin-bottom: 10px;
+	}
+
+	#detail{
+		position: absolute;
+    	top: 17px;
+    	right: 50px;
+    	z-index: 4;
 	}
 /* Box Model */
 
@@ -3208,7 +3260,7 @@
 		-ms-transition: -ms-transform 0.5s ease;
 		transition: transform 0.5s ease;
 		-webkit-overflow-scrolling: touch;
-		background: #FFD633;
+		background: #37b34a;
 		color: #fff;
 
 		height: 100%;
@@ -3268,7 +3320,7 @@
 					}
 					#menu ul > li > div > select:hover,
 					#menu ul > li > div > label {
-						color: #331A00;
+						color: #ffe24d;
 						font-size: 13pt !important
 					}
 

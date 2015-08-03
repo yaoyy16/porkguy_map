@@ -14,7 +14,7 @@ class Command(BaseCommand):
                 store_name = store[0].replace("台灣彩券(","").replace(")","")
                 store_address = store[1].replace("\n","").replace("台","臺")
                 store_city = store_address[0:3]
-                # print(store_name, store_address , store_city)
+                print(store_address , store_city)
                 city = City.objects.get(name=store_city)
 
                 Lottery_store.objects.create(
