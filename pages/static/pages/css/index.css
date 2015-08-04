@@ -76,7 +76,8 @@ header {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  background-position: center;  
+  background-position: center; 
+  background-image: url('http://www.backgroundlabs.com/files/hills-trees-vector-background-3018.png'); 
   background-repeat: no-repeat;
   text-align: center;
   background-color: #fff;
@@ -109,6 +110,7 @@ header .header-content .header-content-inner h3 {
   color: #000;
   font-size: 30px;
   margin-bottom: 50px;
+  font-style: italic;
 }
 @media (min-width: 768px) {
   header {
@@ -136,6 +138,10 @@ header .header-content .header-content-inner h3 {
 }
 .section-heading {
   margin-top: 0;
+  font-size: 30px;
+}
+.explain-text {
+  font-size: 20px;
 }
 .service-box {
   max-width: 400px;
