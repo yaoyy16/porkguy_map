@@ -16,7 +16,7 @@ function initialize() {
         },
         backgroundColor:'#ffe24d',
         zoom: 8,
-        center: {lat: 24.167622, lng: 119.391408},
+        center: {lat: 23.73763123744288, lng: 119.52077989062502},
         scrollwheel: false,
         draggable: false,
         panControl: false,
@@ -60,7 +60,7 @@ function initialize() {
         disableDoubleClickZoom: true
     };
     
-    var mapOptions_detail = {
+    mapOptions_detail = {
         mapTypeControlOptions: {
             mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
         },
@@ -76,9 +76,9 @@ function initialize() {
         overviewMapControl: false
     };
 
-    var map1 = new google.maps.Map(document.getElementById('map-canvas-1'), mapOptions1);
-    var map2 = new google.maps.Map(document.getElementById('map-canvas-2'), mapOptions2);
-    var map3 = new google.maps.Map(document.getElementById('map-canvas-3'), mapOptions3);
+    map1 = new google.maps.Map(document.getElementById('map-canvas-1'), mapOptions1);
+    map2 = new google.maps.Map(document.getElementById('map-canvas-2'), mapOptions2);
+    map3 = new google.maps.Map(document.getElementById('map-canvas-3'), mapOptions3);
     //Associate the styled map with the MapTypeId and set it to display.
     map1.mapTypes.set('map_style', styledMap);
     map1.setMapTypeId('map_style');
@@ -96,548 +96,148 @@ function initialize() {
     var map3_ne = new google.maps.LatLng(county[20]['ne_latitude'], county[20]['ne_longitude']);
     var map3_bounds = new google.maps.LatLngBounds(map3_sw,map3_ne);
     map3.fitBounds(map3_bounds);
-
-    var map1_features;
-    var map2_features;
-    var map3_features;
-    $.getJSON("static/county1.json", function(data){
-        geoJsonObject1 = topojson.feature(data, data.objects["1031225_big5"])
-        map1_features = map1.data.addGeoJson(geoJsonObject1); 
-      });
-    $.getJSON("static/county2.json", function(data){
-        geoJsonObject2 = topojson.feature(data, data.objects["1031225_big5"])
-        map2_features = map2.data.addGeoJson(geoJsonObject2); 
-      });
-    $.getJSON("static/county3.json", function(data){
-        geoJsonObject3 = topojson.feature(data, data.objects["1031225_big5"])
-        map3_features = map3.data.addGeoJson(geoJsonObject3); 
-      });
-    var featureStyle = {
-        fillColor: '#158c28',
-        fillOpacity: 1,
-        strokeColor: '#ffe24d',
-        strokeWeight: 3
-    }
-    map1.data.setStyle(featureStyle);
-    map2.data.setStyle(featureStyle);
-    map3.data.setStyle(featureStyle);
-    var map1_mouse_event_1, map1_mouse_event_2, map2_mouse_event_1, map2_mouse_event_2, map3_mouse_event_1, map3_mouse_event_2;
-    map1_mouse_event_1 = map1.data.addListener('mouseover', function(event) {
-        var name = event.feature['G']['C_Name'];
-        var city_id, money1, money2, money3, count1, count2, funds;
-        if (yearshow == 103) {funds = fund_103;}
-        else if (yearshow == 102) {funds = fund_102} 
-        else if (yearshow == 101) {funds = fund_101}
-        else {funds = fund_100};
-        for (var i = 19; i >= 0; i--) {
-            if (county[i]['name'] == name) {
-                city_id = i + 1;
-            };
-        }
-        for (var i = 21; i >= 0; i--) {
-            if (funds[i]['city'] == city_id) {
-                money1 = funds[i]['money__sum'];
-            };
-            if (surp_103[i]['city'] == city_id) {
-                money2 = surp_103[i]['surplus__sum'];
-            };
-            if (prizes[i]) {
-                if (prizes[i]['city'] == city_id) {
-                    money3 = prizes[i]['firstprize_times__sum'];
-                };
-            }else{
-                money3 = 0;
-            };
-            if (store_count[i]) {
-                if (store_count[i]['city'] == city_id) {
-                    count1 = store_count[i]['address__count'];
-                };
-            }else{
-                count1 = 0;
-            };
-            if (org_count[i]) {
-                if (org_count[i]['city'] == city_id) {
-                    count2 = org_count[i]['address__count'];
-                };
-            }else{
-                count2 = 0;
-            };
-        }
-        var content = '<div id="content"> '+name+'</div>'+
-        '<div>社福機構獲得補助回饋金: '+money1+'</div>'+
-        '<div>103年彩券盈餘分配金: '+money2+'</div>'+
-        '<div>103年起中頭獎次數: '+money3+'</div>'+
-        '<div>彩券行: '+count1+' 家</div>'+
-        '<div>社福機構: '+count2+' 家</div>'
-        ;
-        $('#county_detail').html(content);
-        if ($('#county_detail').is(':hidden')) {
-                $('#county_detail').show();
-        };
-    });
-    map1_mouse_event_2 = map1.data.addListener('mouseout', function(event) {
-        $('#county_detail').hide();
-    });
-    map2_mouse_event_1 = map2.data.addListener('mouseover', function(event) {
-        var name = event.feature['G']['C_Name'];
-        var city_id, money1, money2, money3, count1, count2, funds;
-        if (yearshow == 103) {funds = fund_103;}
-        else if (yearshow == 102) {funds = fund_102} 
-        else if (yearshow == 101) {funds = fund_101}
-        else {funds = fund_100};
-        city_id = 22;
-        for (var i = 21; i >= 0; i--) {
-            if (funds[i]['city'] == city_id) {
-                money1 = funds[i]['money__sum'];
-            };
-            if (surp_103[i]['city'] == city_id) {
-                money2 = surp_103[i]['surplus__sum'];
-            };
-            if (prizes[i]) {
-                if (prizes[i]['city'] == city_id) {
-                    money3 = prizes[i]['firstprize_times__sum'];
-                };
-            }else{
-                money3 = 0;
-            };
-            if (store_count[i]) {
-                if (store_count[i]['city'] == city_id) {
-                    count1 = store_count[i]['address__count'];
-                };
-            }else{
-                count1 = 0;
-            };
-            if (org_count[i]) {
-                if (org_count[i]['city'] == city_id) {
-                    count2 = org_count[i]['address__count'];
-                };
-            }else{
-                count2 = 0;
-            };
-        }
-        var content = '<div id="content"> '+name+'</div>'+
-        '<div>社福機構獲得補助回饋金: '+money1+'</div>'+
-        '<div>103年彩券盈餘分配金: '+money2+'</div>'+
-        '<div>103年起中頭獎次數: '+money3+'</div>'+
-        '<div>彩券行: '+count1+' 家</div>'+
-        '<div>社福機構: '+count2+' 家</div>'
-        ;
-        $('#county_detail').html(content);
-        if ($('#county_detail').is(':hidden')) {
-                $('#county_detail').show();
-        };    
-    });
-    map2_mouse_event_2 = map2.data.addListener('mouseout', function(event) {
-        $('#county_detail').hide();
-    });
-    map3_mouse_event_1 = map3.data.addListener('mouseover', function(event) {
-        var name = event.feature['G']['C_Name'];
-        var city_id, money1, money2, money3, count1, count2, funds;
-        if (yearshow == 103) {funds = fund_103;}
-        else if (yearshow == 102) {funds = fund_102} 
-        else if (yearshow == 101) {funds = fund_101}
-        else {funds = fund_100};
-        city_id = 21;
-        for (var i = 21; i >= 0; i--) {
-            if (funds[i]['city'] == city_id) {
-                money1 = funds[i]['money__sum'];
-            };
-            if (surp_103[i]['city'] == city_id) {
-                money2 = surp_103[i]['surplus__sum'];
-            };
-            if (prizes[i]) {
-                if (prizes[i]['city'] == city_id) {
-                    money3 = prizes[i]['firstprize_times__sum'];
-                };
-            }else{
-                money3 = 0;
-            };
-            if (store_count[i]) {
-                if (store_count[i]['city'] == city_id) {
-                    count1 = store_count[i]['address__count'];
-                };
-            }else{
-                count1 = 0;
-            };
-            if (org_count[i]) {
-                if (org_count[i]['city'] == city_id) {
-                    count2 = org_count[i]['address__count'];
-                };
-            }else{
-                count2 = 0;
-            };
-        }
-        var content = '<div id="content"> '+name+'</div>'+
-        '<div>社福機構獲得補助回饋金: '+money1+'</div>'+
-        '<div>103年彩券盈餘分配金: '+money2+'</div>'+
-        '<div>103年起中頭獎次數: '+money3+'</div>'+
-        '<div>彩券行: '+count1+' 家</div>'+
-        '<div>社福機構: '+count2+' 家</div>'
-        ;
-        $('#county_detail').html(content);
-        if ($('#county_detail').is(':hidden')) {
-            $('#county_detail').show();
-        };
-    });
-    map3_mouse_event_2 = map3.data.addListener('mouseout', function(event) {
-        $('#county_detail').hide();
-    });
-
-    map1.data.addListener('click', function(event) {
-        google.maps.event.removeListener(map1_mouse_event_1);
-        google.maps.event.removeListener(map1_mouse_event_2);
-        google.maps.event.removeListener(map2_mouse_event_1);
-        google.maps.event.removeListener(map2_mouse_event_2);
-        google.maps.event.removeListener(map3_mouse_event_1);
-        google.maps.event.removeListener(map3_mouse_event_2);
-        var map1_sw;
-        var map1_ne;
-        var map1_bounds;
-        for (var i = county.length - 1; i >= 0; i--) {
-            if (county[i]['name'] == event.feature['G']['C_Name']) {
-                map1_sw = new google.maps.LatLng(county[i]['sw_latitude'], county[i]['sw_longitude']);
-                map1_ne = new google.maps.LatLng(county[i]['ne_latitude'], county[i]['ne_longitude']);
-                map1_bounds = new google.maps.LatLngBounds(map1_sw,map1_ne);
-                map1.fitBounds(map1_bounds);
-            };
-        }
-        chart_markers.map(function(obj){ 
-            obj.setVisible(false);
-            return obj;
-        });
-        store_markers.map(function(obj){ 
-            obj.setVisible(true);
-            return obj;
-        });
-        organization_markers.map(function(obj){ 
-            obj.setVisible(true);
-            return obj;
-        });
-        var styles = [{
-            stylers: [{ visibility: "on" }]
-        }];
-        var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
-        map1.setOptions(mapOptions_detail);
-        map1.mapTypes.set('map_style', styledMap);
-        map1.setMapTypeId('map_style');
-        for (var i = 0; i < map1_features.length; i++){
-            map1.data.remove(map1_features[i]);
-        };
-        $('#map-canvas-2').hide();
-        $('#map-canvas-3').hide();
-        $('#blocker').hide();
-        $('#return').show();
-        $('#county_detail').show();
-    });
-    map2.data.addListener('click', function(event) {
-        google.maps.event.removeListener(map1_mouse_event_1);
-        google.maps.event.removeListener(map1_mouse_event_2);
-        google.maps.event.removeListener(map2_mouse_event_1);
-        google.maps.event.removeListener(map2_mouse_event_2);
-        google.maps.event.removeListener(map3_mouse_event_1);
-        google.maps.event.removeListener(map3_mouse_event_2);
-        var map1_sw;
-        var map1_ne;
-        var map1_bounds;
-        for (var i = county.length - 1; i >= 0; i--) {
-            if (county[i]['name'] == event.feature['G']['C_Name']) {
-                map1_sw = new google.maps.LatLng(county[i]['sw_latitude'], county[i]['sw_longitude']);
-                map1_ne = new google.maps.LatLng(county[i]['ne_latitude'], county[i]['ne_longitude']);
-                map1_bounds = new google.maps.LatLngBounds(map1_sw,map1_ne);
-                map1.fitBounds(map1_bounds);
-            };
-        }
-        chart_markers.map(function(obj){ 
-            obj.setVisible(false);
-            return obj;
-        });
-        store_markers.map(function(obj){ 
-            obj.setVisible(true);
-            return obj;
-        });
-        organization_markers.map(function(obj){ 
-            obj.setVisible(true);
-            return obj;
-        });
-        var styles = [{
-            stylers: [{ visibility: "on" }]
-        }];
-        var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
-        map1.setOptions(mapOptions_detail);
-        map1.mapTypes.set('map_style', styledMap);
-        map1.setMapTypeId('map_style');
-        for (var i = 0; i < map1_features.length; i++){
-            map1.data.remove(map1_features[i]);
-        };
-        $('#map-canvas-2').hide();
-        $('#map-canvas-3').hide();
-        $('#blocker').hide();
-        $('#return').show();
-        $('#county_detail').show();
-    });
-    map3.data.addListener('click', function(event) {
-        google.maps.event.removeListener(map1_mouse_event_1);
-        google.maps.event.removeListener(map1_mouse_event_2);
-        google.maps.event.removeListener(map2_mouse_event_1);
-        google.maps.event.removeListener(map2_mouse_event_2);
-        google.maps.event.removeListener(map3_mouse_event_1);
-        google.maps.event.removeListener(map3_mouse_event_2);
-        var map1_sw;
-        var map1_ne;
-        var map1_bounds;
-        for (var i = county.length - 1; i >= 0; i--) {
-            if (county[i]['name'] == event.feature['G']['C_Name']) {
-                map1_sw = new google.maps.LatLng(county[i]['sw_latitude'], county[i]['sw_longitude']);
-                map1_ne = new google.maps.LatLng(county[i]['ne_latitude'], county[i]['ne_longitude']);
-                map1_bounds = new google.maps.LatLngBounds(map1_sw,map1_ne);
-                map1.fitBounds(map1_bounds);
-            };
-        }
-        chart_markers.map(function(obj){ 
-            obj.setVisible(false);
-            return obj;
-        });
-        store_markers.map(function(obj){ 
-            obj.setVisible(true);
-            return obj;
-        });
-        organization_markers.map(function(obj){ 
-            obj.setVisible(true);
-            return obj;
-        });
-        var styles = [{
-            stylers: [{ visibility: "on" }]
-        }];
-        var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
-        map1.setOptions(mapOptions_detail);
-        map1.mapTypes.set('map_style', styledMap);
-        map1.setMapTypeId('map_style');
-        for (var i = 0; i < map1_features.length; i++){
-            map1.data.remove(map1_features[i]);
-        };
-        $('#map-canvas-2').hide();
-        $('#map-canvas-3').hide();
-        $('#blocker').hide();
-        $('#return').show();
-        $('#county_detail').show();
-    });
-    chart_markers = []
-    for (var i = county.length - 1; i >= 0; i--) {
-        var lat = county[i]['center_latitude'], lng = county[i]['center_longitude'];
-        if (i > 19) {
-            if (i == 20) {
-                chart_markers[i] = new google.maps.Marker({
-                    map: map3,
-                    position: new google.maps.LatLng(lat, lng)
-                });
-            } else{
-                chart_markers[i] = new google.maps.Marker({
-                    map: map2,
-                    position: new google.maps.LatLng(lat, lng)
-                });
-            };
-        } else{
-            chart_markers[i] = new google.maps.Marker({
-                map: map1,
-                position: new google.maps.LatLng(lat, lng)
-            });
-        };
-    };
+    map_detailed = false;
     var yearshow = document.getElementById('demo-category').value;
     var fundshow = document.getElementById('profit-distribut').checked;
     var surpshow = document.getElementById('charity').checked;
     var prizeshow = document.getElementById('prize').checked;
-    dataVisual(yearshow, chart_markers, fundshow, surpshow, prizeshow);
 
     document.getElementById('demo-category').addEventListener('change', function() {
         yearshow = document.getElementById('demo-category').value;
-        dataVisual(yearshow, chart_markers, fundshow, surpshow, prizeshow);
+        dataVisual(yearshow, fundshow, surpshow, prizeshow);
     });
 
     $('input').on('click', function(){
-        if(this.id == 'profit-distribut'){ fundshow = this.checked};
-        if(this.id == 'charity'){ surpshow = this.checked};
-        if(this.id == 'prize'){ prizeshow = this.checked};
-        dataVisual(yearshow, chart_markers, fundshow, surpshow, prizeshow);
+        if(this.id == 'profit-distribut'){ 
+            fundshow = this.checked;
+            $('#year').show();
+        };
+        if(this.id == 'charity'){ 
+            surpshow = this.checked;
+            $('#year').hide();
+        };
+        if(this.id == 'prize'){ 
+            prizeshow = this.checked;
+            $('#year').hide();
+        };
+        dataVisual(yearshow, fundshow, surpshow, prizeshow);
     });
+    countyData = {};
+    for (var i = county.length - 1; i >= 0; i--) {
+        // (function (i){
+        //     $.getJSON("static/json/county"+i+".json", function(data){
+        //     geoJsonObject = topojson.feature(data, data.objects["1031225_big5"]);
+        //     console.log(i, , geoJsonObject['features'][0]["properties"]["C_Name"], county[i-1]['name']);
+
+        //     });
+        // })(i);
+        var id =  county[i]['id'];
+        var money1, money2, money3, money4, money5, times, count1, count2;
+        for (var j = 21; j >= 0; j--) {
+            if (fund_103[j]['city'] == id) {
+                money1 = fund_103[j]['money__sum'];
+            };
+            if (fund_102[j]['city'] == id) {
+                money2 = fund_102[j]['money__sum'];
+            };
+            if (fund_101[j]['city'] == id) {
+                money3 = fund_101[j]['money__sum'];
+            };
+            if (fund_100[j]['city'] == id) {
+                money4 = fund_100[j]['money__sum'];
+            };
+            if (surp_103[j]['city'] == id) {
+                money5 = surp_103[j]['surplus__sum'];
+            };
+            if (prizes[j]) {
+                if (prizes[j]['city'] == id) {
+                    times = prizes[j]['firstprize_times__sum'];
+                };
+            }else{
+                times = 0;
+            };
+            if (store_count[j]) {
+                if (store_count[j]['city'] == id) {
+                    count1 = store_count[j]['address__count'];
+                };
+            }else{
+                count1 = 0;
+            };
+            if (org_count[j]) {
+                if (org_count[j]['city'] == id) {
+                    count2 = org_count[j]['address__count'];
+                };
+            }else{
+                count2 = 0;
+            };
+        }
+        countyData[id] = {
+            "name":county[i]['name'],
+            "location":{
+                "lat":county[i]['center_latitude'],
+                "lng":county[i]['center_longitude']
+            },
+            "bounds":{
+                "ne":{
+                    "lat":county[i]['ne_latitude'],
+                    "lng":county[i]['ne_longitude']
+                },
+                "sw":{
+                    "lat":county[i]['sw_latitude'],
+                    "lng":county[i]['sw_longitude']
+                }
+            },
+            "money":{
+                "fund":{
+                    103:money1,
+                    102:money2,
+                    101:money3,
+                    100:money4
+                },
+                "surp":money5
+            },
+            "count":{
+                "prize":times,
+                "stores":count1,
+                "charity":count2
+            },
+            "area": {
+                "shape": new google.maps.Data()                
+            }
+        };
+    };
+    for (var i = 22; i >= 1; i--) {
+        importdata(i);
+        dataVisual(yearshow, fundshow, surpshow, prizeshow);
+        addevent(i);
+    };
     
     document.getElementById('return').addEventListener('click', function() {
         var styles = [{
             stylers: [{ visibility: "off" }]
         }];
         var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
+        map1.setOptions(mapOptions1);
         map1.mapTypes.set('map_style', styledMap);
         map1.setMapTypeId('map_style');
-        $.getJSON("static/county1.json", function(data){
-            geoJsonObject1 = topojson.feature(data, data.objects["1031225_big5"])
-            map1_features = map1.data.addGeoJson(geoJsonObject1); 
-        });
         map1.setZoom(8);
         map1.setCenter({lat: 24.167622, lng: 119.391408});
-        map1_mouse_event_1 = map1.data.addListener('mouseover', function(event) {
-            var name = event.feature['G']['C_Name'];
-            var city_id, money1, money2, money3, count1, count2, funds;
-            if (yearshow == 103) {funds = fund_103;}
-            else if (yearshow == 102) {funds = fund_102} 
-            else if (yearshow == 101) {funds = fund_101}
-            else {funds = fund_100};
-            for (var i = 19; i >= 0; i--) {
-                if (county[i]['name'] == name) {
-                    city_id = i + 1;
-                };
-            }
-            for (var i = 21; i >= 0; i--) {
-                if (funds[i]['city'] == city_id) {
-                    money1 = funds[i]['money__sum'];
-                };
-                if (surp_103[i]['city'] == city_id) {
-                    money2 = surp_103[i]['surplus__sum'];
-                };
-                if (prizes[i]) {
-                    if (prizes[i]['city'] == city_id) {
-                        money3 = prizes[i]['firstprize_times__sum'];
-                    };
-                }else{
-                    money3 = 0;
-                };
-                if (store_count[i]) {
-                    if (store_count[i]['city'] == city_id) {
-                        count1 = store_count[i]['address__count'];
-                    };
-                }else{
-                    count1 = 0;
-                };
-                if (org_count[i]) {
-                    if (org_count[i]['city'] == city_id) {
-                        count2 = org_count[i]['address__count'];
-                    };
-                }else{
-                    count2 = 0;
-                };
-            }
-            var content = '<div id="content"> '+name+'</div>'+
-            '<div>社福機構獲得補助回饋金: '+money1+'</div>'+
-            '<div>103年彩券盈餘分配金: '+money2+'</div>'+
-            '<div>103年起中頭獎次數: '+money3+'</div>'+
-            '<div>彩券行: '+count1+' 家</div>'+
-            '<div>社福機構: '+count2+' 家</div>'
-            ;
-            $('#county_detail').html(content);
-            if ($('#county_detail').is(':hidden')) {
-                    $('#county_detail').show();
+        map_detailed = false;
+        $('#return').hide();
+        $('#county_detail').hide();
+        $('#store_detail').hide();
+        $('#org_detail').hide();
+        
+        for (var i = 22; i >= 1; i--) {
+            if (i == 22) {
+                countyData[i]['area']['shape'].setMap(map2);
+            }else if (i == 21) {
+                countyData[i]['area']['shape'].setMap(map3);
+            } else{
+                countyData[i]['area']['shape'].setMap(map1);
             };
-        });
-        map1_mouse_event_2 = map1.data.addListener('mouseout', function(event) {
-            $('#county_detail').hide();
-        });
-        map2_mouse_event_1 = map2.data.addListener('mouseover', function(event) {
-            var name = event.feature['G']['C_Name'];
-            var city_id, money1, money2, money3, count1, count2, funds;
-            if (yearshow == 103) {funds = fund_103;}
-            else if (yearshow == 102) {funds = fund_102} 
-            else if (yearshow == 101) {funds = fund_101}
-            else {funds = fund_100};
-            city_id = 22;
-            for (var i = 21; i >= 0; i--) {
-                if (funds[i]['city'] == city_id) {
-                    money1 = funds[i]['money__sum'];
-                };
-                if (surp_103[i]['city'] == city_id) {
-                    money2 = surp_103[i]['surplus__sum'];
-                };
-                if (prizes[i]) {
-                    if (prizes[i]['city'] == city_id) {
-                        money3 = prizes[i]['firstprize_times__sum'];
-                    };
-                }else{
-                    money3 = 0;
-                };
-                if (store_count[i]) {
-                    if (store_count[i]['city'] == city_id) {
-                        count1 = store_count[i]['address__count'];
-                    };
-                }else{
-                    count1 = 0;
-                };
-                if (org_count[i]) {
-                    if (org_count[i]['city'] == city_id) {
-                        count2 = org_count[i]['address__count'];
-                    };
-                }else{
-                    count2 = 0;
-                };
-            }
-            var content = '<div id="content"> '+name+'</div>'+
-            '<div>社福機構獲得補助回饋金: '+money1+'</div>'+
-            '<div>103年彩券盈餘分配金: '+money2+'</div>'+
-            '<div>103年起中頭獎次數: '+money3+'</div>'+
-            '<div>彩券行: '+count1+' 家</div>'+
-            '<div>社福機構: '+count2+' 家</div>'
-            ;
-            $('#county_detail').html(content);
-            if ($('#county_detail').is(':hidden')) {
-                    $('#county_detail').show();
-            };    
-        });
-        map2_mouse_event_2 = map2.data.addListener('mouseout', function(event) {
-            $('#county_detail').hide();
-        });
-        map3_mouse_event_1 = map3.data.addListener('mouseover', function(event) {
-            var name = event.feature['G']['C_Name'];
-            var city_id, money1, money2, money3, count1, count2, funds;
-            if (yearshow == 103) {funds = fund_103;}
-            else if (yearshow == 102) {funds = fund_102} 
-            else if (yearshow == 101) {funds = fund_101}
-            else {funds = fund_100};
-            city_id = 21;
-            for (var i = 21; i >= 0; i--) {
-                if (funds[i]['city'] == city_id) {
-                    money1 = funds[i]['money__sum'];
-                };
-                if (surp_103[i]['city'] == city_id) {
-                    money2 = surp_103[i]['surplus__sum'];
-                };
-                if (prizes[i]) {
-                    if (prizes[i]['city'] == city_id) {
-                        money3 = prizes[i]['firstprize_times__sum'];
-                    };
-                }else{
-                    money3 = 0;
-                };
-                if (store_count[i]) {
-                    if (store_count[i]['city'] == city_id) {
-                        count1 = store_count[i]['address__count'];
-                    };
-                }else{
-                    count1 = 0;
-                };
-                if (org_count[i]) {
-                    if (org_count[i]['city'] == city_id) {
-                        count2 = org_count[i]['address__count'];
-                    };
-                }else{
-                    count2 = 0;
-                };
-            }
-            var content = '<div id="content"> '+name+'</div>'+
-            '<div>社福機構獲得補助回饋金: '+money1+'</div>'+
-            '<div>103年彩券盈餘分配金: '+money2+'</div>'+
-            '<div>103年起中頭獎次數: '+money3+'</div>'+
-            '<div>彩券行: '+count1+' 家</div>'+
-            '<div>社福機構: '+count2+' 家</div>'
-            ;
-            $('#county_detail').html(content);
-            if ($('#county_detail').is(':hidden')) {
-                $('#county_detail').show();
-            };
-        });
-        map3_mouse_event_2 = map3.data.addListener('mouseout', function(event) {
-            $('#county_detail').hide();
-        });
-        chart_markers.map(function(obj){ 
-            obj.setVisible(true);
-            return obj;
-        });
+        };
+        
         store_markers.map(function(obj){ 
             obj.setVisible(false);
             return obj;
@@ -646,57 +246,12 @@ function initialize() {
             obj.setVisible(false);
             return obj;
         });
-        map1.data.setStyle(featureStyle);
         $('#map-canvas-2').show();
         $('#map-canvas-3').show();
         $('#blocker').show();
-        $('#return').hide();
-        $('#county_detail').hide();
-        $('#store_detail').hide();
-        $('#org_detail').hide();
     });
-    for (var i = chart_markers.length - 1; i >= 0; i--) {
-        google.maps.event.addListener(chart_markers[i], 'click', function() {
-            var index = chart_markers.indexOf(this);
-            var map1_sw = new google.maps.LatLng(county[index]['sw_latitude'], county[index]['sw_longitude']);
-            var map1_ne = new google.maps.LatLng(county[index]['ne_latitude'], county[index]['ne_longitude']);
-            var map1_bounds = new google.maps.LatLngBounds(map1_sw,map1_ne);
-            map1.fitBounds(map1_bounds);
-            chart_markers.map(function(obj){ 
-                obj.setVisible(false);
-                return obj;
-            });
-            store_markers.map(function(obj){ 
-                obj.setVisible(true);
-                return obj;
-            });
-            organization_markers.map(function(obj){ 
-                obj.setVisible(true);
-                return obj;
-            });
-            var styles = [{
-                stylers: [{ visibility: "on" }]
-            }];
-            var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
-            map1.mapTypes.set('map_style', styledMap);
-            map1.setMapTypeId('map_style');
-            for (var i = 0; i < map1_features.length; i++){
-                map1.data.remove(map1_features[i]);
-            };
-            $('#map-canvas-2').hide();
-            $('#map-canvas-3').hide();
-            $('#blocker').hide();
-            $('#return').show();
-        });
-        google.maps.event.addListener(chart_markers[i], 'mouseover', function() {
 
-        });
-        google.maps.event.addListener(chart_markers[i], 'mouseout', function() {
-
-        });
-    };
-
-    var store_markers = [];
+    store_markers = [];
     for (var i = store.length - 1; i >= 0; i--) {
         store_markers[i] = new google.maps.Marker({
             map: map1,
@@ -718,9 +273,8 @@ function initialize() {
                 $('#store_detail').show();
             };
         });
-
     };
-    var organization_markers = [];
+    organization_markers = [];
     for (var i = organization.length - 1; i >= 0; i--) {
         var image = {
             url: '/static/img/heart-icon.png',
@@ -773,50 +327,256 @@ function initialize() {
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
-function dataVisual (year, chart_markers, fundshow, surpshow, prizeshow) {
-    var fund_list
-    if (year == 103) {fund_list = fund_103;}
-    else if (year == 102) {fund_list = fund_102} 
-    else if (year == 101) {fund_list = fund_101}
-    else {fund_list = fund_100};
-    var maxfund = 0;
-    var maxsurp = 0;
-    var maxprize = 0;
-    for (var i = 21; i >= 0; i--) {
-        var fund = fund_list[i]['money__sum'];
-        if (fund > maxfund) {maxfund = fund;}
-        var surp = surp_103[i]['surplus__sum'];
-        if (surp > maxsurp) {maxsurp = surp;}
-        var prize;
-        if (prizes[i]) {
-            prize = prizes[i]['firstprize_times__sum'];
-        };
-        if (prize > maxprize) {maxprize = prize;}
-    };
-    for (var i = 21; i >= 0; i--) {
-        var city_id = fund_list[i]['city'];        
-        var canvas = document.createElement('canvas');
-        canvas.width=15;
-        canvas.height=100;
-        var context = canvas.getContext('2d');
-        if (fundshow) {
-            var height = Math.round(fund_list[i]['money__sum']*100/maxfund);
-            context.fillStyle = "orange";
-            context.fillRect(0,100 - height,5,height);
-        };
-        if (surpshow) {
-            var height = Math.round(surp_103[i]['surplus__sum']*100/maxsurp);
-            context.fillStyle = "brown";
-            context.fillRect(5,100 - height,5,height);
-        };
-        if (prizeshow) {
-            var height = 0;
-            if (prizes[i]) {
-                height = Math.round(prizes[i]['firstprize_times__sum']*100/maxprize);
+function importdata (id) {
+    $.getJSON("static/json/county"+id+".json", function(data){
+        geoJsonObject = topojson.feature(data, data.objects["1031225_big5"]);
+        countyData[id]['area']['shape'].addGeoJson(geoJsonObject);
+        if (id == 22) {
+            countyData[id]['area']['shape'].setMap(map2);
+            // countyData[id]['area']['shape'].setStyle({
+            //     fillColor: '#158c28',
+            //     fillOpacity: 0.5,
+            //     strokeColor: '#ffe24d',
+            //     strokeWeight: 0
+            // });
+        }else if (id == 21) {
+            countyData[id]['area']['shape'].setMap(map3);
+            // countyData[id]['area']['shape'].setStyle({
+            //     fillColor: '#158c28',
+            //     fillOpacity: 0.5,
+            //     strokeColor: '#ffe24d',
+            //     strokeWeight: 0
+            // });
+        }else {
+            countyData[id]['area']['shape'].setMap(map1);
+            if (id == 17) {
+                // countyData[id]['area']['shape'].setStyle({
+                //     fillColor: '#158c28',
+                //     fillOpacity: 0.5,
+                //     strokeColor: '#ffe24d',
+                //     strokeWeight: 0
+                // });
+            }else{
+                // countyData[id]['area']['shape'].setStyle({
+                //     fillColor: '#158c28',
+                //     fillOpacity: 1,
+                //     strokeColor: '#ffe24d',
+                //     strokeWeight: 3
+                // });
             };
-            context.fillStyle = "green";
-            context.fillRect(10,100 - height,5,height);
         };
-        chart_markers[city_id - 1].setIcon(canvas.toDataURL());
+    });
+}
+
+function addevent (id) {
+    var map = countyData[id]['area']["shape"].getMap();
+    countyData[id]['area']["event"] = {
+        "mouseover":
+            google.maps.event.addListener(countyData[id]['area']["shape"], 'mouseover', function(event) {
+                var content = '<div id="content"> '+countyData[id]['name']+'</div>'+
+                '<div>社福機構獲得補助回饋金: '+countyData[id]['money']['fund']['103']+'</div>'+
+                '<div>103年彩券盈餘分配金: '+countyData[id]['money']['surp']+'</div>'+
+                '<div>103年起中頭獎次數: '+countyData[id]['count']['prize']+'</div>'+
+                '<div>彩券行: '+countyData[id]['count']['stores']+' 家</div>'+
+                '<div>社福機構: '+countyData[id]['count']['charity']+' 家</div>';
+                $('#county_detail').html(content);
+                if ($('#county_detail').is(':hidden')) {
+                       $('#county_detail').show();
+                };
+            }),
+        "mouseout":
+            google.maps.event.addListener(countyData[id]['area']["shape"], 'mouseout', function(event) {
+                if (!map_detailed) {
+                    $('#county_detail').hide();
+                };
+            }),
+        "click":
+            google.maps.event.addListener(countyData[id]['area']["shape"], 'click', function(event) {
+                $('#map-canvas-2').hide();
+                $('#map-canvas-3').hide();
+                $('#blocker').hide();
+                var map1_sw = new google.maps.LatLng(countyData[id]['bounds']['sw']['lat'], countyData[id]['bounds']['sw']['lng']);
+                var map1_ne = new google.maps.LatLng(countyData[id]['bounds']['ne']['lat'], countyData[id]['bounds']['ne']['lng']);
+                var map1_bounds = new google.maps.LatLngBounds(map1_sw,map1_ne);;
+                map1.fitBounds(map1_bounds);
+                map_detailed = true;
+                store_markers.map(function(obj){ 
+                    obj.setVisible(true);
+                    return obj;
+                });
+                organization_markers.map(function(obj){ 
+                    obj.setVisible(true);
+                    return obj;
+                });
+                var detail_style = [{
+                    "featureType":"administrative",
+                    "elementType":"geometry",
+                    "stylers":[{
+                        "visibility":"off"
+                    }]
+                },{
+                    "featureType":"landscape.man_made",
+                        "stylers":[{
+                        "visibility":"simplified"},
+                        {"color":"#ffe24d"
+                    }]
+                },{
+                    "featureType":"road",
+                    "stylers":[{
+                        "visibility":"simplified"},
+                        {"color":"#158c28"
+                    }]
+                },{
+                    "featureType":"landscape.natural",
+                    "stylers":[{
+                        "visibility":"simplified"},
+                        {"color":"#37b34a"
+                    }]
+                },{
+                    "featureType":"water",
+                    "stylers":[{
+                        "color":"#ffe24d"
+                        }]
+                },{
+                    "featureType":"poi",
+                    "stylers":[{
+                        "visibility":"simplified"
+                    },{
+                        "color":"#8bc53f"
+                    }]
+                },{
+                    "elementType":"labels.text.stroke",
+                    "stylers":[{
+                        "color":"#808080"
+                    },{
+                        "gamma":9.91
+                    },{
+                        "visibility":"off"
+                    }]
+                },{
+                    "elementType":"labels.text.fill",
+                    "stylers":[{
+                        "color":"#ffffff"
+                    },{
+                        "lightness":100
+                    },{
+                        "visibility":"on"
+                    }]
+                },{
+                    "elementType":"labels.icon",
+                    "stylers":[{
+                        "visibility":"off"
+                    }]
+                }]
+                var styledMap = new google.maps.StyledMapType(detail_style, {name: "Styled Map"});
+                map1.setOptions(mapOptions_detail);
+                map1.mapTypes.set('map_style', styledMap);
+                map1.setMapTypeId('map_style');
+                for (var i = 1; i < 23; i++){
+                    countyData[i]['area']["shape"].setMap(null);
+                };
+                $('#return').show();
+                $('#county_detail').show();
+            })
+    }
+}
+
+function dataVisual (year, fundshow, surpshow, prizeshow) {
+    var maxdata = 0;
+    var mindata = 9999999999999999999;
+    for (var i = 22; i >= 1; i--) {
+        if (fundshow) {
+            if (year == 103) {
+                if (countyData[i]['money']['fund'][103] > maxdata) {
+                    maxdata = countyData[i]['money']['fund'][103];
+                } else if (countyData[i]['money']['fund'][103] < mindata) {
+                    mindata = countyData[i]['money']['fund'][103];
+                };
+            }else if (year == 102) {
+                if (countyData[i]['money']['fund'][102] > maxdata) {
+                    maxdata = countyData[i]['money']['fund'][102];
+                } else if (countyData[i]['money']['fund'][102] < mindata) {
+                    mindata = countyData[i]['money']['fund'][102];
+                };
+            }else if (year == 101) {
+                if (countyData[i]['money']['fund'][101] > maxdata) {
+                    maxdata = countyData[i]['money']['fund'][101];
+                } else if (countyData[i]['money']['fund'][101] < mindata) {
+                    mindata = countyData[i]['money']['fund'][101];
+                };
+            }else {
+                if (countyData[i]['money']['fund'][100] > maxdata) {
+                    maxdata = countyData[i]['money']['fund'][100];
+                } else if (countyData[i]['money']['fund'][100] < mindata) {
+                    mindata = countyData[i]['money']['fund'][100];
+                };
+            };
+        }else if (surpshow) {
+            if (countyData[i]['money']['surp'] > maxdata) {
+                maxdata = countyData[i]['money']['surp'];
+            } else if (countyData[i]['money']['surp'] < mindata) {
+                mindata = countyData[i]['money']['surp'];
+            };
+        }else if (prizeshow) {
+            if (countyData[i]['count']['prize'] > maxdata) {
+                maxdata = countyData[i]['count']['prize'];
+            } else if (countyData[i]['count']['prize'] < mindata) {
+                mindata = countyData[i]['count']['prize'];
+            };
+        };
+    }
+    for (var i = 22; i >= 1; i--) {
+        var opacity;
+        if (fundshow) {
+            if (year == 103) {
+                opacity = range (countyData[i]['money']['fund'][103], maxdata, mindata);
+            }else if (year == 102) {
+                opacity = range (countyData[i]['money']['fund'][102], maxdata, mindata);
+            }else if (year == 101) {
+                opacity = range (countyData[i]['money']['fund'][101], maxdata, mindata);
+            }else {
+                opacity = range (countyData[i]['money']['fund'][100], maxdata, mindata);
+            };
+        }else if (surpshow) {
+            opacity = range (countyData[i]['money']['surp'], maxdata, mindata);
+        }else if (prizeshow) {
+            opacity = range (countyData[i]['money']['prize'], maxdata, mindata);
+        };
+        console.log(opacity);
+        if (i == 22 || i == 21 || i == 17) {
+            countyData[i]['area']['shape'].setStyle({
+                fillColor: '#158c28',
+                fillOpacity: opacity,
+                strokeColor: '#ffe24d',
+                strokeWeight: 0
+            });
+        }else{
+            countyData[i]['area']['shape'].setStyle({
+                fillColor: '#158c28',
+                fillOpacity: opacity,
+                strokeColor: '#ffe24d',
+                strokeWeight: 3
+            });
+        };
+    }
+}
+
+function range (data, max, min) {
+    var range = (max - min)/4;
+    var range1 = min + range;
+    var range2 = range1 + range;
+    var range3 = range2 + range;
+    if (data == min){
+        return 0.1
+    }else if(data<range1){
+        return 0.2
+    }else if(data<range2){
+        return 0.4
+    }else if(data<range3){
+        return 0.6
+    }else if(data<max){
+        return 0.8
+    }else{
+        return 2
     };
 }
