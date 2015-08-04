@@ -50,9 +50,9 @@
                                     </li>
                                     <li>
                                         <div class="6u 12u$(small)">
-                                            <input type="checkbox" id="profit-distribut" name="profit-distribut" checked>
-                                            <label for="profit-distribut">社福機構獲得補助回饋金-橘色</label>
-                                            <div class="select-wrapper">
+                                            <input type="radio" id="profit-distribut" name="options" checked>
+                                            <label for="profit-distribut">社福機構獲得補助回饋金</label>
+                                            <div class="select-wrapper" id="year">
                                                 <select name="demo-category" id="demo-category">
                                                     <option value="">- 年度 -</option>
                                                     <option value="103" selected>民國103年</option>
@@ -63,12 +63,12 @@
                                             </div>
                                         </div>
                                         <div class="6u$ 12u$(small)">
-                                            <input type="checkbox" id="charity" name="charity" checked>
-                                            <label for="charity">103年彩券盈餘分配金-棕色</label>
+                                            <input type="radio" id="charity" name="options">
+                                            <label for="charity">103年彩券盈餘分配金</label>
                                         </div>
                                         <div class="6u 12u$(small)">
-                                            <input type="checkbox" id="prize" name="prize" checked>
-                                            <label for="prize">103年起中頭獎次數-綠色</label>
+                                            <input type="radio" id="prize" name="options">
+                                            <label for="prize">103年起中頭獎次數</label>
                                         </div>
                                     </li>
                                 </ul>
@@ -79,9 +79,11 @@
             </header>
         <!-- Page Wrapper -->
             <div id="map-canvas-1"></div>
-            <div id="map-canvas-2"></div>
-            <div id="map-canvas-3"></div>
-            <div id="blocker"></div>
+            <div id="outer_islands">
+                <div id="map-canvas-2"></div>
+                <div id="map-canvas-3"></div>
+                <div id="blocker"></div>
+            </div>
             <div id="return">
                 回大地圖
             </div>
