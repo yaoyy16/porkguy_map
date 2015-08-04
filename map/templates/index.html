@@ -45,7 +45,10 @@
                             <div id="menu">
                                 <ul>
                                     <li>
-                                        <img src="/static/img/pigman.png" />
+                                        <a href="/home" class="button fit big">豬肉俠公益地圖</a>
+                                        <div class="pork-guy">
+                                            <img src="/static/img/pigman.png" />
+                                        </div>
                                     </li>
                                     <li>
                                         <div class="6u 12u$(small)">
@@ -87,6 +90,7 @@
                 回大地圖
             </div>
             <div id="detail">
+                {% load humanize %}
                 <div id="county_detail"></div>
                 <div id="store_detail"></div>
                 <div id="org_detail"></div>

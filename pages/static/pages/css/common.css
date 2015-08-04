@@ -7,7 +7,7 @@ body {
   font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
 }
 hr {
-  border-color: #eecc29;
+  border-color: #ffe24d;
   border-width: 3px;
   max-width: 50px;
 }
@@ -18,7 +18,7 @@ a {
   -webkit-transition: all 0.35s;
   -moz-transition: all 0.35s;
   transition: all 0.35s;
-  color: #eecc29;
+  color: #ffe24d;
 }
 a:hover,
 a:focus {
@@ -38,7 +38,7 @@ p {
   margin-bottom: 20px;
 }
 .bg-primary {
-  background-color: #eecc29;
+  background-color: #ffe24d;
 }
 .bg-dark {
   background-color: #222222;
@@ -57,7 +57,7 @@ aside {
   padding: 0;
 }
 .text-primary {
-  color: #eecc29;
+  color: #ffe24d;
 }
 .no-gutter > [class*='col-'] {
   padding-right: 0;
@@ -77,7 +77,7 @@ aside {
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
-  color: #222222;
+  color: #37b34a;
   background-color: #f2f2f2;
   border-color: #ededed;
 }
@@ -113,8 +113,8 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-primary {
   color: white;
-  background-color: #eecc29;
-  border-color: #eecc29;
+  background-color: #ffe24d;
+  border-color: #ffe24d;
   -webkit-transition: all 0.35s;
   -moz-transition: all 0.35s;
   transition: all 0.35s;
@@ -152,11 +152,11 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #eecc29;
-  border-color: #eecc29;
+  background-color: #ffe24d;
+  border-color: #ffe24d;
 }
 .btn-primary .badge {
-  color: #eecc29;
+  color: #ffe24d;
   background-color: white;
 }
 .btn {

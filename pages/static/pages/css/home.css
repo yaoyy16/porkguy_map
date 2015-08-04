@@ -7,7 +7,7 @@
   transition: all 0.35s;
 }
 .navbar-default .navbar-header .navbar-brand {
-  color: #eecc29;
+  color: #ffe24d;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -25,7 +25,7 @@
 }
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus:hover {
-  color: #eecc29;
+  color: #ffe24d;
 }
 @media (min-width: 768px) {
   .navbar-default {
@@ -52,7 +52,7 @@
     border-color: rgba(34, 34, 34, 0.05);
   }
   .navbar-default.affix .navbar-header .navbar-brand {
-    color: #eecc29;
+    color: #ffe24d;
     font-size: 14px;
   }
   .navbar-default.affix .navbar-header .navbar-brand:hover,
@@ -65,7 +65,7 @@
   }
   .navbar-default.affix .nav > li > a:hover,
   .navbar-default.affix .nav > li > a:focus:hover {
-    color: #eecc29;
+    color: #ffe24d;
   }
 }
 header {
@@ -77,11 +77,9 @@ header {
   background-size: cover;
   -o-background-size: cover;
   background-position: center; 
-  background-image: url('http://www.backgroundlabs.com/files/hills-trees-vector-background-3018.png'); 
+  background-image: url('/static/pages/img/ball.jpg'); 
   background-repeat: no-repeat;
   text-align: center;
-  background-color: #fff;
-  color:;
 }
 header .header-img {
   width: 300px;
@@ -134,14 +132,30 @@ header .header-content .header-content-inner h3 {
     font-size: 18px;
     margin-left: auto;
     margin-right: auto;
+    color: #37b34a;
   }
 }
 .section-heading {
   margin-top: 0;
   font-size: 30px;
+  color: #37b34a;
+}
+.porkguy-desc {
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 20px;
+  color: #37b34a;
 }
 .explain-text {
   font-size: 20px;
+  color: #37b34a;
+  text-align: left;
+  margin: 20px 0px;
+}
+.explain-text-highlight {
+  text-align: center; 
+  font-size: 30px;
+  color: #216B2C;
 }
 .service-box {
   max-width: 400px;
@@ -208,18 +222,4 @@ header .header-content .header-content-inner h3 {
 }
 .call-to-action h2 {
   margin: 0 auto 20px;
-}
-#login .modal-body .input-group {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-#login .modal-body .alert .fa-exclamation-circle {
-  margin-right: 10px;
-}
-#register .modal-body .input-group {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-#register .modal-body .alert .fa-exclamation-circle {
-  margin-right: 10px;
 }
