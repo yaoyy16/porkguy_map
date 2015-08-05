@@ -144,7 +144,7 @@ header .header-content .header-content-inner h3 {
   background-size: cover;
   -o-background-size: cover;
   background-position: center; 
-  background-image: url('/static/pages/img/ball.jpg'); 
+  background-color: #37b34a;
   background-repeat: repeat;
   text-align: center;
 }
