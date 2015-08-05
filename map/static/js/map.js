@@ -350,6 +350,7 @@ function initialize() {
     charity=[];
     for (var i = organization.length - 1; i >= 0; i--) {
         charity[i] = {
+            'id': organization[i]['id'],
             'name': organization[i]['name'],
             'address': organization[i]['address'],
             'yearly': {
@@ -575,6 +576,7 @@ function addevent_storemarker (id) {
 function addevent_charity (id) {
     charity[id]['marker']['event'] = google.maps.event.addListener(charity[id]['marker']['object'], 'click', function() {
         var money = charity[id]['yearly'][yearshow2]['money'];
+        var org_id = charity[id]['id'];
         var rejected = charity[id]['yearly'][yearshow2]['rejected'];
         var content = '<div>機構名稱: '+charity[id]['name']+'</div>'+
         '<div>機構地址: '+charity[id]['address']+'</div>'+
@@ -582,7 +584,7 @@ function addevent_charity (id) {
         if (money == 0) {
             content += '<div>申請內容: '+rejected+'</div>'
         };
-        content += '<div>詳細資訊</div>';
+        content += '<a href="/org/' + org_id +'">詳細資訊</a>';
         $('#org_detail').html(content);
         if ($('#store_detail').is(':visible')) {
             $('#store_detail').hide();

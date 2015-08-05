@@ -18,6 +18,7 @@ class FundGet(models.Model):
     money = models.IntegerField(default=0)
     content = models.TextField(blank=True)
     project = models.CharField(max_length=100, blank=True, null=True)
+    result = models.TextField(default=u"未公佈", blank=True, null=True)
 
 class Surplus(models.Model):
     year = models.IntegerField()

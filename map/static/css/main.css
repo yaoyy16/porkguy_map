@@ -118,33 +118,42 @@
 		display: none;
 		position: relative;
     	font-size: 13px;
-    	color: #ffe24d;
-    	background-color: #158c28;
+    	color: #363636;
+    	background-color: #ffffff;
     	padding: 10px;
     	margin-bottom: 10px;
     	width: 100%;
+    	opacity: 0.95;
+    	border-radius: 5px;
+    	/*border: 3px solid;*/
 	}
 
 	#store_detail {
 		display: none;
 		position: relative;
     	font-size: 13px;
-    	color: #ffe24d;
-    	background-color: #158c28;
+    	color: #363636;
+    	background-color: #ffffff;
     	padding: 10px;
     	margin-bottom: 10px;
     	width: 100%;
+    	opacity: 0.95;
+    	border-radius: 5px;
+    	/*border: 3px solid;*/
 	}
 
 	#org_detail {
 		display: none;
 		position: relative;
     	font-size: 13px;
-    	color: #ffe24d;
-    	background-color: #158c28;
+    	color: #363636;
+    	background-color: #ffffff;
     	padding: 10px;
-    	width: 100%;
     	margin-bottom: 10px;
+    	width: 100%;
+    	opacity: 0.95;
+    	border-radius: 5px;
+/*    	border: 3px solid;*/
 	}
 
 	#detail{
