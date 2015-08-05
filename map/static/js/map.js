@@ -583,7 +583,7 @@ function addevent_charity (id) {
         if (money == 0) {
             content += '<div>申請內容: '+rejected+'</div>'
         };
-        content += '<a href="/org/' + org_id +'">詳細資訊</a>';
+        content += '<div class="project_detail"><a href="/org/' + org_id +'">詳細資訊</a></div>';
         $('#org_detail').html(content);
         if ($('#store_detail').is(':visible')) {
             $('#store_detail').hide();
@@ -739,9 +739,9 @@ function range (data, max, min) {
 function county_detail_content (data) {
     var content = '<div id="content"> '+data['name']+'</div>';
     if (datashow == 0) {
-        content += '<div>'+yearshow1+'年社福機構獲得補助回饋金: $'+thousandComma(data['money']['fund'][yearshow1])+'</div>';
+        content += '<div>'+yearshow1+'年社福機構獲得補助回饋金: '+thousandComma(data['money']['fund'][yearshow1])+'</div>';
     } else if (datashow == 1) {
-        content += '<div>103年彩券盈餘分配金: $'+thousandComma(data['money']['surp'])+'</div>';
+        content += '<div>103年彩券盈餘分配金: '+thousandComma(data['money']['surp'])+'</div>';
     } else if (datashow == 2){
         content += '<div>103年起中頭獎次數: '+data['count']['prize']+'</div>'
     };

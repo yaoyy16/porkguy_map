@@ -13,6 +13,11 @@
   font-size: 30px;
   color: #16471d;
 }
+.no-project {
+  color: #16471d;
+  font-size: 18px;
+  margin: 40px 20px 40px;
+}
 .address {
   float: right;
   margin-top: 25px;

@@ -144,7 +144,7 @@ header .header-content .header-content-inner h3 {
   background-size: cover;
   -o-background-size: cover;
   background-position: center; 
-  background-color: #37b34a;
+  background-color: #16471d;
   background-repeat: repeat;
   text-align: center;
 }
@@ -167,14 +167,14 @@ header .header-content .header-content-inner h3 {
   text-transform: uppercase;
   margin-top: 0;
   margin-bottom: 0;
-  color: #000;
+  color: #ffe24d;
 }
 .header-content-inner hr {
   margin: 30px auto;
 }
 .header-content-inner h3 {
   font-weight: 300;
-  color: #000;
+  color: #ffe24d;
   font-size: 30px;
   margin-bottom: 50px;
   font-style: italic;

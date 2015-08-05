@@ -97,27 +97,44 @@
 	}
 
 	#return {
-		line-height:97px;
+		line-height:50px;
 		width:100px;
-		height:97px;
-		background-color: #158c28;
+		height:50px;
+		background-color: #1b5925;
 		border: 1px none #000;
-		border-radius: 50%;
+		border-radius: 5px;
 		display: none;
 		z-index: 3;
 		position: absolute;
-		top: 50px;
-    	left: 450px;
+		top: 30px;
+    	left: 400px;
     	cursor: pointer;
     	text-align: center;
-    	color: #ffe24d;
-    	font-size: 13px;
+    	color: #ffed94;
+    	font-size: 15px;
+	}
+	#return:hover {
+		line-height:50px;
+		width:100px;
+		height:50px;
+		background-color: #ffed94;
+		border-radius: 5px;
+		display: none;
+		z-index: 3;
+		position: absolute;
+		top: 30px;
+    	left: 400px;
+    	cursor: pointer;
+    	text-align: center;
+    	color: #1b5925;
+    	font-size: 15px;
+    	border: solid 2px #1b5925;
 	}
 
 	#county_detail {
 		display: none;
 		position: relative;
-    	font-size: 13px;
+    	font-size: 14px;
     	color: #363636;
     	background-color: #ffffff;
     	padding: 10px;
@@ -131,7 +148,7 @@
 	#store_detail {
 		display: none;
 		position: relative;
-    	font-size: 13px;
+    	font-size: 14px;
     	color: #363636;
     	background-color: #ffffff;
     	padding: 10px;
@@ -145,7 +162,7 @@
 	#org_detail {
 		display: none;
 		position: relative;
-    	font-size: 13px;
+    	font-size: 14px;
     	color: #363636;
     	background-color: #ffffff;
     	padding: 10px;
@@ -154,6 +171,13 @@
     	opacity: 0.95;
     	border-radius: 5px;
 /*    	border: 3px solid;*/
+	}
+	.project_detail a {
+		border-radius: 8px;
+		border: solid 4px #808080;
+		background-color: #808080;
+		color: #fff;
+		margin-left: 310px;
 	}
 
 	#detail{
