@@ -21,8 +21,11 @@
             var fund_103 = {{ fund_list_103|safe }};
             var fund_org_103 = {{ fund_org_103|safe }};
             var fund_102 = {{ fund_list_102|safe }};
+            var fund_org_102 = {{ fund_org_102|safe }};
             var fund_101 = {{ fund_list_101|safe }};
+            var fund_org_101 = {{ fund_org_101|safe }};
             var fund_100 = {{ fund_list_100|safe }};
+            var fund_org_100 = {{ fund_org_100|safe }};
             var surp_103 = {{ surp_list_103|safe }};
             var prizes = {{ prize_list|safe }};
             var county = {{ location_list|safe }};
@@ -78,7 +81,7 @@
                                             <label for="organizations">社福機構</label>
                                             <div id="application" style="display:none;">
                                                 <div class="select-wrapper" id="year">
-                                                    <select name="demo-category" id="demo-category">
+                                                    <select name="demo-category" id="year">
                                                         <option value="">- 年度 -</option>
                                                         <option value="103" selected>民國103年</option>
                                                         <option value="102">民國102年</option>
@@ -89,11 +92,11 @@
                                                 <ul>
                                                     <li>
                                                         <input type="radio" id="applied" name="apply_options">
-                                                        <label for="organizations">未申請</label>
+                                                        <label for="applied">有申請</label>
                                                     </li>
                                                     <li>
                                                         <input type="radio" id="noapplied" name="apply_options">
-                                                        <label for="organizations">有申請</label>
+                                                        <label for="noapplied">未申請</label>
                                                     </li>
                                                 </ul>                                         
                                             </div>
