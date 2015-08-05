@@ -7,11 +7,11 @@
 }
 .page-header {
   margin-top: 10%;
-  border-bottom: 1px solid #191919; 
+  border-bottom: 1px solid #37b34a; 
 }
 .page-header h3 {
   font-size: 30px;
-  color: #158c28;
+  color: #16471d;
 }
 .address {
   float: right;
@@ -20,7 +20,7 @@
   color: #808080;
 }
 .navbar-default {
-  background-color: #158c28;
+  background-color: #16471d;
   border-color: rgba(34, 34, 34, 0.05);
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   -webkit-transition: all 0.35s;
@@ -28,7 +28,7 @@
   transition: all 0.35s;
 }
 .navbar-default .navbar-header .navbar-brand {
-  color: #ffe24d;
+  color: #ffed94;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -42,7 +42,7 @@
   text-transform: uppercase;
   font-weight: 700;
   font-size: 14px;
-  color: #ffe24d;
+  color: #ffed94;
 }
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus:hover {
@@ -73,7 +73,7 @@
   color: #158c28;
 } 
 #content .table-striped>tbody>tr:nth-of-type(odd) {
-  background-color: #f9f9f9;
+  background-color: #fff9db;
 }
 #content table .tb_label {
   width: 13%;
@@ -81,12 +81,16 @@
   font-weight: bolder;
 }
 #content .back {
-  border-top: 1px solid #191919; 
+  border-top: 1px solid #37b34a; 
 }
 #content .back a {
   margin: 20px 20px 60px;
   float: right;
 
+}
+.fb-share-button {
+  margin-top: 30px;
+  float: right;
 }
 
 

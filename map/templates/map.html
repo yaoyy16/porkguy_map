@@ -37,7 +37,6 @@
     <body class="landing is-menu-visible">
         <!-- Header -->
             <header id="header" class="alt">
-                <h1><a href="{% url 'map.views.index' %}"></a></h1>
                 <nav id="nav">
                     <ul>
                         <li class="special">
@@ -45,12 +44,12 @@
                             <div id="menu">
                                 <ul>
                                     <li>
-                                        <a href="/home" class="button fit big">豬肉俠公益地圖</a>
+                                        <a href="/" class="button fit big">豬肉俠公益地圖</a>
                                         <div class="pork-guy">
                                             <img src="/static/img/pigman.png" />
                                         </div>
                                     </li>
-                                    <li>
+                                    <li id="outeroption">
                                         <div class="6u 12u$(small)">
                                             <input type="radio" id="profit-distribut" name="options" checked>
                                             <label for="profit-distribut">社福機構獲得補助回饋金</label>
@@ -71,6 +70,37 @@
                                         <div class="6u 12u$(small)">
                                             <input type="radio" id="prize" name="options">
                                             <label for="prize">103年起中頭獎次數</label>
+                                        </div>
+                                    </li>
+                                    <li id="inneroption" style="display:none;">
+                                        <div class="6u$ 12u$(small)">
+                                            <input type="radio" id="organizations" name="options">
+                                            <label for="organizations">社福機構</label>
+                                            <div id="application" style="display:none;">
+                                                <div class="select-wrapper" id="year">
+                                                    <select name="demo-category" id="demo-category">
+                                                        <option value="">- 年度 -</option>
+                                                        <option value="103" selected>民國103年</option>
+                                                        <option value="102">民國102年</option>
+                                                        <option value="101">民國101年</option>
+                                                        <option value="100">民國100年</option>
+                                                    </select>
+                                                </div>                                               
+                                                <ul>
+                                                    <li>
+                                                        <input type="radio" id="applied" name="apply_options">
+                                                        <label for="organizations">未申請</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" id="noapplied" name="apply_options">
+                                                        <label for="organizations">有申請</label>
+                                                    </li>
+                                                </ul>                                         
+                                            </div>
+                                        </div>
+                                        <div class="6u 12u$(small)">
+                                            <input type="radio" id="store" name="options">
+                                            <label for="store">彩券行</label>
                                         </div>
                                     </li>
                                 </ul>
@@ -94,6 +124,9 @@
                 <div id="store_detail"></div>
                 <div id="org_detail"></div>
             </div>
+            <!-- <div id="bar_chart">
+                <canvas id="chart"></canvas>
+            </div> -->
         <!-- Scripts -->
             <script src="/static/js/jquery.min.js"></script>
             <script src="/static/js/jquery.scrollex.min.js"></script>

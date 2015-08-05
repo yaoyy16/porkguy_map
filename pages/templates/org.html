@@ -35,6 +35,15 @@
 
 </head>
 <body id="page-top">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -45,23 +54,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="/home#page-top">Pork Man welfare Map</a>
+                <a class="navbar-brand page-scroll" href="/#page-top">Pork Man welfare Map</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="/home#about">關於</a>
+                        <a class="page-scroll" href="/#about">關於</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/home#services">服務</a>
+                        <a class="page-scroll" href="/#services">服務</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/">地圖</a>
+                        <a class="page-scroll" href="/map">地圖</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/home#contact">聯絡我們</a>
+                        <a class="page-scroll" href="/#contact">聯絡我們</a>
                     </li>
                 </ul>
             </div>
@@ -104,8 +113,10 @@
         </div>
         {% endfor%}
         <div class="back">
-            <a href="/home"><button type="button" class="btn btn-default">Home</button></a>
-        </div>          
+            <a href="/"><button type="button" class="btn btn-default">Home</button></a>
+            <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>            
+        </div>  
+        <div class="fb-comments" data-href="localhost:8000/org/856/" data-numposts="5"></div>       
     </div>  
 
     <!-- jQuery -->
@@ -123,6 +134,7 @@
     <script src="/static/pages/js/creative.js"></script>
 
     <!-- Custom JS -->
+
 
 </body>
 </html>

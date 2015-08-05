@@ -3,13 +3,13 @@ from apis.models import FundGet, City
 
 
 class Command(BaseCommand):
-    help = 'add project name to fundget table'
+    help = 'update result of project in fundget table'
 
     def handle(self, *args, **options):
         import glob
         import xlrd
 
-        wb = xlrd.open_workbook('./docs/fundget/100.xls')
+        wb = xlrd.open_workbook('./docs/result/100.xls')
         sh_namelist = wb.sheet_names()
         for i in range(0, len(sh_namelist)):
           sh = wb.sheet_by_index(i)

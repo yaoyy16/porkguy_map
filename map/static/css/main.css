@@ -154,6 +154,21 @@
     	right: 50px;
     	z-index: 4;
 	}
+
+	#bar_chart{
+		background-color: #158c28;
+		position: absolute;
+    	width: 500px;
+    	height: 350px;
+    	bottom: 40px;
+    	right: 15px;
+    	z-index: 2;
+	}
+	#chart{
+		position: absolute;
+		margin-top:25px;
+		margin-bottom: 25px; 
+	}
 /* Box Model */
 
 	*, *:before, *:after {
@@ -1518,7 +1533,7 @@
 		}
 
 	body, input, select, textarea {
-		color: #ffe24d;
+		color: #ffed94;
 		font-family: "Open Sans", Helvetica, sans-serif;
 		font-size: 15pt;
 		font-weight: 400;
@@ -1875,7 +1890,7 @@
 		input[type="checkbox"] + label,
 		input[type="radio"] + label {
 			text-decoration: none;
-			color: #fff;
+			color: #ffed94;
 			cursor: pointer;
 			display: initial;
 			font-size: 1em;
@@ -3269,7 +3284,7 @@
 		-ms-transition: -ms-transform 0.5s ease;
 		transition: transform 0.5s ease;
 		-webkit-overflow-scrolling: touch;
-		background: #37b34a;
+		background: #1b5925;
 		color: #fff;
 		height: 100%;
 		max-width: 80%;
@@ -3289,7 +3304,7 @@
 		}
 
 			#menu ul > li {
-				border-top: solid 1px rgba(0, 0, 0, 0.125);
+				
 				margin: 0.5em 0 0 0;
 				padding: 0.5em 0 0 0;
 			}
@@ -3319,13 +3334,13 @@
 					border: 0;
 					color: inherit;
 					display: block;
-					font-size: 1.15em;
+					font-size: 1.1em;
 					letter-spacing: 0em;
 					outline: 0;
 					text-decoration: none;
 					text-transform: uppercase;
-					box-shadow: inset 0 0 0 2px #ffe24d;
-					color: #ffe24d;
+					box-shadow: inset 0 0 0 2px #ffed94;
+					color: #ffed94;
 
 				}
 					#menu ul > li > a:hover {
@@ -3341,10 +3356,13 @@
 					}
 					#menu ul > li > div > select:hover,
 					#menu ul > li > div > label {
-						color: #ffe24d;
+						color: #ffed94;
 						font-size: 1.2em !important
 					}
-
+		#applied, #noapplied {
+			margin-left: 60px;
+			color: #ffed94;
+		}
 		@media screen and (max-width: 736px) {
 
 			#menu {
