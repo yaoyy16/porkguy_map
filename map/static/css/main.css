@@ -154,6 +154,21 @@
     	right: 50px;
     	z-index: 4;
 	}
+
+	#bar_chart{
+		background-color: #158c28;
+		position: absolute;
+    	width: 500px;
+    	height: 350px;
+    	bottom: 40px;
+    	right: 15px;
+    	z-index: 2;
+	}
+	#chart{
+		position: absolute;
+		margin-top:25px;
+		margin-bottom: 25px; 
+	}
 /* Box Model */
 
 	*, *:before, *:after {

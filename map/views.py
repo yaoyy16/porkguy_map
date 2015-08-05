@@ -11,7 +11,7 @@ import json
 def PageWithJquery( request ):
     return render( 'home.html')
 # Create your views here.
-def index(request):
+def showmap(request):
     fund_list_103 = FundGet.objects.filter(year=103).exclude(city=23).values('city').annotate(Sum('money'))
     fund_list_103 = json.dumps([v for v in fund_list_103.values('city', 'money__sum')])
     fund_org_103 = FundGet.objects.filter(year=103).exclude(city=23)
@@ -36,7 +36,7 @@ def index(request):
     organization_count_list = json.dumps([v for v in organization_count_list.values('city', 'address__count')])
     location_list = City.objects.exclude(name='全國性')
     location_list = json.dumps([v for v in location_list.values('id', 'name', 'center_longitude', 'center_latitude', 'ne_longitude', 'ne_latitude', 'sw_longitude', 'sw_latitude')])
-    return render(request, "index.html", 
+    return render(request, "map.html", 
         {'fund_list_103': fund_list_103, 
         'fund_org_103': fund_org_103, 
         'fund_list_102': fund_list_102, 

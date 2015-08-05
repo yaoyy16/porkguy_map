@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from map.views import index
+from map.views import showmap
 from pages.views import home
 
 urlpatterns = [
@@ -9,6 +9,6 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-	url(r'^$', index),
-	url(r'^home/', home),
+	url(r'^$', home),
+	url(r'^map/$', showmap),
 ]

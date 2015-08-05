@@ -97,32 +97,59 @@ function initialize() {
     var map3_bounds = new google.maps.LatLngBounds(map3_sw,map3_ne);
     map3.fitBounds(map3_bounds);
     map_detailed = false;
-    var yearshow = document.getElementById('demo-category').value;
-    var fundshow = document.getElementById('profit-distribut').checked;
-    var surpshow = document.getElementById('charity').checked;
-    var prizeshow = document.getElementById('prize').checked;
+    yearshow = document.getElementById('demo-category').value;
+    datashow = 0;
 
     document.getElementById('demo-category').addEventListener('change', function() {
         yearshow = document.getElementById('demo-category').value;
-        dataVisual(yearshow, fundshow, surpshow, prizeshow);
+        dataVisual(yearshow, datashow);
+        barchart();
     });
 
     $('input').on('click', function(){
-        if(this.id == 'profit-distribut'){ 
-            fundshow = this.checked;
-            $('#year').show();
+        if (!map_detailed) {
+            if(this.id == 'profit-distribut'){ 
+                datashow = 0;
+                $('#year').show();
+            };
+            if(this.id == 'charity'){ 
+                datashow = 1;
+                $('#year').hide();
+            };
+            if(this.id == 'prize'){ 
+                datashow = 2;
+                $('#year').hide();
+            };
+            dataVisual(yearshow, datashow);
+            // barchart();
+        }else{
+            if(this.id == 'organizations'){ 
+                $('#application').show();
+                store_markers.map(function(obj){ 
+                    obj.setVisible(false);
+                    return obj;
+                });
+                organization_markers.map(function(obj){ 
+                    obj.setVisible(true);
+                    return obj;
+                });
+            };
+            if(this.id == 'store'){ 
+                $('#application').hide();
+                organization_markers.map(function(obj){ 
+                    obj.setVisible(false);
+                    return obj;
+                });
+                store_markers.map(function(obj){ 
+                    obj.setVisible(true);
+                    return obj;
+                });
+            };
         };
-        if(this.id == 'charity'){ 
-            surpshow = this.checked;
-            $('#year').hide();
-        };
-        if(this.id == 'prize'){ 
-            prizeshow = this.checked;
-            $('#year').hide();
-        };
-        dataVisual(yearshow, fundshow, surpshow, prizeshow);
     });
+
     countyData = {};
+    chartdata=[];
     for (var i = county.length - 1; i >= 0; i--) {
         // (function (i){
         //     $.getJSON("static/json/county"+i+".json", function(data){
@@ -208,9 +235,10 @@ function initialize() {
     };
     for (var i = 22; i >= 1; i--) {
         importdata(i);
-        dataVisual(yearshow, fundshow, surpshow, prizeshow);
         addevent(i);
     };
+    dataVisual(yearshow, datashow);
+    // barchart();
     
     document.getElementById('return').addEventListener('click', function() {
         var styles = [{
@@ -223,11 +251,14 @@ function initialize() {
         map1.setZoom(8);
         map1.setCenter({lat: 24.167622, lng: 119.391408});
         map_detailed = false;
+        $('#outeroption').show();
+        $('#inneroption').hide();
         $('#return').hide();
         $('#county_detail').hide();
         $('#store_detail').hide();
         $('#org_detail').hide();
-        
+        $('#profit-distribut').prop("checked", true);
+        $('#year').show();
         for (var i = 22; i >= 1; i--) {
             if (i == 22) {
                 countyData[i]['area']['shape'].setMap(map2);
@@ -237,7 +268,7 @@ function initialize() {
                 countyData[i]['area']['shape'].setMap(map1);
             };
         };
-        
+        dataVisual(yearshow, datashow);
         store_markers.map(function(obj){ 
             obj.setVisible(false);
             return obj;
@@ -253,9 +284,19 @@ function initialize() {
 
     store_markers = [];
     for (var i = store.length - 1; i >= 0; i--) {
+        var image = {
+            url: '/static/img/pigpin.png',
+            // This marker is 20 pixels wide by 32 pixels tall.
+            size: new google.maps.Size(41, 58),
+            // The origin for this image is 0,0.
+            origin: new google.maps.Point(0,0),
+            // The anchor for this image is the base of the flagpole at 0,32.
+            anchor: new google.maps.Point(20, 58)
+        };
         store_markers[i] = new google.maps.Marker({
             map: map1,
             position: new google.maps.LatLng(store[i]['latitude'], store[i]['longitude']),
+            icon: image,
             visible: false
         });
         google.maps.event.addListener(store_markers[i], 'click', function() {
@@ -277,12 +318,13 @@ function initialize() {
     organization_markers = [];
     for (var i = organization.length - 1; i >= 0; i--) {
         var image = {
-            url: '/static/img/heart-icon.png',
+            url: '/static/img/pigpin.png',
             // This marker is 20 pixels wide by 32 pixels tall.
-            size: new google.maps.Size(20, 32)
+            size: new google.maps.Size(41, 58),
             // The origin for this image is 0,0.
-            // origin: new google.maps.Point(0,0),
+            origin: new google.maps.Point(0,0),
             // The anchor for this image is the base of the flagpole at 0,32.
+            anchor: new google.maps.Point(20, 58)
         };
         organization_markers[i] = new google.maps.Marker({
             map: map1,
@@ -328,42 +370,15 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 function importdata (id) {
-    $.getJSON("static/json/county"+id+".json", function(data){
+    $.getJSON("/static/json/county"+id+".json", function(data){
         geoJsonObject = topojson.feature(data, data.objects["1031225_big5"]);
         countyData[id]['area']['shape'].addGeoJson(geoJsonObject);
         if (id == 22) {
             countyData[id]['area']['shape'].setMap(map2);
-            // countyData[id]['area']['shape'].setStyle({
-            //     fillColor: '#158c28',
-            //     fillOpacity: 0.5,
-            //     strokeColor: '#ffe24d',
-            //     strokeWeight: 0
-            // });
         }else if (id == 21) {
             countyData[id]['area']['shape'].setMap(map3);
-            // countyData[id]['area']['shape'].setStyle({
-            //     fillColor: '#158c28',
-            //     fillOpacity: 0.5,
-            //     strokeColor: '#ffe24d',
-            //     strokeWeight: 0
-            // });
         }else {
             countyData[id]['area']['shape'].setMap(map1);
-            if (id == 17) {
-                // countyData[id]['area']['shape'].setStyle({
-                //     fillColor: '#158c28',
-                //     fillOpacity: 0.5,
-                //     strokeColor: '#ffe24d',
-                //     strokeWeight: 0
-                // });
-            }else{
-                // countyData[id]['area']['shape'].setStyle({
-                //     fillColor: '#158c28',
-                //     fillOpacity: 1,
-                //     strokeColor: '#ffe24d',
-                //     strokeWeight: 3
-                // });
-            };
         };
     });
 }
@@ -374,7 +389,7 @@ function addevent (id) {
         "mouseover":
             google.maps.event.addListener(countyData[id]['area']["shape"], 'mouseover', function(event) {
                 var content = '<div id="content"> '+countyData[id]['name']+'</div>'+
-                '<div>社福機構獲得補助回饋金: '+countyData[id]['money']['fund']['103']+'</div>'+
+                '<div>'+yearshow+'年社福機構獲得補助回饋金: '+countyData[id]['money']['fund'][yearshow]+'</div>'+
                 '<div>103年彩券盈餘分配金: '+countyData[id]['money']['surp']+'</div>'+
                 '<div>103年起中頭獎次數: '+countyData[id]['count']['prize']+'</div>'+
                 '<div>彩券行: '+countyData[id]['count']['stores']+' 家</div>'+
@@ -392,6 +407,8 @@ function addevent (id) {
             }),
         "click":
             google.maps.event.addListener(countyData[id]['area']["shape"], 'click', function(event) {
+                $('#outeroption').hide();
+                $('#inneroption').show();
                 $('#map-canvas-2').hide();
                 $('#map-canvas-3').hide();
                 $('#blocker').hide();
@@ -400,14 +417,22 @@ function addevent (id) {
                 var map1_bounds = new google.maps.LatLngBounds(map1_sw,map1_ne);;
                 map1.fitBounds(map1_bounds);
                 map_detailed = true;
-                store_markers.map(function(obj){ 
-                    obj.setVisible(true);
-                    return obj;
-                });
-                organization_markers.map(function(obj){ 
-                    obj.setVisible(true);
-                    return obj;
-                });
+                console.log(datashow);
+                if (datashow == 2) {
+                    $('#store').prop("checked", true);
+                    store_markers.map(function(obj){ 
+                        obj.setVisible(true);
+                        return obj;
+                    });
+                }else{
+                    $('#organizations').prop("checked", true);
+                    $('#application').show();
+                    $('#applied').prop("checked", true);
+                    organization_markers.map(function(obj){ 
+                        obj.setVisible(true);
+                        return obj;
+                    });
+                };
                 var detail_style = [{
                     "featureType":"administrative",
                     "elementType":"geometry",
@@ -481,43 +506,67 @@ function addevent (id) {
     }
 }
 
-function dataVisual (year, fundshow, surpshow, prizeshow) {
+function dataVisual (year, show) {
     var maxdata = 0;
     var mindata = 9999999999999999999;
     for (var i = 22; i >= 1; i--) {
-        if (fundshow) {
+        if (show == 0) {
             if (year == 103) {
+                chartdata[i - 1] = {
+                    'id':i,
+                    'num':countyData[i]['money']['fund'][103]
+                };
                 if (countyData[i]['money']['fund'][103] > maxdata) {
                     maxdata = countyData[i]['money']['fund'][103];
                 } else if (countyData[i]['money']['fund'][103] < mindata) {
                     mindata = countyData[i]['money']['fund'][103];
                 };
             }else if (year == 102) {
+                chartdata[i - 1] = {
+                    'id':i,
+                    'num':countyData[i]['money']['fund'][102]
+                };
                 if (countyData[i]['money']['fund'][102] > maxdata) {
                     maxdata = countyData[i]['money']['fund'][102];
                 } else if (countyData[i]['money']['fund'][102] < mindata) {
                     mindata = countyData[i]['money']['fund'][102];
                 };
             }else if (year == 101) {
+                chartdata[i - 1] = {
+                    'id':i,
+                    'num':countyData[i]['money']['fund'][101]
+                };
                 if (countyData[i]['money']['fund'][101] > maxdata) {
                     maxdata = countyData[i]['money']['fund'][101];
                 } else if (countyData[i]['money']['fund'][101] < mindata) {
                     mindata = countyData[i]['money']['fund'][101];
                 };
             }else {
+                chartdata[i - 1] = {
+                    'id':i,
+                    'num':countyData[i]['money']['fund'][100]
+                };
                 if (countyData[i]['money']['fund'][100] > maxdata) {
                     maxdata = countyData[i]['money']['fund'][100];
                 } else if (countyData[i]['money']['fund'][100] < mindata) {
                     mindata = countyData[i]['money']['fund'][100];
                 };
             };
-        }else if (surpshow) {
+        }else if (show == 1) {
+            chartdata[i - 1] = {
+                'id':i,
+                'num':countyData[i]['money']['surp']
+            };
             if (countyData[i]['money']['surp'] > maxdata) {
                 maxdata = countyData[i]['money']['surp'];
             } else if (countyData[i]['money']['surp'] < mindata) {
                 mindata = countyData[i]['money']['surp'];
             };
-        }else if (prizeshow) {
+        }else if (show == 2) {
+            chartdata[i - 1] = {
+                'id':i,
+                'num':countyData[i]['count']['prize']
+            };
             if (countyData[i]['count']['prize'] > maxdata) {
                 maxdata = countyData[i]['count']['prize'];
             } else if (countyData[i]['count']['prize'] < mindata) {
@@ -527,22 +576,22 @@ function dataVisual (year, fundshow, surpshow, prizeshow) {
     }
     for (var i = 22; i >= 1; i--) {
         var opacity;
-        if (fundshow) {
+        if (show == 0) {
             if (year == 103) {
-                opacity = range (countyData[i]['money']['fund'][103], maxdata, mindata);
+                opacity = range(countyData[i]['money']['fund'][103], maxdata, mindata);
             }else if (year == 102) {
-                opacity = range (countyData[i]['money']['fund'][102], maxdata, mindata);
+                opacity = range(countyData[i]['money']['fund'][102], maxdata, mindata);
             }else if (year == 101) {
-                opacity = range (countyData[i]['money']['fund'][101], maxdata, mindata);
+                opacity = range(countyData[i]['money']['fund'][101], maxdata, mindata);
             }else {
-                opacity = range (countyData[i]['money']['fund'][100], maxdata, mindata);
+                opacity = range(countyData[i]['money']['fund'][100], maxdata, mindata);
             };
-        }else if (surpshow) {
-            opacity = range (countyData[i]['money']['surp'], maxdata, mindata);
-        }else if (prizeshow) {
-            opacity = range (countyData[i]['money']['prize'], maxdata, mindata);
+        }else if (show == 1) {
+            opacity = range(countyData[i]['money']['surp'], maxdata, mindata);
+        }else if (show == 2) {
+            opacity = range(countyData[i]['money']['prize'], maxdata, mindata);
         };
-        console.log(opacity);
+        console.log(maxdata, mindata);
         if (i == 22 || i == 21 || i == 17) {
             countyData[i]['area']['shape'].setStyle({
                 fillColor: '#158c28',
@@ -577,6 +626,23 @@ function range (data, max, min) {
     }else if(data<max){
         return 0.8
     }else{
-        return 2
+        return 1
     };
 }
+
+// function barchart () {
+    // chartdata.sort(function(a, b){return a['num']-b['num']});
+    // console.log(chartdata);
+    // var canvas = document.getElementById('chart');
+    // if (canvas.getContext){
+        // var ctx = canvas.getContext('2d');
+        // canvas.width = 500;
+        // canvas.height = 350;
+        // ctx.clearRect(0,0,canvas.width,canvas.height);
+        // ctx.fillStyle = "#ffe24d";
+        // for (var i = chartdata.length - 1; i >= 0; i--) {
+            // var height = 10 + chartdata[i]['num']/chartdata[21]['num']*300
+            // ctx.fillRect (8+22*i, 300-height, 20, height);
+        // };
+    // }
+// }
