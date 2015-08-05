@@ -107,8 +107,8 @@ function initialize() {
         // barchart();
     });
 
-    document.getElementById('year').addEventListener('change', function() {
-        yearshow2 = document.getElementById('year').value;
+    document.getElementById('yearly').addEventListener('change', function() {
+        yearshow2 = document.getElementById('yearly').value;
         if (document.getElementById('noapplied').checked) {
             for (var i = charity.length - 1; i >= 0; i--) {
                 if (charity[i]['yearly'][yearshow2]['money'] == "未申請") {
@@ -120,7 +120,6 @@ function initialize() {
         }else if (document.getElementById('applied').checked) {
             for (var i = charity.length - 1; i >= 0; i--) {
                 if (charity[i]['yearly'][yearshow2]['money'] != "未申請") {
-                    console.log(i);
                     charity[i]['marker']['object'].setVisible(true);
                 }else{
                     charity[i]['marker']['object'].setVisible(false);
@@ -580,7 +579,7 @@ function addevent_charity (id) {
         var rejected = charity[id]['yearly'][yearshow2]['rejected'];
         var content = '<div>機構名稱: '+charity[id]['name']+'</div>'+
         '<div>機構地址: '+charity[id]['address']+'</div>'+
-        '<div>'+yearshow2+'年獲得補助: '+money+'</div>';
+        '<div>'+yearshow2+'年獲得補助: '+thousandComma(money)+'</div>';
         if (money == 0) {
             content += '<div>申請內容: '+rejected+'</div>'
         };
@@ -740,12 +739,25 @@ function range (data, max, min) {
 function county_detail_content (data) {
     var content = '<div id="content"> '+data['name']+'</div>';
     if (datashow == 0) {
-        content += '<div>'+yearshow1+'年社福機構獲得補助回饋金: '+data['money']['fund'][yearshow1]+'</div>';
+        content += '<div>'+yearshow1+'年社福機構獲得補助回饋金: $'+thousandComma(data['money']['fund'][yearshow1])+'</div>';
     } else if (datashow == 1) {
-        content += '<div>103年彩券盈餘分配金: '+data['money']['surp']+'</div>';
+        content += '<div>103年彩券盈餘分配金: $'+thousandComma(data['money']['surp'])+'</div>';
     } else if (datashow == 2){
         content += '<div>103年起中頭獎次數: '+data['count']['prize']+'</div>'
     };
     content += '<div>彩券行: '+data['count']['stores']+' 家</div>'+ '<div>社福機構: '+data['count']['charity']+' 家</div>';
     return content
+}
+
+function thousandComma (number){
+    if (number != "未申請") {
+        var num = number.toString();
+        var pattern = /(-?\d+)(\d{3})/;
+  
+        while(pattern.test(num)){
+            num = num.replace(pattern, "$1,$2");
+        }
+    };
+    
+    return '$'+num
 }
