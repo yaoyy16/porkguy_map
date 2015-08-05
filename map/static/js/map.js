@@ -97,13 +97,36 @@ function initialize() {
     var map3_bounds = new google.maps.LatLngBounds(map3_sw,map3_ne);
     map3.fitBounds(map3_bounds);
     map_detailed = false;
-    yearshow = document.getElementById('demo-category').value;
+    yearshow1 = document.getElementById('demo-category').value;
+    yearshow2 = document.getElementById('year').value;
     datashow = 0;
 
     document.getElementById('demo-category').addEventListener('change', function() {
-        yearshow = document.getElementById('demo-category').value;
-        dataVisual(yearshow, datashow);
-        barchart();
+        yearshow1 = document.getElementById('demo-category').value;
+        dataVisual(yearshow1, datashow);
+        // barchart();
+    });
+
+    document.getElementById('year').addEventListener('change', function() {
+        yearshow2 = document.getElementById('year').value;
+        if (document.getElementById('noapplied').checked) {
+            for (var i = charity.length - 1; i >= 0; i--) {
+                if (charity[i]['yearly'][yearshow2]['money'] == "未申請") {
+                    charity[i]['marker']['object'].setVisible(true);
+                }else{
+                    charity[i]['marker']['object'].setVisible(false);
+                };
+            };
+        }else if (document.getElementById('applied').checked) {
+            for (var i = charity.length - 1; i >= 0; i--) {
+                if (charity[i]['yearly'][yearshow2]['money'] != "未申請") {
+                    console.log(i);
+                    charity[i]['marker']['object'].setVisible(true);
+                }else{
+                    charity[i]['marker']['object'].setVisible(false);
+                };
+            };
+        };
     });
 
     $('input').on('click', function(){
@@ -120,30 +143,49 @@ function initialize() {
                 datashow = 2;
                 $('#year').hide();
             };
-            dataVisual(yearshow, datashow);
+            dataVisual(yearshow1, datashow);
             // barchart();
         }else{
+            $('#store_detail').hide();
+            $('#org_detail').hide()
             if(this.id == 'organizations'){ 
                 $('#application').show();
-                store_markers.map(function(obj){ 
-                    obj.setVisible(false);
-                    return obj;
-                });
-                organization_markers.map(function(obj){ 
-                    obj.setVisible(true);
-                    return obj;
-                });
+                for (var i = store_data.length - 1; i >= 0; i--) {
+                    store_data[i]['marker']['object'].setVisible(false);
+                };
+                $('#noapplied').prop("checked", true);
+                for (var i = charity.length - 1; i >= 0; i--) {
+                    if (charity[i]['yearly'][yearshow2]['money'] == "未申請") {
+                        charity[i]['marker']['object'].setVisible(true);
+                    };
+                };
             };
             if(this.id == 'store'){ 
                 $('#application').hide();
-                organization_markers.map(function(obj){ 
-                    obj.setVisible(false);
-                    return obj;
-                });
-                store_markers.map(function(obj){ 
-                    obj.setVisible(true);
-                    return obj;
-                });
+                for (var i = charity.length - 1; i >= 0; i--) {
+                    charity[i]['marker']['object'].setVisible(false);
+                };
+                for (var i = store_data.length - 1; i >= 0; i--) {
+                    store_data[i]['marker']['object'].setVisible(true);
+                };
+            };
+            if (this.id == 'noapplied') {
+                for (var i = charity.length - 1; i >= 0; i--) {
+                    if (charity[i]['yearly'][yearshow2]['money'] == "未申請") {
+                        charity[i]['marker']['object'].setVisible(true);
+                    }else{
+                        charity[i]['marker']['object'].setVisible(false);
+                    };
+                };
+            };
+            if (this.id == 'applied') {
+                for (var i = charity.length - 1; i >= 0; i--) {
+                    if (charity[i]['yearly'][yearshow2]['money'] != "未申請") {
+                        charity[i]['marker']['object'].setVisible(true);
+                    }else{
+                        charity[i]['marker']['object'].setVisible(false);
+                    };
+                };
             };
         };
     });
@@ -237,7 +279,7 @@ function initialize() {
         importdata(i);
         addevent(i);
     };
-    dataVisual(yearshow, datashow);
+    dataVisual(yearshow1, datashow);
     // barchart();
     
     document.getElementById('return').addEventListener('click', function() {
@@ -268,99 +310,77 @@ function initialize() {
                 countyData[i]['area']['shape'].setMap(map1);
             };
         };
-        dataVisual(yearshow, datashow);
-        store_markers.map(function(obj){ 
-            obj.setVisible(false);
-            return obj;
-        });
-        organization_markers.map(function(obj){ 
-            obj.setVisible(false);
-            return obj;
-        });
+        dataVisual(yearshow1, datashow);
+        for (var i = store_data.length - 1; i >= 0; i--) {
+            store_data[i]['marker']['object'].setVisible(false);
+        };
+        for (var i = charity.length - 1; i >= 0; i--) {
+            charity[i]['marker']['object'].setVisible(false);
+        };
         $('#map-canvas-2').show();
         $('#map-canvas-3').show();
         $('#blocker').show();
     });
-
-    store_markers = [];
-    for (var i = store.length - 1; i >= 0; i--) {
-        var image = {
-            url: '/static/img/pigpin.png',
-            // This marker is 20 pixels wide by 32 pixels tall.
-            size: new google.maps.Size(41, 58),
-            // The origin for this image is 0,0.
-            origin: new google.maps.Point(0,0),
-            // The anchor for this image is the base of the flagpole at 0,32.
-            anchor: new google.maps.Point(20, 58)
-        };
-        store_markers[i] = new google.maps.Marker({
-            map: map1,
-            position: new google.maps.LatLng(store[i]['latitude'], store[i]['longitude']),
-            icon: image,
-            visible: false
-        });
-        google.maps.event.addListener(store_markers[i], 'click', function() {
-            var name = store[store_markers.indexOf(this)]['name'];
-            var address = store[store_markers.indexOf(this)]['address'];
-            var times = store[store_markers.indexOf(this)]['firstprize_times'];
-            var content = '<div>店家名稱: '+name+'</div>'+
-            '<div>地址: '+address+'</div>'+
-            '<div>中頭獎次數: '+times+'</div>';
-            $('#store_detail').html(content);
-            if ($('#org_detail').is(':visible')) {
-                $('#org_detail').hide();
-            };
-            if ($('#store_detail').is(':hidden')) {
-                $('#store_detail').show();
-            };
-        });
+    var image = {
+        url: '/static/img/pigpin.png',
+        // This marker is 20 pixels wide by 32 pixels tall.
+        scaledSize : new google.maps.Size(20, 32),
+        // The origin for this image is 0,0.
+        origin: new google.maps.Point(0,0),
+        // The anchor for this image is the base of the flagpole at 0,32.
+        anchor: new google.maps.Point(10, 16)
     };
-    organization_markers = [];
+    store_data=[];
+    for (var i = store.length - 1; i >= 0; i--) {
+        store_data[i] = {
+            'name': store[i]['name'],
+            'address': store[i]['address'],
+            'firstprize_times': store[i]['firstprize_times'],
+            'marker': {
+                'object': new google.maps.Marker({
+                    map: map1,
+                    position: new google.maps.LatLng(store[i]['latitude'], store[i]['longitude']),
+                    icon: image,
+                    visible: false
+                })
+            }
+        }
+        addevent_storemarker(i);
+    };
+    charity=[];
     for (var i = organization.length - 1; i >= 0; i--) {
-        var image = {
-            url: '/static/img/pigpin.png',
-            // This marker is 20 pixels wide by 32 pixels tall.
-            size: new google.maps.Size(41, 58),
-            // The origin for this image is 0,0.
-            origin: new google.maps.Point(0,0),
-            // The anchor for this image is the base of the flagpole at 0,32.
-            anchor: new google.maps.Point(20, 58)
-        };
-        organization_markers[i] = new google.maps.Marker({
-            map: map1,
-            position: new google.maps.LatLng(organization[i]['latitude'], organization[i]['longitude']),
-            icon: image,
-            visible: false
-        });
-        google.maps.event.addListener(organization_markers[i], 'click', function() {
-            var name = organization[organization_markers.indexOf(this)]['name'];
-            var address = organization[organization_markers.indexOf(this)]['address'];
-            var funds;
-            if (yearshow == 103) {funds = fund_org_103;}
-            else if (yearshow == 102) {funds = fund_102} 
-            else if (yearshow == 101) {funds = fund_101}
-            else {funds = fund_100};
-            var money = "未申請";
-            var applied = "";
-            for (var i = funds.length - 1; i >= 0; i--) {
-                if(funds[i]['org_name'] == name){
-                    money = funds[i]['money'];
-                    applied = funds[i]['content'];
+        charity[i] = {
+            'name': organization[i]['name'],
+            'address': organization[i]['address'],
+            'yearly': {
+                103:{
+                    'money': "未申請",
+                    'rejected': ""
+                },
+                102:{
+                    'money': "未申請",
+                    'rejected': ""
+                },
+                101:{
+                    'money':"未申請",
+                    'rejected': ""
+                },
+                100:{
+                    'money': "未申請",
+                    'rejected': ""
                 }
-            };
-            var content = '<div>機構名稱: '+name+'</div>'+
-            '<div>獲得補助: '+address+'</div>'+
-            '<div>獲得補助: '+money+'</div>'+
-            '<div>申請內容: '+applied+'</div>'+
-            '<div>詳細資訊</div>';
-            $('#org_detail').html(content);
-            if ($('#store_detail').is(':visible')) {
-                $('#store_detail').hide();
-            };
-            if ($('#org_detail').is(':hidden')) {
-                $('#org_detail').show();
-            };
-        });
+            },
+            'marker': {
+                'object': new google.maps.Marker({
+                    map: map1,
+                    position: new google.maps.LatLng(organization[i]['latitude'], organization[i]['longitude']),
+                    icon: image,
+                    visible: false
+                })
+            }
+        }
+        addyearlydata(i);
+        addevent_charity(i);
     };
     google.maps.event.addListener(map1, 'click', function() {
         $('#store_detail').hide();
@@ -383,17 +403,47 @@ function importdata (id) {
     });
 }
 
+function addyearlydata (id) {
+    for (var i = fund_org_103.length - 1; i >= 0; i--) {
+        if(fund_org_103[i]['org_name'] == charity[id]['name']){
+            charity[id]['yearly'][103]['money'] = fund_org_103[i]['money'];
+            if (charity[id]['yearly'][103]['money'] == 0) {
+                charity[id]['yearly'][103]['rejected'] = fund_org_103[i]['content'];
+            };
+        }
+    };
+    for (var i = fund_org_102.length - 1; i >= 0; i--) {
+        if(fund_org_102[i]['org_name'] == charity[id]['name']){
+            charity[id]['yearly'][102]['money'] = fund_org_102[i]['money'];
+            if (charity[id]['yearly'][102]['money'] == 0) {
+                charity[id]['yearly'][102]['rejected'] = fund_org_102[i]['content'];
+            };
+        }
+    };
+    for (var i = fund_org_101.length - 1; i >= 0; i--) {
+        if(fund_org_101[i]['org_name'] == charity[id]['name']){
+            charity[id]['yearly'][101]['money'] = fund_org_101[i]['money'];
+            if (charity[id]['yearly'][101]['money'] == 0) {
+                charity[id]['yearly'][101]['rejected'] = fund_org_101[i]['content'];
+            };
+        }
+    };
+    for (var i = fund_org_100.length - 1; i >= 0; i--) {
+        if(fund_org_100[i]['org_name'] == charity[id]['name']){
+            charity[id]['yearly'][100]['money'] = fund_org_100[i]['money'];
+            if (charity[id]['yearly'][100]['money'] == 0) {
+                charity[id]['yearly'][100]['rejected'] = fund_org_100[i]['content'];
+            };
+        }
+    };
+}
+
 function addevent (id) {
     var map = countyData[id]['area']["shape"].getMap();
     countyData[id]['area']["event"] = {
         "mouseover":
             google.maps.event.addListener(countyData[id]['area']["shape"], 'mouseover', function(event) {
-                var content = '<div id="content"> '+countyData[id]['name']+'</div>'+
-                '<div>'+yearshow+'年社福機構獲得補助回饋金: '+countyData[id]['money']['fund'][yearshow]+'</div>'+
-                '<div>103年彩券盈餘分配金: '+countyData[id]['money']['surp']+'</div>'+
-                '<div>103年起中頭獎次數: '+countyData[id]['count']['prize']+'</div>'+
-                '<div>彩券行: '+countyData[id]['count']['stores']+' 家</div>'+
-                '<div>社福機構: '+countyData[id]['count']['charity']+' 家</div>';
+                var content = county_detail_content (countyData[id]);
                 $('#county_detail').html(content);
                 if ($('#county_detail').is(':hidden')) {
                        $('#county_detail').show();
@@ -417,21 +467,22 @@ function addevent (id) {
                 var map1_bounds = new google.maps.LatLngBounds(map1_sw,map1_ne);;
                 map1.fitBounds(map1_bounds);
                 map_detailed = true;
-                console.log(datashow);
                 if (datashow == 2) {
                     $('#store').prop("checked", true);
-                    store_markers.map(function(obj){ 
-                        obj.setVisible(true);
-                        return obj;
-                    });
+                    for (var i = store_data.length - 1; i >= 0; i--) {
+                        store_data[i]['marker']['object'].setVisible(true);
+                    };
                 }else{
                     $('#organizations').prop("checked", true);
                     $('#application').show();
-                    $('#applied').prop("checked", true);
-                    organization_markers.map(function(obj){ 
-                        obj.setVisible(true);
-                        return obj;
-                    });
+                    $("#year select").val(yearshow1);
+                    yearshow2 = yearshow1;
+                    $('#noapplied').prop("checked", true);
+                    for (var i = charity.length - 1; i >= 0; i--) {
+                        if (charity[i]['yearly'][yearshow1]['money'] == "未申請") {
+                            charity[i]['marker']['object'].setVisible(true);
+                        };
+                    };
                 };
                 var detail_style = [{
                     "featureType":"administrative",
@@ -504,6 +555,42 @@ function addevent (id) {
                 $('#county_detail').show();
             })
     }
+}
+
+function addevent_storemarker (id) {
+    store_data[id]['marker']['event'] = google.maps.event.addListener(store_data[id]['marker']['object'], 'click', function(event) {
+        var content = '<div>店家名稱: '+store_data[id]['name']+'</div>'+
+        '<div>地址: '+store_data[id]['address']+'</div>'+
+        '<div>中頭獎次數: '+store_data[id]['firstprize_times']+'</div>';
+        $('#store_detail').html(content);
+        if ($('#org_detail').is(':visible')) {
+            $('#org_detail').hide();
+        };
+        if ($('#store_detail').is(':hidden')) {
+            $('#store_detail').show();
+        };
+    })
+}
+
+function addevent_charity (id) {
+    charity[id]['marker']['event'] = google.maps.event.addListener(charity[id]['marker']['object'], 'click', function() {
+        var money = charity[id]['yearly'][yearshow2]['money'];
+        var rejected = charity[id]['yearly'][yearshow2]['rejected'];
+        var content = '<div>機構名稱: '+charity[id]['name']+'</div>'+
+        '<div>機構地址: '+charity[id]['address']+'</div>'+
+        '<div>'+yearshow2+'年獲得補助: '+money+'</div>';
+        if (money == 0) {
+            content += '<div>申請內容: '+rejected+'</div>'
+        };
+        content += '<div>詳細資訊</div>';
+        $('#org_detail').html(content);
+        if ($('#store_detail').is(':visible')) {
+            $('#store_detail').hide();
+        };
+        if ($('#org_detail').is(':hidden')) {
+            $('#org_detail').show();
+        };
+    });
 }
 
 function dataVisual (year, show) {
@@ -589,9 +676,9 @@ function dataVisual (year, show) {
         }else if (show == 1) {
             opacity = range(countyData[i]['money']['surp'], maxdata, mindata);
         }else if (show == 2) {
-            opacity = range(countyData[i]['money']['prize'], maxdata, mindata);
+            opacity = range(countyData[i]['count']['prize'], maxdata, mindata);
         };
-        console.log(maxdata, mindata);
+        // console.log(maxdata, mindata, opacity);
         if (i == 22 || i == 21 || i == 17) {
             countyData[i]['area']['shape'].setStyle({
                 fillColor: '#158c28',
@@ -615,6 +702,7 @@ function range (data, max, min) {
     var range1 = min + range;
     var range2 = range1 + range;
     var range3 = range2 + range;
+    // console.log(data, max, min);
     if (data == min){
         return 0.1
     }else if(data<range1){
@@ -646,3 +734,16 @@ function range (data, max, min) {
         // };
     // }
 // }
+
+function county_detail_content (data) {
+    var content = '<div id="content"> '+data['name']+'</div>';
+    if (datashow == 0) {
+        content += '<div>'+yearshow1+'年社福機構獲得補助回饋金: '+data['money']['fund'][yearshow1]+'</div>';
+    } else if (datashow == 1) {
+        content += '<div>103年彩券盈餘分配金: '+data['money']['surp']+'</div>';
+    } else if (datashow == 2){
+        content += '<div>103年起中頭獎次數: '+data['count']['prize']+'</div>'
+    };
+    content += '<div>彩券行: '+data['count']['stores']+' 家</div>'+ '<div>社福機構: '+data['count']['charity']+' 家</div>';
+    return content
+}

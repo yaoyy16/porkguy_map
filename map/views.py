@@ -18,10 +18,16 @@ def showmap(request):
     fund_org_103 = json.dumps([v for v in fund_org_103.values('org_name', 'money', 'content')])
     fund_list_102 = FundGet.objects.filter(year=102).exclude(city=23).values('city').annotate(Sum('money'))
     fund_list_102 = json.dumps([v for v in fund_list_102.values('city', 'money__sum')])
+    fund_org_102 = FundGet.objects.filter(year=102).exclude(city=23)
+    fund_org_102 = json.dumps([v for v in fund_org_102.values('org_name', 'money', 'content')])
     fund_list_101 = FundGet.objects.filter(year=101).exclude(city=23).values('city').annotate(Sum('money'))
     fund_list_101 = json.dumps([v for v in fund_list_101.values('city', 'money__sum')])
+    fund_org_101 = FundGet.objects.filter(year=101).exclude(city=23)
+    fund_org_101 = json.dumps([v for v in fund_org_101.values('org_name', 'money', 'content')])
     fund_list_100 = FundGet.objects.filter(year=100).exclude(city=23).values('city').annotate(Sum('money'))
     fund_list_100 = json.dumps([v for v in fund_list_100.values('city', 'money__sum')])
+    fund_org_100 = FundGet.objects.filter(year=100).exclude(city=23)
+    fund_org_100 = json.dumps([v for v in fund_org_100.values('org_name', 'money', 'content')])
     surp_list_103 = Surplus.objects.filter(year=103).values('city').annotate(Sum('surplus'))
     surp_list_103 = json.dumps([v for v in surp_list_103.values('city', 'surplus__sum')])
     prize_list = Lottery_store.objects.all().values('city').annotate(Sum('firstprize_times'))
@@ -38,10 +44,13 @@ def showmap(request):
     location_list = json.dumps([v for v in location_list.values('id', 'name', 'center_longitude', 'center_latitude', 'ne_longitude', 'ne_latitude', 'sw_longitude', 'sw_latitude')])
     return render(request, "map.html", 
         {'fund_list_103': fund_list_103, 
-        'fund_org_103': fund_org_103, 
         'fund_list_102': fund_list_102, 
         'fund_list_101': fund_list_101, 
         'fund_list_100': fund_list_100, 
+        'fund_org_103': fund_org_103, 
+        'fund_org_102': fund_org_102, 
+        'fund_org_101': fund_org_101, 
+        'fund_org_100': fund_org_100, 
         'surp_list_103': surp_list_103, 
         'prize_list': prize_list, 
         'store_list': store_list, 
