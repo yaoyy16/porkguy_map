@@ -73,7 +73,7 @@
   color: #158c28;
 } 
 #content .table-striped>tbody>tr:nth-of-type(odd) {
-  background-color: #fff9db;
+  background-color: #f9ff99;
 }
 #content table .tb_label {
   width: 13%;
