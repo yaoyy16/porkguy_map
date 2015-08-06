@@ -149,7 +149,6 @@ header .header-content .header-content-inner h3 {
   background-size: initial;
   -o-background-size: cover;
   background-position: center; 
-  background-color: #16471d;
   background-repeat: repeat;
   text-align: center;
   background-image: url('/static/pages/img/bg1.png'); 
@@ -173,14 +172,14 @@ header .header-content .header-content-inner h3 {
   text-transform: uppercase;
   margin-top: 0;
   margin-bottom: 0;
-  color: #1b5925;
+  color: #1a1919;
 }
 .header-content-inner hr {
   margin: 30px auto;
 }
 .header-content-inner h3 {
   font-weight: 300;
-  color: #1b5925;
+  color: #1a1919;
   font-size: 30px;
   margin-bottom: 50px;
 }
@@ -212,12 +211,17 @@ header .header-content .header-content-inner h3 {
   }
   #welcome .header-content-inner a {
     margin-top: 40px;
+    background-color: #737373;
+  }
+  #welcome .header-content-inner a:hover {
+    margin-top: 40px;
+    background-color: #8f8f8f;
   }
 }
 .section-heading {
   margin-top: 0;
   font-size: 30px;
-  color: #158c28;
+  color: #1a1919;
 }
 .porkguy-desc {
   margin-top: 0;
@@ -227,14 +231,18 @@ header .header-content .header-content-inner h3 {
   text-align: left;
 }
 .explain-text {
-  font-size: 20px;
-  color: #158c28;
+  color: #1a1919;
   text-align: left;
+  margin: 20px 0px;
+}
+.explain-text-last {
+  color: #1a1919;
+  text-align: center;
   margin: 20px 0px;
 }
 .explain-text-highlight {
   text-align: center; 
-  font-size: 30px;
+  font-size: 20px;
   color: #216B2C;
 }
 .service-box {
