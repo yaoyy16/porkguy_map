@@ -335,6 +335,9 @@
 		margin-top:25px;
 		margin-bottom: 25px; 
 	}
+	/*#demo-category1 {
+		display: none;
+	}*/
 /* Box Model */
 
 	*, *:before, *:after {

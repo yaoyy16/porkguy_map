@@ -101,8 +101,19 @@ function initialize() {
     yearshow2 = document.getElementById('year').value;
     datashow = 0;
 
+    $(document).ready(function() {
+        $('#year2').hide();
+    });
+
     document.getElementById('demo-category').addEventListener('change', function() {
         yearshow1 = document.getElementById('demo-category').value;
+        dataVisual(yearshow1, datashow);
+        // barchart();
+    });
+    document.getElementById('demo-category2').addEventListener('change', function() {
+        yearshow1 = document.getElementById('demo-category2').value;
+        yearshow2 = document.getElementById('year2').value;
+        datashow = 1;
         dataVisual(yearshow1, datashow);
         // barchart();
     });
@@ -133,14 +144,17 @@ function initialize() {
             if(this.id == 'profit-distribut'){ 
                 datashow = 0;
                 $('#year').show();
+                $('#year2').hide();
             };
             if(this.id == 'charity'){ 
                 datashow = 1;
                 $('#year').hide();
+                $('#year2').show();
             };
             if(this.id == 'prize'){ 
                 datashow = 2;
                 $('#year').hide();
+                $('#year2').hide();
             };
             dataVisual(yearshow1, datashow);
             // barchart();
@@ -200,7 +214,7 @@ function initialize() {
         //     });
         // })(i);
         var id =  county[i]['id'];
-        var money1, money2, money3, money4, money5, times, count1, count2;
+        var money1, money2, money3, money4, money5, money6, money7, money8, times, count1, count2;
         for (var j = 21; j >= 0; j--) {
             if (fund_103[j]['city'] == id) {
                 money1 = fund_103[j]['money__sum'];
@@ -216,6 +230,15 @@ function initialize() {
             };
             if (surp_103[j]['city'] == id) {
                 money5 = surp_103[j]['surplus__sum'];
+            };
+            if (surp_102[j]['city'] == id) {
+                money6 = surp_102[j]['surplus__sum'];
+            };
+            if (surp_101[j]['city'] == id) {
+                money7 = surp_101[j]['surplus__sum'];
+            };
+            if (surp_100[j]['city'] == id) {
+                money8 = surp_100[j]['surplus__sum'];
             };
             if (prizes[j]) {
                 if (prizes[j]['city'] == id) {
@@ -262,7 +285,12 @@ function initialize() {
                     101:money3,
                     100:money4
                 },
-                "surp":money5
+                "surp":{
+                    103:money5,
+                    102:money6,
+                    101:money7,
+                    100:money8
+                }
             },
             "count":{
                 "prize":times,
@@ -301,6 +329,7 @@ function initialize() {
         $('#org_detail').hide();
         $('#profit-distribut').prop("checked", true);
         $('#year').show();
+        $('#year2').hide();
         for (var i = 22; i >= 1; i--) {
             if (i == 22) {
                 countyData[i]['area']['shape'].setMap(map2);
@@ -643,15 +672,58 @@ function dataVisual (year, show) {
                 };
             };
         }else if (show == 1) {
-            chartdata[i - 1] = {
-                'id':i,
-                'num':countyData[i]['money']['surp']
+            if (year == 103) {
+                chartdata[i - 1] = {
+                    'id':i,
+                    'num':countyData[i]['money']['surp'][103]
+                };
+                if (countyData[i]['money']['surp'][103] > maxdata) {
+                    maxdata = countyData[i]['money']['surp'][103];
+                } else if (countyData[i]['money']['surp'][103] < mindata) {
+                    mindata = countyData[i]['money']['surp'][103];
+                };
+            }else if (year == 102) {
+                chartdata[i - 1] = {
+                    'id':i,
+                    'num':countyData[i]['money']['surp'][102]
+                };
+                if (countyData[i]['money']['surp'][102] > maxdata) {
+                    maxdata = countyData[i]['money']['surp'][102];
+                } else if (countyData[i]['money']['surp'][102] < mindata) {
+                    mindata = countyData[i]['money']['surp'][102];
+                };
+            }else if (year == 101) {
+                chartdata[i - 1] = {
+                    'id':i,
+                    'num':countyData[i]['money']['surp'][101]
+                };
+                if (countyData[i]['money']['surp'][101] > maxdata) {
+                    maxdata = countyData[i]['money']['surp'][101];
+                } else if (countyData[i]['money']['surp'][101] < mindata) {
+                    mindata = countyData[i]['money']['surp'][101];
+                };
+            }else {
+                chartdata[i - 1] = {
+                    'id':i,
+                    'num':countyData[i]['money']['surp'][100]
+                };
+                if (countyData[i]['money']['surp'][100] > maxdata) {
+                    maxdata = countyData[i]['money']['surp'][100];
+                } else if (countyData[i]['money']['surp'][100] < mindata) {
+                    mindata = countyData[i]['money']['surp'][100];
+                };
             };
-            if (countyData[i]['money']['surp'] > maxdata) {
-                maxdata = countyData[i]['money']['surp'];
-            } else if (countyData[i]['money']['surp'] < mindata) {
-                mindata = countyData[i]['money']['surp'];
-            };
+
+
+            // chartdata[i - 1] = {
+            //     'id':i,
+            //     'num':countyData[i]['money']['surp']
+            // };
+            // if (countyData[i]['money']['surp'] > maxdata) {
+            //     maxdata = countyData[i]['money']['surp'];
+            // } else if (countyData[i]['money']['surp'] < mindata) {
+            //     mindata = countyData[i]['money']['surp'];
+            // };
         }else if (show == 2) {
             chartdata[i - 1] = {
                 'id':i,
@@ -677,7 +749,16 @@ function dataVisual (year, show) {
                 opacity = range(countyData[i]['money']['fund'][100], maxdata, mindata);
             };
         }else if (show == 1) {
-            opacity = range(countyData[i]['money']['surp'], maxdata, mindata);
+            if (year == 103) {
+                opacity = range(countyData[i]['money']['surp'][103], maxdata, mindata);
+            }else if (year == 102) {
+                opacity = range(countyData[i]['money']['surp'][102], maxdata, mindata);
+            }else if (year == 101) {
+                opacity = range(countyData[i]['money']['surp'][101], maxdata, mindata);
+            }else {
+                opacity = range(countyData[i]['money']['surp'][100], maxdata, mindata);
+            };
+            // opacity = range(countyData[i]['money']['surp'], maxdata, mindata);
         }else if (show == 2) {
             opacity = range(countyData[i]['count']['prize'], maxdata, mindata);
         };
@@ -743,7 +824,7 @@ function county_detail_content (data) {
     if (datashow == 0) {
         content += '<div>'+yearshow1+'年社福機構獲得補助回饋金: '+thousandComma(data['money']['fund'][yearshow1])+'</div>';
     } else if (datashow == 1) {
-        content += '<div>103年彩券盈餘分配金: '+thousandComma(data['money']['surp'])+'</div>';
+        content += '<div>'+yearshow1+'年彩券盈餘分配金: '+thousandComma(data['money']['surp'][yearshow1])+'</div>';
     } else if (datashow == 2){
         content += '<div>103年起中頭獎次數: '+data['count']['prize']+'</div>'
     };

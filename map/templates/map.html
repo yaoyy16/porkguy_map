@@ -27,6 +27,9 @@
             var fund_100 = {{ fund_list_100|safe }};
             var fund_org_100 = {{ fund_org_100|safe }};
             var surp_103 = {{ surp_list_103|safe }};
+            var surp_102 = {{ surp_list_102|safe }};
+            var surp_101 = {{ surp_list_101|safe }};
+            var surp_100 = {{ surp_list_100|safe }};
             var prizes = {{ prize_list|safe }};
             var county = {{ location_list|safe }};
             var store = {{ store_list|safe }};
@@ -71,10 +74,23 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="6u$ 12u$(small)">
+                                        <div class="6u 12u$(small)">
+                                            <input type="radio" id="charity" name="options">
+                                            <label for="charity">彩券盈餘分配金</label>
+                                            <div class="select-wrapper" id="year2">
+                                                <select name="demo-category2" id="demo-category2">
+                                                    <option value="">- 年度 -</option>
+                                                    <option value="103" selected>民國103年</option>
+                                                    <option value="102">民國102年</option>
+                                                    <option value="101">民國101年</option>
+                                                    <option value="100">民國100年</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="6u$ 12u$(small)">
                                             <input type="radio" id="charity" name="options">
                                             <label for="charity">103年彩券盈餘分配金</label>
-                                        </div>
+                                        </div> -->
                                         <div class="6u 12u$(small)">
                                             <input type="radio" id="prize" name="options">
                                             <label for="prize">103年起中頭獎次數</label>
@@ -97,7 +113,11 @@
                                                 <ul>
                                                     <li>
                                                         <input type="radio" id="applied" name="apply_options">
-                                                        <label for="applied">有申請</label>
+                                                        <label for="applied">申請審核未過</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" id="applied-pass" name="apply_options">
+                                                        <label for="applied-pass">申請審核通過</label>
                                                     </li>
                                                     <li>
                                                         <input type="radio" id="noapplied" name="apply_options">
