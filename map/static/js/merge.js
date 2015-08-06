@@ -112,6 +112,10 @@ function latlng_merge(latlngs, zoom){
             if(info['data'][d_idx].longitude > info['max_lng'])
                 info['max_lng'] = info['data'][d_idx].longitude;
         }
+        var center = {}
+        center.latitude = (info['max_lat'] + info['min_lat'])/2;
+        center.longitude = (info['max_lng'] + info['min_lng'])/2;
+        info['center'] = center
         result[key] = info;
     }
 
