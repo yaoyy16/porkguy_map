@@ -96,6 +96,87 @@
 		padding: 0;
 		z-index: 3;
 	}
+	#diagram {
+		width:280px;
+		height:55px;
+		background-color: #ffffff;
+		opacity: 0.95;
+		border-radius: 5px;
+		display: block;
+		z-index: 3;
+		position: absolute;
+		top: 5%;
+    	left: 25%;
+    	cursor: pointer;
+    	text-align: center;
+    	color: #ffed94;
+    	font-size: 15px;
+	}
+	#diagram .low {
+		float: left;
+		color: #158c28;
+		opacity: 0.5;
+		margin-right: 2px;
+	}
+	#diagram .high {
+		float: left;
+		color: #158c28;
+		opacity: 0.8;
+		margin-left: 2px;
+	}
+	#diagram .word {
+		color: #158c28;
+		text-align: left;
+		margin-left: 15px;
+	}
+	#diagram .level {
+		margin-left: 15px;
+	}
+	#diagram .level .level1 {
+		width: 40px;
+		height: 20px;
+		background-color: #158c28;
+		float: left;
+		margin: 3px 2px;
+		opacity: 0.1;
+		border-radius: 2px;
+	}
+	#diagram .level .level2 {
+		width: 40px;
+		height: 20px;
+		background-color: #158c28;
+		float: left;
+		margin: 3px 2px;
+		opacity: 0.2;
+		border-radius: 2px;
+	}
+	#diagram .level .level3 {
+		width: 40px;
+		height: 20px;
+		background-color: #158c28;
+		float: left;
+		margin: 3px 2px;
+		opacity: 0.4;
+		border-radius: 2px;
+	}
+	#diagram .level .level4 {
+		width: 40px;
+		height: 20px;
+		background-color: #158c28;
+		float: left;
+		margin: 3px 2px;
+		opacity: 0.6;
+		border-radius: 2px;
+	}
+	#diagram .level .level5 {
+		width: 40px;
+		height: 20px;
+		background-color: #158c28;
+		float: left;
+		margin: 3px 2px;
+		opacity: 0.8;
+		border-radius: 2px;
+	}
 
 	#return {
 		line-height:50px;

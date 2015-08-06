@@ -294,6 +294,7 @@ function initialize() {
         map_detailed = false;
         $('#outeroption').show();
         $('#inneroption').hide();
+        $('#diagram').show();
         $('#return').hide();
         $('#county_detail').hide();
         $('#store_detail').hide();
@@ -552,6 +553,7 @@ function addevent (id) {
                     countyData[i]['area']["shape"].setMap(null);
                 };
                 $('#return').show();
+                $('#diagram').hide();
                 $('#county_detail').show();
             })
     }
