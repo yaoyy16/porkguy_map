@@ -107,8 +107,8 @@
 		display: none;
 		z-index: 3;
 		position: absolute;
-		top: 30px;
-    	left: 400px;
+		top: 10%;
+    	left: 25%;
     	cursor: pointer;
     	text-align: center;
     	color: #ffed94;
@@ -123,8 +123,8 @@
 		display: none;
 		z-index: 3;
 		position: absolute;
-		top: 30px;
-    	left: 400px;
+		top: 10%;
+    	left: 25%;
     	cursor: pointer;
     	text-align: center;
     	color: #ffffff;
