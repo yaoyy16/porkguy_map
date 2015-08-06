@@ -112,7 +112,6 @@ function initialize() {
     });
     document.getElementById('demo-category2').addEventListener('change', function() {
         yearshow1 = document.getElementById('demo-category2').value;
-        yearshow2 = document.getElementById('year2').value;
         datashow = 1;
         dataVisual(yearshow1, datashow);
         // barchart();
@@ -128,9 +127,17 @@ function initialize() {
                     charity[i]['marker']['object'].setVisible(false);
                 };
             };
-        }else if (document.getElementById('applied').checked) {
+        }else if (document.getElementById('applied-nopass').checked) {
             for (var i = charity.length - 1; i >= 0; i--) {
-                if (charity[i]['yearly'][yearshow2]['money'] != "未申請") {
+                if (charity[i]['yearly'][yearshow2]['money'] == 0) {
+                    charity[i]['marker']['object'].setVisible(true);
+                }else{
+                    charity[i]['marker']['object'].setVisible(false);
+                };
+            };
+        }else if (document.getElementById('applied-pass').checked) {
+            for (var i = charity.length - 1; i >= 0; i--) {
+                if (charity[i]['yearly'][yearshow2]['money'] > 0) {
                     charity[i]['marker']['object'].setVisible(true);
                 }else{
                     charity[i]['marker']['object'].setVisible(false);
@@ -166,9 +173,9 @@ function initialize() {
                 for (var i = store_data.length - 1; i >= 0; i--) {
                     store_data[i]['marker']['object'].setVisible(false);
                 };
-                $('#noapplied').prop("checked", true);
+                $('#applied-nopass').prop("checked", true);
                 for (var i = charity.length - 1; i >= 0; i--) {
-                    if (charity[i]['yearly'][yearshow2]['money'] == "未申請") {
+                    if (charity[i]['yearly'][yearshow2]['money'] == 0 ) {
                         charity[i]['marker']['object'].setVisible(true);
                     };
                 };
@@ -191,9 +198,18 @@ function initialize() {
                     };
                 };
             };
-            if (this.id == 'applied') {
+            if (this.id == 'applied-nopass') {
                 for (var i = charity.length - 1; i >= 0; i--) {
-                    if (charity[i]['yearly'][yearshow2]['money'] != "未申請") {
+                    if (charity[i]['yearly'][yearshow2]['money'] == 0) {
+                        charity[i]['marker']['object'].setVisible(true);
+                    }else{
+                        charity[i]['marker']['object'].setVisible(false);
+                    };
+                };
+            };
+            if (this.id == 'applied-pass') {
+                for (var i = charity.length - 1; i >= 0; i--) {
+                    if (charity[i]['yearly'][yearshow2]['money'] > 0) {
                         charity[i]['marker']['object'].setVisible(true);
                     }else{
                         charity[i]['marker']['object'].setVisible(false);
@@ -507,9 +523,9 @@ function addevent (id) {
                     $('#application').show();
                     $("#year select").val(yearshow1);
                     yearshow2 = yearshow1;
-                    $('#noapplied').prop("checked", true);
+                    $('#applied-nopass').prop("checked", true);
                     for (var i = charity.length - 1; i >= 0; i--) {
-                        if (charity[i]['yearly'][yearshow1]['money'] == "未申請") {
+                        if (charity[i]['yearly'][yearshow1]['money'] == 0) {
                             charity[i]['marker']['object'].setVisible(true);
                         };
                     };

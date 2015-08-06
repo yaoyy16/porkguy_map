@@ -3529,7 +3529,7 @@
 						color: #ffed94;
 						font-size: 1.1em !important
 					}
-		#applied, #noapplied {
+		#applied-nopass, #applied-pass, #noapplied {
 			margin-left: 60px;
 			color: #ffed94;
 		}
