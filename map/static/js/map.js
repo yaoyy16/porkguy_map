@@ -578,8 +578,8 @@ function addevent_charity (id) {
         var org_id = charity[id]['id'];
         var rejected = charity[id]['yearly'][yearshow2]['rejected'];
         var content = '<div>機構名稱: '+charity[id]['name']+'</div>'+
-        '<div>機構地址: '+charity[id]['address']+'</div>'+
-        '<div>'+yearshow2+'年獲得補助: '+thousandComma(money)+'</div>';
+        '<div>機構地址: '+charity[id]['address']+'</div>';
+        content += '<div>'+yearshow2+'年獲得補助: '+thousandComma(money)+'</div>';          
         if (money == 0) {
             content += '<div>申請內容: '+rejected+'</div>'
         };
@@ -757,7 +757,8 @@ function thousandComma (number){
         while(pattern.test(num)){
             num = num.replace(pattern, "$1,$2");
         }
+        return '$'+num
+    }else {
+        return  number;    
     };
-    
-    return '$'+num
 }

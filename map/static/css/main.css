@@ -27,6 +27,7 @@
 
 	body {
 		line-height: 1;
+		font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", sans-serif !important;
 	}
 
 	ol, ul {
@@ -117,7 +118,7 @@
 		line-height:50px;
 		width:100px;
 		height:50px;
-		background-color: #ffed94;
+		background-color: #1b5925;
 		border-radius: 5px;
 		display: none;
 		z-index: 3;
@@ -126,15 +127,15 @@
     	left: 400px;
     	cursor: pointer;
     	text-align: center;
-    	color: #1b5925;
-    	font-size: 15px;
-    	border: solid 2px #1b5925;
+    	color: #ffffff;
+    	font-size: 15px !important;
+    	opacity: 0.8;
 	}
 
 	#county_detail {
 		display: none;
 		position: relative;
-    	font-size: 14px;
+    	font-size: 15px !important;
     	color: #363636;
     	background-color: #ffffff;
     	padding: 10px;
@@ -148,7 +149,7 @@
 	#store_detail {
 		display: none;
 		position: relative;
-    	font-size: 14px;
+    	font-size: 15px !important;
     	color: #363636;
     	background-color: #ffffff;
     	padding: 10px;
@@ -162,7 +163,7 @@
 	#org_detail {
 		display: none;
 		position: relative;
-    	font-size: 14px;
+    	font-size: 15px !important;
     	color: #363636;
     	background-color: #ffffff;
     	padding: 10px;
@@ -177,7 +178,15 @@
 		border: solid 4px #808080;
 		background-color: #808080;
 		color: #fff;
-		margin-left: 310px;
+		margin-left: 300px;
+	}
+	.project_detail a:hover {
+		border-radius: 8px;
+		border: solid 4px #808080;
+		background-color: #808080;
+		color: #fff;
+		margin-left: 300px;
+		opacity: 0.8;
 	}
 
 	#detail{
@@ -196,6 +205,7 @@
     	bottom: 40px;
     	right: 15px;
     	z-index: 2;
+    	font-size: 15px;
 	}
 	#chart{
 		position: absolute;
@@ -3336,11 +3346,11 @@
 			padding: 0;
 		}
 
-			#menu ul > li {
+			/*#menu ul > li {
 				
 				margin: 0.5em 0 0 0;
 				padding: 0.5em 0 0 0;
-			}
+			}*/
 				#menu ul > li > div.pork-guy{
 					height: 280px;
 					width: 150px;
@@ -3357,11 +3367,12 @@
 					margin-top: 0 !important;
 					padding-top: 0 !important;
 				}
-				/*#menu ul > li:last-child  {
-					color: #331A00 !important;
-					font-size: 15pt !important;
-					margin-top: 0.3em;
-				}*/
+				#menu ul > li > div#application > li {
+					border-top: 0 !important;
+					margin-top: 0 !important;
+					padding-top: 0 !important;
+				}
+
 
 				#menu ul > li > a {
 					border: 0;
@@ -3390,7 +3401,7 @@
 					#menu ul > li > div > select:hover,
 					#menu ul > li > div > label {
 						color: #ffed94;
-						font-size: 1.2em !important
+						font-size: 1.1em !important
 					}
 		#applied, #noapplied {
 			margin-left: 60px;

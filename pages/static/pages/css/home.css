@@ -1,3 +1,8 @@
+#page-top {
+  font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", sans-serif !important;
+}
+
+
 .navbar-default {
   background-color: white;
   border-color: rgba(34, 34, 34, 0.05);
@@ -141,12 +146,13 @@ header .header-content .header-content-inner h3 {
   height: 100%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
-  background-size: cover;
+  background-size: initial;
   -o-background-size: cover;
   background-position: center; 
   background-color: #16471d;
   background-repeat: repeat;
   text-align: center;
+  background-image: url('/static/pages/img/bg1.png'); 
 }
 #welcome .container {
   position: relative;
@@ -167,17 +173,16 @@ header .header-content .header-content-inner h3 {
   text-transform: uppercase;
   margin-top: 0;
   margin-bottom: 0;
-  color: #ffe24d;
+  color: #1b5925;
 }
 .header-content-inner hr {
   margin: 30px auto;
 }
 .header-content-inner h3 {
   font-weight: 300;
-  color: #ffe24d;
+  color: #1b5925;
   font-size: 30px;
   margin-bottom: 50px;
-  font-style: italic;
 }
 
 @media (min-width: 768px) {
@@ -193,17 +198,20 @@ header .header-content .header-content-inner h3 {
     transform: translateY(-50%);
     padding: 0 300px;
   }
-  #welcome .header-content .header-content-inner {
+  #welcome .header-content-inner {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px;
+    margin-top: 50px;
   }
-  #welcome .header-content .header-content-inner p {
+  #welcome .header-content-inner p {
     font-size: 18px;
     margin-left: auto;
     margin-right: auto;
     color: #158c28;
+  }
+  #welcome .header-content-inner a {
+    margin-top: 40px;
   }
 }
 .section-heading {
@@ -216,6 +224,7 @@ header .header-content .header-content-inner h3 {
   margin-bottom: 30px;
   font-size: 20px;
   color: #158c28;
+  text-align: left;
 }
 .explain-text {
   font-size: 20px;
