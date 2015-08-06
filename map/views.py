@@ -37,7 +37,7 @@ def showmap(request):
     store_count_list = Lottery_store.objects.all().values('city').annotate(Count('address'))
     store_count_list = json.dumps([v for v in store_count_list.values('city', 'address__count')])
     organization_list = Organization.objects.all()
-    organization_list  = json.dumps([v for v in organization_list.values('name', 'city', 'address', 'latitude', 'longitude')])
+    organization_list  = json.dumps([v for v in organization_list.values('id','name', 'city', 'address', 'latitude', 'longitude')])
     organization_count_list = Organization.objects.all().values('city').annotate(Count('address'))
     organization_count_list = json.dumps([v for v in organization_count_list.values('city', 'address__count')])
     location_list = City.objects.exclude(name='全國性')

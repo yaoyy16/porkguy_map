@@ -35,22 +35,30 @@
             var org_count = {{ organization_count_list|safe }};
         </script>
         <script type="text/javascript" src="/static/js/map.js"></script>
+
         <script type="text/javascript" src="/static/js/merge.js"></script>
 
     </head>
     <body class="landing is-menu-visible">
+
         <!-- Header -->
             <header id="header" class="alt">
+            <div id="fundget-box">
+                <span class="arrow_l_int"></span>
+                <span class="arrow_l_out"></span>
+                <span class="msg"></span>
+            </div>
                 <nav id="nav">
                     <ul>
                         <li class="special">
                             <button class="menuToggle button small">Menu</button>
                             <div id="menu">
+
                                 <ul>
                                     <li>
                                         <a href="/" class="button fit big">豬肉俠公益地圖</a>
                                         <div class="pork-guy">
-                                            <img src="/static/img/pigman.png" />
+                                            <img src="/static/img/pigman2.png" />
                                         </div>
                                     </li>
                                     <li id="outeroption">
@@ -82,7 +90,7 @@
                                             <label for="organizations">社福機構</label>
                                             <div id="application" style="display:none;">
                                                 <div class="select-wrapper" id="year">
-                                                    <select name="demo-category" id="year">
+                                                    <select name="demo-category" id="yearly">
                                                         <option value="">- 年度 -</option>
                                                         <option value="103" selected>民國103年</option>
                                                         <option value="102">民國102年</option>
@@ -120,8 +128,20 @@
                 <div id="map-canvas-3"></div>
                 <div id="blocker"></div>
             </div>
+            <div id="diagram">
+                <div class="word">圖示</div>
+                <div class="level">
+                    <p class="low">少</p>
+                    <div class="level1"></div>
+                    <div class="level2"></div>
+                    <div class="level3"></div>
+                    <div class="level4"></div>
+                    <div class="level5"></div>
+                    <p class="high">多</p>
+                </div>
+            </div>
             <div id="return">
-                回大地圖
+                回主地圖
             </div>
             <div id="detail">
                 <div id="county_detail"></div>
@@ -138,6 +158,8 @@
             <script src="/static/js/skel.min.js"></script>
             <script src="/static/js/util.js"></script>
             <!--[if lte IE 8]><script src="/static/js/ie/respond.min.js"></script><![endif]-->
-            <script src="/static/js/main.js"></script>          
+            <script src="/static/js/main.js"></script>
+            <script src="/static/js/talk.js"></script>
+          
     </body>
 </html>

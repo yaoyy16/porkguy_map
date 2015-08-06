@@ -82,7 +82,10 @@
     <div id="content">
         <div class="page-header">
             <h3>{{ org.name }}<small class="address">{{ org.address }}</small></h3>
-        </div>            
+        </div>  
+        {% if not project_list %}
+            <div class="no-project">此機構未申請任何公益彩券回饋金補助計畫</div>          
+        {% else %}
         {% for project in project_list %}
         <div class="panel panel-default project">	
             <div class="panel-heading">{{ project.project }}</div>	         
@@ -106,17 +109,18 @@
                     </tr>
                     <tr>
                         <td class="tb_label">計畫實行結果</td>
-                        <td class="tb_value"></td>
+                        <td class="tb_value">{{ project.result }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        {% endfor%}
+        {% endfor %}
+        {% endif %}
         <div class="back">
             <a href="/"><button type="button" class="btn btn-default">Home</button></a>
             <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>            
         </div>  
-        <div class="fb-comments" data-href="localhost:8000/org/856/" data-numposts="5"></div>       
+        <div class="fb-comments" data-href="localhost:8000/org/{{ org.id }}" data-numposts="5"></div>       
     </div>  
 
     <!-- jQuery -->
