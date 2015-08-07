@@ -36,4 +36,4 @@ python manage.py update_surplus
 ```
 python manage.py runserver
 ```
-- [看結果](localhost:8000)
+- 看結果 localhost:8000
