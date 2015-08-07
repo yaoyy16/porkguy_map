@@ -185,11 +185,13 @@ header .header-content .header-content-inner h3 {
 }
 #welcome .header-content-inner a {
   margin-top: 40px;
-  background-color: #737373;
+  background-color: #FF735F;
+  color: #ffed94;
 }
 #welcome .header-content-inner a:hover {
   margin-top: 40px;
-  background-color: #8f8f8f;
+  background-color: #ffed94;
+  color: #FF735F;
 }
 
 @media (min-width: 768px) {
@@ -219,11 +221,13 @@ header .header-content .header-content-inner h3 {
   }
   #welcome .header-content-inner a {
     margin-top: 40px;
-    background-color: #737373;
+    background-color: #FF735F;
+    color: #ffed94;
   }
   #welcome .header-content-inner a:hover {
     margin-top: 40px;
-    background-color: #8f8f8f;
+    background-color: #ffed94;
+    color: #FF735F;
   }
 }
 .section-heading {
@@ -256,6 +260,10 @@ header .header-content .header-content-inner h3 {
 .service-box {
   max-width: 400px;
   margin: 50px auto 0;
+}
+.ser {
+  background-color: #2EBB44;
+  color: #fff;
 }
 @media (min-width: 992px) {
   .service-box {
