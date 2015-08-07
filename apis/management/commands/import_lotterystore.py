@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
 from apis.models import Lottery_store, City
+from django.core.exceptions import ObjectDoesNotExist
 
 class Command(BaseCommand):
     help = 'create surplus table'
@@ -14,9 +15,10 @@ class Command(BaseCommand):
                 store_name = store[0].replace("台灣彩券(","").replace(")","")
                 store_address = store[1].replace("\n","").replace("台","臺")
                 store_city = store_address[0:3]
-                print(store_address , store_city)
-                city = City.objects.get(name=store_city)
-
+                try:
+                    city = City.objects.get(name=store_city)
+                except ObjectDoesNotExist:
+                    print(store_address , "\""+store_city+"\"")
                 Lottery_store.objects.create(
                     name = store_name,
                     city = city,
