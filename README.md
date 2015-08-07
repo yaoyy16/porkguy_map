@@ -31,6 +31,7 @@ python manage.py update_org
 python manage.py update_result
 python manage.py update_store
 python manage.py update_surplus
+python manage.py remove_same
 ```
 ## 執行
 ```

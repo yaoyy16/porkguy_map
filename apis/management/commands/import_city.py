@@ -12,7 +12,6 @@ class Command(BaseCommand):
             city = city_name[i]
             print(city)
             City.objects.create(
-                city_id = i,
                 name = city,
                 center_longitude = 0,
                 center_latitude = 0,

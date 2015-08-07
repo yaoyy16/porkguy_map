@@ -26,12 +26,11 @@ class Command(BaseCommand):
                 a.save()
                 print(r)
             except Exception as e:
-                import pdb;pdb.set_trace()
                 print(e)
 
 
 
-        wb = xlrd.open_workbook('./docs/result/102.xls')
+        wb = xlrd.open_workbook('./docs/result/102.xlsx')
         sh = wb.sheet_by_index(0)
         for r in range(5,sh.nrows-2):
             try:
@@ -40,7 +39,6 @@ class Command(BaseCommand):
                 a.save()
                 print(r)
             except Exception as e:
-                import pdb;pdb.set_trace()
                 print(e)
 
         

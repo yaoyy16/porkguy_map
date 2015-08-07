@@ -9,8 +9,8 @@ class Command(BaseCommand):
     	for store in Lottery_store.objects.all() :
     		for pre_store in Lottery_store.objects.filter(id__lt=store.id) :
     			if store.address == pre_store.address :
-    				# store.delete()
-    				# i += 1
-    				# print(i)
+                    # i += 1
+                    # print(i)
 
-    				print(store.address)
+                    print(store.address)
+    				store.delete()
