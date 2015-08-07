@@ -101,9 +101,8 @@ function initialize() {
     yearshow2 = document.getElementById('year').value;
     datashow = 0;
 
-    $(document).ready(function() {
-        $('#year2').hide();
-    });
+    $('#year2').hide();
+
 
     document.getElementById('demo-category').addEventListener('change', function() {
         yearshow1 = document.getElementById('demo-category').value;
