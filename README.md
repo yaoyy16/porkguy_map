@@ -18,7 +18,7 @@ pip install -r requirements.txt
 ```
 
 ## 輸入資料
-'''
+```
 python manage.py import_city
 python manage.py import_fundget
 python manage.py import_surplus
@@ -31,9 +31,9 @@ python manage.py update_org
 python manage.py update_result
 python manage.py update_store
 python manage.py update_surplus
-'''
+```
 ## 執行
-'''
+```
 python manage.py runserver
-'''
+```
 - [看結果](localhost:8000)
