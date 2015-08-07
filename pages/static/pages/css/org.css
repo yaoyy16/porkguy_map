@@ -89,12 +89,13 @@
   border-top: 1px solid #37b34a; 
 }
 #content .back a {
-  margin: 20px 20px 60px;
+  margin: 20px 5px 60px;
   float: right;
 
 }
 .fb-share-button {
   margin-top: 30px;
+  margin-right: 10px;
   float: right;
 }
 
