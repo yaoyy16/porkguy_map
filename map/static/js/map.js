@@ -99,6 +99,7 @@ function initialize() {
     map_detailed = false;
     yearshow1 = document.getElementById('demo-category').value;
     yearshow2 = document.getElementById('year').value;
+    currentCountyID = 0;
     datashow = 0;
 
     document.getElementById('demo-category').addEventListener('change', function() {
@@ -115,6 +116,12 @@ function initialize() {
 
     document.getElementById('yearly').addEventListener('change', function() {
         yearshow2 = document.getElementById('yearly').value;
+        yearshow1 = document.getElementById('yearly').value;
+        var content = county_detail_content (countyData[currentCountyID]);
+        $('#county_detail').html(content);
+        if ($('#county_detail').is(':hidden')) {
+               $('#county_detail').show();
+        };
         if (document.getElementById('noapplied').checked) {
             for (var i = charity.length - 1; i >= 0; i--) {
                 if (charity[i]['yearly'][yearshow2]['money'] == "未申請") {
@@ -486,6 +493,7 @@ function addevent (id) {
         "mouseover":
             google.maps.event.addListener(countyData[id]['area']["shape"], 'mouseover', function(event) {
                 var content = county_detail_content (countyData[id]);
+                currentCountyID = id;
                 $('#county_detail').html(content);
                 if ($('#county_detail').is(':hidden')) {
                        $('#county_detail').show();
