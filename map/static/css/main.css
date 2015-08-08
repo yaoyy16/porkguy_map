@@ -3610,6 +3610,9 @@
 			margin-left: 60px;
 			color: #ffed94;
 		}
+		/*#year2 {
+			display: block;
+		}*/
 		@media screen and (max-width: 736px) {
 
 			#menu {

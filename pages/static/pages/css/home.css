@@ -155,7 +155,7 @@ header .header-content .header-content-inner h3 {
 }
 #welcome .container {
   position: relative;
-  width: 60%;
+  width: 90%;
 }
 .header-img {
   width: 300px;
@@ -198,6 +198,9 @@ header .header-content .header-content-inner h3 {
   #welcome {
     min-height: 100%;
     /*max-width: 60%;*/
+  }
+  #welcome .container {
+    width: 60%;
   }
   #welcome .header-content {
     position: absolute;
@@ -261,7 +264,7 @@ header .header-content .header-content-inner h3 {
   max-width: 400px;
   margin: 50px auto 0;
 }
-.ser {
+.sers {
   background-color: #2EBB44;
   color: #fff;
 }
