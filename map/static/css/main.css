@@ -63,8 +63,9 @@
 
 	#outer_islands{
 		position: absolute;
-		top: 350px;
+		top: 250px;
 		left: 450px;
+		color: #333;
 	}
 
 	#map-canvas-2 {
@@ -75,14 +76,18 @@
 		z-index: 1;
 	}
 
+	#map3-container{
+		top: -35px;
+    	position: relative;
+		z-index: 2;
+		background-color: #ffe24d;
+	}
+	
 	#map-canvas-3 {
 		width: 400px;
 		height: 300px;
-		top: -35px;
-    	left: -50px;
 		margin: 0;
 		padding: 0;
-		z-index: 2;
 	}
 
 	#blocker {
@@ -90,8 +95,7 @@
 		height: 60px;
     	background-color: #ffe24d;
 	    position: relative;
-    	left: -50px;
-    	top: -70px;
+    	top: -40px;
 		margin: 0;
 		padding: 0;
 		z-index: 3;

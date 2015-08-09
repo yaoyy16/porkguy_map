@@ -126,6 +126,7 @@ function initialize() {
         if ($('#county_detail').is(':hidden')) {
                $('#county_detail').show();
         };
+        $('#org_detail').hide();
         if (document.getElementById('noapplied').checked) {
             for (var i = charity.length - 1; i >= 0; i--) {
                 if (charity[i]['yearly'][yearshow2]['money'] == "未申請") {
