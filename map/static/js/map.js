@@ -425,7 +425,7 @@ function initialize() {
         addevent_storemarker(i);
     };
     charity=[];
-    charityv_merge=[];
+    charity_merge=[];
     for (var i = organization.length - 1; i >= 0; i--) {
         charity[i] = {
             'id': organization[i]['id'],
