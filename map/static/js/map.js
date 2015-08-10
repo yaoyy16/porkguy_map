@@ -87,13 +87,17 @@ function initialize() {
     map3.mapTypes.set('map_style', styledMap);
     map3.setMapTypeId('map_style');
 
-    var map2_sw = new google.maps.LatLng(county[21]['sw_latitude'], county[21]['sw_longitude']);
-    var map2_ne = new google.maps.LatLng(county[21]['ne_latitude'], county[21]['ne_longitude']);
+    // var map2_sw = new google.maps.LatLng(county[21]['sw_latitude'], county[21]['sw_longitude']);
+    // var map2_ne = new google.maps.LatLng(county[21]['ne_latitude'], county[21]['ne_longitude']);
+    var map2_sw = new google.maps.LatLng(25.95, 120.1);
+    var map2_ne = new google.maps.LatLng(26.1, 120.3);
     var map2_bounds = new google.maps.LatLngBounds(map2_sw,map2_ne);
     map2.fitBounds(map2_bounds);
 
-    var map3_sw = new google.maps.LatLng(county[20]['sw_latitude'], county[20]['sw_longitude']);
-    var map3_ne = new google.maps.LatLng(county[20]['ne_latitude'], county[20]['ne_longitude']);
+    // var map3_sw = new google.maps.LatLng(county[20]['sw_latitude'], county[20]['sw_longitude']);
+    // var map3_ne = new google.maps.LatLng(county[20]['ne_latitude'], county[20]['ne_longitude']);
+    var map3_sw = new google.maps.LatLng(23.7,118.7);
+    var map3_ne = new google.maps.LatLng(24.3,119.4);
     var map3_bounds = new google.maps.LatLngBounds(map3_sw,map3_ne);
     map3.fitBounds(map3_bounds);
     map_detailed = false;
