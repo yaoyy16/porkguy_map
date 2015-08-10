@@ -102,6 +102,10 @@ function initialize() {
     currentCountyID = 0;
     datashow = 0;
 
+    // document.getElementById('charity').addEventListener('click', function() {
+    //     $('#year2').show()
+    // });
+
     document.getElementById('demo-category').addEventListener('change', function() {
         yearshow1 = document.getElementById('demo-category').value;
         dataVisual(yearshow1, datashow);
@@ -122,6 +126,7 @@ function initialize() {
         if ($('#county_detail').is(':hidden')) {
                $('#county_detail').show();
         };
+        $('#org_detail').hide();
         if (document.getElementById('noapplied').checked) {
             for (var i = charity.length - 1; i >= 0; i--) {
                 if (charity[i]['yearly'][yearshow2]['money'] == "未申請") {
@@ -382,6 +387,7 @@ function initialize() {
     for (var i = store.length - 1; i >= 0; i--) {
         store_data[i] = {
             'name': store[i]['name'],
+            'city': store[i]['city'],
             'address': store[i]['address'],
             'firstprize_times': store[i]['firstprize_times'],
             'marker': {
@@ -400,6 +406,7 @@ function initialize() {
         charity[i] = {
             'id': organization[i]['id'],
             'name': organization[i]['name'],
+            'city': organization[i]['city'],
             'address': organization[i]['address'],
             'yearly': {
                 103:{
@@ -608,6 +615,19 @@ function addevent (id) {
     }
 }
 
+function county_detail_content (data) {
+    var content = '<div id="content"> '+data['name']+'</div>';
+    if (datashow == 0) {
+        content += '<div>'+yearshow1+'年社福機構獲得補助回饋金: '+thousandComma(data['money']['fund'][yearshow1])+'</div>';
+    } else if (datashow == 1) {
+        content += '<div>'+yearshow1+'年彩券盈餘分配金: '+thousandComma(data['money']['surp'][yearshow1])+'</div>';
+    } else if (datashow == 2){
+        content += '<div>103年起中頭獎次數: '+data['count']['prize']+'</div>'
+    };
+    content += '<div>彩券行: '+data['count']['stores']+' 家</div>'+ '<div>社福機構: '+data['count']['charity']+' 家</div>';
+    return content
+}
+
 function addevent_storemarker (id) {
     store_data[id]['marker']['event'] = google.maps.event.addListener(store_data[id]['marker']['object'], 'click', function(event) {
         var content = '<div>店家名稱: '+store_data[id]['name']+'</div>'+
@@ -619,6 +639,12 @@ function addevent_storemarker (id) {
         };
         if ($('#store_detail').is(':hidden')) {
             $('#store_detail').show();
+        };
+        currentCountyID = store_data[id]['city'];
+        var content = county_detail_content (countyData[currentCountyID]);
+        $('#county_detail').html(content);
+        if ($('#county_detail').is(':hidden')) {
+               $('#county_detail').show();
         };
     })
 }
@@ -641,6 +667,12 @@ function addevent_charity (id) {
         };
         if ($('#org_detail').is(':hidden')) {
             $('#org_detail').show();
+        };
+        currentCountyID = charity[id]['city'];
+        var content = county_detail_content (countyData[currentCountyID]);
+        $('#county_detail').html(content);
+        if ($('#county_detail').is(':hidden')) {
+               $('#county_detail').show();
         };
     });
 }
@@ -839,18 +871,7 @@ function range (data, max, min) {
     // }
 // }
 
-function county_detail_content (data) {
-    var content = '<div id="content"> '+data['name']+'</div>';
-    if (datashow == 0) {
-        content += '<div>'+yearshow1+'年社福機構獲得補助回饋金: '+thousandComma(data['money']['fund'][yearshow1])+'</div>';
-    } else if (datashow == 1) {
-        content += '<div>'+yearshow1+'年彩券盈餘分配金: '+thousandComma(data['money']['surp'][yearshow1])+'</div>';
-    } else if (datashow == 2){
-        content += '<div>103年起中頭獎次數: '+data['count']['prize']+'</div>'
-    };
-    content += '<div>彩券行: '+data['count']['stores']+' 家</div>'+ '<div>社福機構: '+data['count']['charity']+' 家</div>';
-    return content
-}
+
 
 function thousandComma (number){
     if (number != "未申請") {

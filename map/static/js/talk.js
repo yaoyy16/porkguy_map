@@ -119,15 +119,18 @@ $("label[for='noapplied']").on('mouseleave',function () {
 //彩券行介紹
 $("label[for='store']").on('mouseover',function () {
 	fundget_box_show();
-	$('#pork-guy-pic').attr("src","/static/img/pigtalk.gif");
-	$('.prize-msg').show();
+	timer = setInterval(displayNextImage, 200);
+	$('.lottery-store-msg').show();
 });
 $("label[for='store']").on('mouseleave',function () {
 	$('#talk-box').hide();
-	$('.prize-msg').hide();
+	$('.lottery-store-msg').hide();
+	clearInterval(timer);
 	$('#pork-guy-pic').attr("src","/static/img/pigman2.png");
 });
 
+
+//圖示介紹
 $('#diagram').on('mouseover', function (){
 	diagram_box_show();
 	$('.explain').show();
