@@ -340,6 +340,8 @@ function initialize() {
         $('#org_detail').hide();
         $('#profit-distribut').prop("checked", true);
         datashow = 0;
+        yearshow1 = yearshow2;
+        $("#demo-category").val(yearshow1);
         $('#year').show();
         $('#year2').hide();
         for (var i = 22; i >= 1; i--) {
@@ -423,6 +425,7 @@ function initialize() {
         addevent_storemarker(i);
     };
     charity=[];
+    charityv_merge=[];
     for (var i = organization.length - 1; i >= 0; i--) {
         charity[i] = {
             'id': organization[i]['id'],
@@ -464,6 +467,35 @@ function initialize() {
     google.maps.event.addListener(map1, 'click', function() {
         $('#store_detail').hide();
         $('#org_detail').hide();
+    });
+    google.maps.event.addListener(map1, 'zoom_changed', function() {
+        if (map_detailed) {
+            if (document.getElementById('store').checked) {
+                var keys = Object.keys(store_merge);
+                for (var i = keys.length - 1; i >= 0; i--) {
+                    var key = keys[i];
+                    store_merge[key]['marker']['object'].setVisible(false);
+                };
+                store_merge = latlng_merge(store, map1.getZoom()-2);
+                keys = Object.keys(store_merge);
+                for (var i = keys.length - 1; i >= 0; i--) {
+                    var key = keys[i];
+                    store_merge[key]['marker'] = {};
+                    store_merge[key]['marker']['object'] = new google.maps.Marker({
+                        map: map1,
+                        position: new google.maps.LatLng(store_merge[key]['center']['latitude'], store_merge[key]['center']['longitude'])
+                    });
+                    sizeicon (key, store_merge[key]);
+                    addevent_storemerge (key);
+                };
+            }else if (document.getElementById('applied-nopass').checked) {
+                charity_showcontrol(0);
+            }else if (document.getElementById('applied-pass').checked) {
+                charity_showcontrol(1);
+            }else if (document.getElementById('noapplied').checked) {
+                charity_showcontrol(2);
+            };
+        };
     });
 }
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -564,8 +596,8 @@ function addevent (id) {
                 }else{
                     $('#organizations').prop("checked", true);
                     $('#application').show();
-                    $("#yearly").val(yearshow1);
                     yearshow2 = yearshow1;
+                    $("#yearly").val(yearshow2);
                     $('#applied-nopass').prop("checked", true);
                     charity_show = [];
                     for (var i = charity.length - 1; i >= 0; i--) {
@@ -763,10 +795,12 @@ function addevent_charity (id) {
 }
 
 function charity_showcontrol (state) {
-    var keys = Object.keys(charity_merge);
-    for (var i = keys.length - 1; i >= 0; i--) {
-        var key = keys[i];
-        charity_merge[key]['marker']['object'].setVisible(false);
+    if (charity_merge) {
+        var keys = Object.keys(charity_merge);
+        for (var i = keys.length - 1; i >= 0; i--) {
+            var key = keys[i];
+            charity_merge[key]['marker']['object'].setVisible(false);
+        };
     };
     charity_show = [];
     for (var i = charity.length - 1; i >= 0; i--) {

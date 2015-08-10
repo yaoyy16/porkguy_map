@@ -84,7 +84,7 @@
 	}
 	#map2-container {
 		color: #1b5925;
-		font-size: 12px;
+		font-size: 0.8em;
 	}
 
 	#map3-container{
@@ -93,7 +93,7 @@
 		z-index: 2;
 		background-color: #ffe24d;
 		color: #1b5925;
-		font-size: 12px;
+		font-size: 0.8em;
 	}
 	
 	#map-canvas-3 {
