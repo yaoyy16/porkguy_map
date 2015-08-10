@@ -51,12 +51,19 @@
 	body {
 		-webkit-text-size-adjust: none;
 	}
+	#map1-container {
+		color: #1b5925;
+		font-size: 12px;
+	}
 
 	html, body, #map-canvas-1{
 		height: 100%;
 		margin: 0;
 		padding: 0;
+		color: #1b5925;
+		font-size: 12px;
 	}
+
 	option{
 		background-color: rgba(21, 140, 40, 0.25);
 	}
@@ -75,12 +82,18 @@
 		padding: 0;
 		z-index: 1;
 	}
+	#map2-container {
+		color: #1b5925;
+		font-size: 0.8em;
+	}
 
 	#map3-container{
 		top: -35px;
     	position: relative;
 		z-index: 2;
 		background-color: #ffe24d;
+		color: #1b5925;
+		font-size: 0.8em;
 	}
 	
 	#map-canvas-3 {
@@ -221,7 +234,7 @@
 
 	#diagram {
 		width:280px;
-		height:55px;
+		height:60px;
 		background-color: #ffffff;
 		opacity: 0.95;
 		border-radius: 5px;

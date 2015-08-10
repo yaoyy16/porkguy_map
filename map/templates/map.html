@@ -37,6 +37,7 @@
             var organization = {{ organization_list|safe }};
             var org_count = {{ organization_count_list|safe }};
         </script>
+        <script type="text/javascript" src="/static/js/merge.js"></script>
         <script type="text/javascript" src="/static/js/map.js"></script>
 
         <script type="text/javascript" src="/static/js/merge.js"></script>
@@ -144,7 +145,7 @@
                                             <input type="radio" id="organizations" name="options">
                                             <label for="organizations">社福機構</label>
                                             <div id="application" style="display:none;">
-                                                <div class="select-wrapper" id="year">
+                                                <div class="select-wrapper" id="year3">
                                                     <select name="demo-category" id="yearly">
                                                         <option value="">- 年度 -</option>
                                                         <option value="103" selected>民國103年</option>
@@ -183,7 +184,7 @@
         <!-- Page Wrapper -->
             <div id="map-canvas-1"></div>
             <div id="outer_islands">
-                <div>連江縣<div id="map-canvas-2"></div></div> 
+                <div id="map2-container">連江縣<div id="map-canvas-2"></div></div> 
                 <div id="map3-container">金門縣<div id="map-canvas-3"></div><div id="blocker"></div></div> 
             </div>
             <div id="diagram">
