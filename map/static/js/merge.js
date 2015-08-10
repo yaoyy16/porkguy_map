@@ -68,7 +68,7 @@ function latlng_merge(latlngs, zoom){
     // first merge
     for(var idx=0; idx<latlngs.length; idx++){
         var latlng = latlngs[idx];
-        var key = latlng2value(latlng['marker']['object'].position['G'], latlng['marker']['object'].position['K']);
+        var key = latlng2value(latlng['latitude'], latlng['longitude']);
         key = key.slice(0, delta_zoom);
         var latlng_pool = data[key] || [];
         latlng_pool.push(latlng);

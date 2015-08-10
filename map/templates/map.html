@@ -37,6 +37,7 @@
             var organization = {{ organization_list|safe }};
             var org_count = {{ organization_count_list|safe }};
         </script>
+        <script type="text/javascript" src="/static/js/merge.js"></script>
         <script type="text/javascript" src="/static/js/map.js"></script>
     </head>
     <body class="landing is-menu-visible">
@@ -141,7 +142,7 @@
                                             <input type="radio" id="organizations" name="options">
                                             <label for="organizations">社福機構</label>
                                             <div id="application" style="display:none;">
-                                                <div class="select-wrapper" id="year">
+                                                <div class="select-wrapper" id="year3">
                                                     <select name="demo-category" id="yearly">
                                                         <option value="">- 年度 -</option>
                                                         <option value="103" selected>民國103年</option>
