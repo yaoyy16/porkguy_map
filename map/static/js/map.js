@@ -374,6 +374,8 @@ function initialize() {
         for (var i = charity.length - 1; i >= 0; i--) {
             charity[i]['marker']['object'].setVisible(false);
         };
+        $('#map2-container').show();
+        $('#map3-container').show();
         $('#map-canvas-2').show();
         $('#map-canvas-3').show();
         $('#blocker').show();
@@ -520,6 +522,8 @@ function addevent (id) {
             google.maps.event.addListener(countyData[id]['area']["shape"], 'click', function(event) {
                 $('#outeroption').hide();
                 $('#inneroption').show();
+                $('#map2-container').hide();
+                $('#map3-container').hide();
                 $('#map-canvas-2').hide();
                 $('#map-canvas-3').hide();
                 $('#blocker').hide();
