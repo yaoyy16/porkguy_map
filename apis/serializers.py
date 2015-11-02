@@ -2,7 +2,7 @@
 
 from rest_framework import serializers
 
-from .models import FundGet, Organization, Lottery_store
+from .models import FundGet, Organization, Lottery_store, Surplus
 
 
 class OrganizationSerializer(serializers.ModelSerializer):
@@ -35,3 +35,11 @@ class LotteryStoreSerializer(serializers.ModelSerializer):
             'name', 'city', 'address',
             'longitude', 'latitude',
             'first_prize_count')
+
+
+class SurplusSerializer(serializers.ModelSerializer):
+    city = serializers.StringRelatedField()
+
+    class Meta:
+        model = Surplus
+        fields = ('year', 'month', 'city', 'surplus')
