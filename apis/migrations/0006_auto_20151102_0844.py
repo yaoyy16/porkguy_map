@@ -14,16 +14,16 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='fundget',
             name='organization',
-            field=models.ForeignKey(to='apis.Organization', null=True),
+            field=models.ForeignKey(null=True, to='apis.Organization'),
         ),
         migrations.AlterField(
             model_name='fundget',
             name='project',
-            field=models.CharField(default=b'', max_length=100, blank=True),
+            field=models.CharField(default='', blank=True, max_length=100),
         ),
         migrations.AlterField(
             model_name='fundget',
             name='result',
-            field=models.TextField(default='\u672a\u516c\u4f48', blank=True),
+            field=models.TextField(default='未公佈', blank=True),
         ),
     ]
