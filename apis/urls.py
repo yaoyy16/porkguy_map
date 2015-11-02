@@ -4,12 +4,12 @@ from django.conf.urls import url, include
 
 from rest_framework.routers import DefaultRouter
 
-from .views import FundGetViewSet
+from .views import FundGetViewSet, LotteryStoreViewSet
 
 router = DefaultRouter()
 
-router.register(r'lottery-fund', FundGetViewSet)
-
+router.register(r'fund-project', FundGetViewSet)
+router.register(r'lottery-store', LotteryStoreViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),

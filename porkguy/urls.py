@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^map/$', showmap),
     url(r'^org/(?P<org_id>\d+)/$', project_detail, name='project_detail'),
     url(r'^api/', include('apis.urls')),
+    url(r'^docs/', include('rest_framework_swagger.urls')),
 ]

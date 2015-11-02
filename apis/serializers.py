@@ -2,16 +2,36 @@
 
 from rest_framework import serializers
 
-from .models import FundGet
+from .models import FundGet, Organization, Lottery_store
+
+
+class OrganizationSerializer(serializers.ModelSerializer):
+    city = serializers.StringRelatedField()
+
+    class Meta:
+        model = Organization
 
 
 class FundGetSerializer(serializers.ModelSerializer):
     city = serializers.StringRelatedField()
+    organization = OrganizationSerializer()
 
     class Meta:
         model = FundGet
         fields = (
-            'year', 'city',
-            'org_name', 'money',
+            'year', 'city', 'org_name',
+            'organization', 'money',
             'content', 'project',
             'result',)
+
+
+class LotteryStoreSerializer(serializers.ModelSerializer):
+    city = serializers.StringRelatedField()
+    first_prize_count = serializers.IntegerField(source='firstprize_times')
+
+    class Meta:
+        model = Lottery_store
+        fields = (
+            'name', 'city', 'address',
+            'longitude', 'latitude',
+            'first_prize_count')
