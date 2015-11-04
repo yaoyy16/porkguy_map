@@ -27,12 +27,11 @@ class FundGetViewSet(viewsets.ReadOnlyModelViewSet):
 class LotteryStoreFilter(django_filters.FilterSet):
     city = django_filters.CharFilter(name="city__name")
     name = django_filters.CharFilter(name="name", lookup_type="contains")
-    min_first_prize = django_filters.NumberFilter(
-        name="firstprize_times", lookup_type='gte')
+    first_prize = django_filters.NumberFilter(name="firstprize_times")
 
     class Meta:
         model = Lottery_store
-        fields = ['city', 'name', 'min_first_prize']
+        fields = ['city', 'name', 'first_prize']
 
 
 class LotteryStoreViewSet(viewsets.ReadOnlyModelViewSet):
