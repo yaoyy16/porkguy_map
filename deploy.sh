@@ -10,4 +10,4 @@ docker tag $REPO lucemia/$REPO
 docker push lucemia/$REPO
 
 pip install fabric
-fab -u davidchen -i google_compute_engine -H builder.gliacloud.com deploy_worker
+fab -u davidchen -i google_compute_engine -H builder.gliacloud.com deploy
