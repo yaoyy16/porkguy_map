@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/bash -x
+set -e
 
 REPO=porkguy
 
