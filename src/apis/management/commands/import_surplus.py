@@ -5,6 +5,7 @@ from pdfminer.converter import PDFPageAggregator
 from pdfminer.layout import LAParams, LTTextBox, LTTextLine
 from apis.models import Surplus, City
 
+
 class Command(BaseCommand):
     help = 'create surplus table'
 
@@ -31,45 +32,44 @@ class Command(BaseCommand):
                         content += lt_obj.get_text()
             return content
 
-        
-        location = ['臺北市', '新北市', '臺中市', '臺南市', '高雄市', '宜蘭縣','桃園市','新竹縣',
-        '苗栗縣', '彰化縣', '南投縣', '雲林縣', '嘉義縣', '屏東縣', '臺東縣', '花蓮縣', '澎湖縣',
-        '基隆市', '新竹市', '嘉義市', '金門縣', '連江縣']
+        location = ['臺北市', '新北市', '臺中市', '臺南市', '高雄市', '宜蘭縣', '桃園市', '新竹縣',
+                    '苗栗縣', '彰化縣', '南投縣', '雲林縣', '嘉義縣', '屏東縣', '臺東縣', '花蓮縣', '澎湖縣',
+                    '基隆市', '新竹市', '嘉義市', '金門縣', '連江縣']
 
-        for i in range(1,13) :
-            if i == 12 :
-                content = convert('./docs/surplus/103'+str(12)+'.pdf')
+        for i in range(1, 13):
+            if i == 12:
+                content = convert('./docs/surplus/103' + str(12) + '.pdf')
                 str1 = content.replace(",", "").split("(G+H+I+J)")
                 str2 = str1[1].split("\n")[23:45]
                 print(i)
                 money = []
-                for n in str2 :
+                for n in str2:
                     money.append(int(n))
-                for j in range(0, len(location)) :
+                for j in range(0, len(location)):
                     place = location[j]
                     print(place)
-                    city = City.objects.get(name=place) 
+                    city = City.objects.get(name=place)
                     Surplus.objects.create(
-                        year = 103,
-                        month = i,
-                        city = city,
-                        surplus = money[j]
+                        year=103,
+                        month=i,
+                        city=city,
+                        surplus=money[j]
                     )
-            else :
-                content = convert('./docs/surplus/103'+str(i)+'.pdf')
+            else:
+                content = convert('./docs/surplus/103' + str(i) + '.pdf')
                 str1 = content.replace(",", "").split("(G+H+I)\n")
                 str2 = str1[1].split("\n")[0:22]
                 print(i)
                 money = []
-                for n in str2 :
+                for n in str2:
                     money.append(int(n))
-                for j in range(0, len(location)) :
+                for j in range(0, len(location)):
                     place = location[j]
                     print(place)
-                    city = City.objects.get(name=place) 
+                    city = City.objects.get(name=place)
                     Surplus.objects.create(
-                        year = 103,
-                        month = i,
-                        city = city,
-                        surplus = money[j]
+                        year=103,
+                        month=i,
+                        city=city,
+                        surplus=money[j]
                     )

@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from apis.models import City
 
+
 class Command(BaseCommand):
     help = 'create city table'
 
@@ -12,11 +13,11 @@ class Command(BaseCommand):
             city = city_name[i]
             print(city)
             City.objects.create(
-                name = city,
-                center_longitude = 0,
-                center_latitude = 0,
-                ne_longitude = 0,
-                ne_latitude = 0,
-                sw_longitude = 0,
-                sw_latitude = 0
+                name=city,
+                center_longitude=0,
+                center_latitude=0,
+                ne_longitude=0,
+                ne_latitude=0,
+                sw_longitude=0,
+                sw_latitude=0
             )

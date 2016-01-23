@@ -1,8 +1,9 @@
 from django.core.management.base import BaseCommand
 
+
 class Command(BaseCommand):
 
-     def handle(self, *args, **options):
+    def handle(self, *args, **options):
 
         import urllib
         import urllib.parse
@@ -10,7 +11,6 @@ class Command(BaseCommand):
         import time
         import re
         from bs4 import BeautifulSoup
-
 
         #### get first prize store html ####
 
@@ -23,20 +23,20 @@ class Command(BaseCommand):
         #     data['__EVENTARGUMENT'] = event_arg
         #     print(data['__EVENTARGUMENT'])
         #     req = requests.post(url, data)
-        #     htmlfile = open("./docs/firstprize/"+str(i)+".html", "wb")            
+        #     htmlfile = open("./docs/firstprize/"+str(i)+".html", "wb")
         #     htmlfile.write(req.content)
         #     htmlfile.close()
-        #     time.sleep(3)        
-
+        #     time.sleep(3)
 
         #### read html file ###
 
         text_file = open("./docs/firstprize/firstprize539.txt", "wb")
-        for i in range(1, 33) : 
-            data = open("./docs/firstprize/"+str(i)+".html",'r',encoding="utf-8").read()
+        for i in range(1, 33):
+            data = open("./docs/firstprize/" + str(i) +
+                        ".html", 'r', encoding="utf-8").read()
             soup = BeautifulSoup(data, 'html.parser')
-            prizes1 = soup.findAll("tr", { "class" : "table_level_1" })
-            prizes2 = soup.findAll("tr", { "class" : "table_level_2" })
+            prizes1 = soup.findAll("tr", {"class": "table_level_1"})
+            prizes2 = soup.findAll("tr", {"class": "table_level_2"})
 
             for prize in prizes1:
                 line = prize.find("td").get_text() + " "
@@ -45,11 +45,11 @@ class Command(BaseCommand):
                 line += " "
                 strs = re.findall(r'\d+', details[3].get_text())
                 address = details[3].get_text()
-                for s in strs :
+                for s in strs:
                     n = int(s)
                     newint = str(n)
                     address = address.replace(s, newint)
-                address = address.replace("一樓", "").replace("1樓","")
+                address = address.replace("一樓", "").replace("1樓", "")
                 line += address
                 line += "\n"
                 text_file.write(bytes(line, 'utf-8'))
@@ -61,7 +61,7 @@ class Command(BaseCommand):
                 line += " "
                 strs = re.findall(r'\d+', details[3].get_text())
                 address = details[3].get_text()
-                for s in strs :
+                for s in strs:
                     n = int(s)
                     newint = str(n)
                     address = address.replace(s, newint)
@@ -70,5 +70,5 @@ class Command(BaseCommand):
                 line += "\n"
                 text_file.write(bytes(line, 'utf-8'))
 
-            print(i, "is done") 
+            print(i, "is done")
         text_file.close()

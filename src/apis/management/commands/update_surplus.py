@@ -5,40 +5,42 @@ from django.core.management.base import BaseCommand
 # from pdfminer.layout import LAParams, LTTextBox, LTTextLine
 from apis.models import Surplus, City
 
+
 class Command(BaseCommand):
     help = 'update surplus table'
 
     def handle(self, *args, **options):
-        location = ['臺北市', '新北市', '臺中市', '臺南市', '高雄市', '宜蘭縣','桃園市','新竹縣',
-        '苗栗縣', '彰化縣', '南投縣', '雲林縣', '嘉義縣', '屏東縣', '臺東縣', '花蓮縣', '澎湖縣',
-        '基隆市', '新竹市', '嘉義市', '金門縣', '連江縣']
+        location = ['臺北市', '新北市', '臺中市', '臺南市', '高雄市', '宜蘭縣', '桃園市', '新竹縣',
+                    '苗栗縣', '彰化縣', '南投縣', '雲林縣', '嘉義縣', '屏東縣', '臺東縣', '花蓮縣', '澎湖縣',
+                    '基隆市', '新竹市', '嘉義市', '金門縣', '連江縣']
         with open('./docs/surplus.txt') as f:
             data = f.readlines()
         lines = []
-        for line in data :
-            lines.append(line.replace("\n","").replace(",", "").replace("\t",""))
+        for line in data:
+            lines.append(line.replace("\n", "").replace(
+                ",", "").replace("\t", ""))
 
-        k = 0;
-        for i in range(7,13):
+        k = 0
+        for i in range(7, 13):
             for j in range(0, 22):
-                city = City.objects.get(name=location[j]) 
+                city = City.objects.get(name=location[j])
                 Surplus.objects.create(
-                    year = 101,
-                    month = i,
-                    city = city,
-                    surplus = lines[k]
+                    year=101,
+                    month=i,
+                    city=city,
+                    surplus=lines[k]
                 )
                 print(101, i, lines[k], location[j])
                 k += 1
 
-        for i in range(1,13):
+        for i in range(1, 13):
             for j in range(0, 22):
-                city = City.objects.get(name=location[j]) 
+                city = City.objects.get(name=location[j])
                 Surplus.objects.create(
-                    year = 102,
-                    month = i,
-                    city = city,
-                    surplus = lines[k]
+                    year=102,
+                    month=i,
+                    city=city,
+                    surplus=lines[k]
                 )
                 print(102, i, lines[k], location[j])
                 k += 1
@@ -69,7 +71,7 @@ class Command(BaseCommand):
         # '苗栗縣', '彰化縣', '南投縣', '雲林縣', '嘉義縣', '屏東縣', '臺東縣', '花蓮縣', '澎湖縣',
         # '基隆市', '新竹市', '嘉義市', '金門縣', '連江縣']
 
-        ###　add 100 1~12  & 101 1~6
+        # 　add 100 1~12  & 101 1~6
         # for i in range(7,13) :
         #     content = convert('./docs/surplus/101'+str(i)+'.pdf')
         #     print(content)
@@ -80,7 +82,7 @@ class Command(BaseCommand):
             #     money.append(int(n))
             # for j in range(0, 22) :
             #     print(money[j])
-            #     city = City.objects.get(name=location[j]) 
+            #     city = City.objects.get(name=location[j])
             #     Surplus.objects.create(
             #         year = 101,
             #         month = i,
