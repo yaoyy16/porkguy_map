@@ -6,7 +6,7 @@ ADD requirements.txt /home/requirements.txt
 RUN pip install -r /home/requirements.txt
 
 
-ADD ./ /home/src
+ADD ./src /home/src
 
 # FIXME the logs folder location is weird
 RUN (cd /home/src && python manage.py migrate --noinput)

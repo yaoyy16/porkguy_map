@@ -6,3 +6,16 @@ djangorestframework
 django-filter
 django-rest-swagger
 django-cors-headers==1.1.0
+
+# A plugin for py.test that provides a set of useful tools for testing Django
+# applications and projects.
+# https://pytest-django.readthedocs.org/
+pytest-django==2.9.1
+
+# A mature full-featured Python testing tool
+# http://pytest.org/latest/
+pytest==2.8.3
+
+# Pytest plugin for measuring coverage.
+# https://pypi.python.org/pypi/pytest-cov
+pytest-cov==2.2.0
