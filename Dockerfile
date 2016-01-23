@@ -1,4 +1,4 @@
-FROM python:3-onbuild
+FROM python:3.5
 MAINTAINER lucemia <davidchen@gliacloud.com>
 # Install software
 RUN apt-get update -y
