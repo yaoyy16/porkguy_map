@@ -9,5 +9,6 @@ docker build -t $REPO .
 docker tag -f $REPO lucemia/$REPO
 docker push lucemia/$REPO
 
-pip install fabric
+# the origin fabric not support python 3
+pip install -e -e git+https://github.com/pashinin/fabric.git
 fab -u davidchen -i google_compute_engine -H builder.gliacloud.com deploy
