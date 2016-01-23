@@ -1,4 +1,5 @@
 kubectl delete rc porkguy-server-rc || true
-kubectl create -f kube/service.yml
-kubectl create -f kube/server-rc.yaml
+kubectl create -f service.yml || true
+kubectl create -f server-rc.yml
 kubectl get pod
+kubectl get service

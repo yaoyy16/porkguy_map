@@ -6,4 +6,5 @@ from fabric.api import task, local
 def deploy():
     run('mkdir -p /home/davidchen/porkguy')
     put('./kube', '/home/davidchen/porkguy')
-    run('bash /home/davidchen/porkguy/kube/deploy.sh')
+    with cd('/home/davidchen/porkguy/kube'):
+        run('bash deploy.sh')
