@@ -1,3 +1,4 @@
+
 function fundget_box_show(){
     var postion_y = $('.pork-guy').position()['top'] + 20;
     $('#talk-box').css("margin-top", postion_y).show();
@@ -138,4 +139,3 @@ $('#diagram').on('mouseleave', function (){
 	$('#diagram-explain').hide();
 	$('.explain').hide();
 });
-
