@@ -6,14 +6,12 @@ cache: pip
 services:
 - docker
 before_install:
-# https://docs.travis-ci.com/user/encrypting-files/
-# travis encrypting file only allow one file
 - openssl aes-256-cbc -K $encrypted_2e3704f31d08_key -iv $encrypted_2e3704f31d08_iv
-  -in secrets.tar.enc -out secrets.tar -d
-- tar xvf secrets.tar
+  -in swarm-master.tar.gz.enc -out swarm-master.tar.gz -d
+- tar zxvf swarm-master.tar.gz && rm swarm-master.tar.gz
+- echo "make deploy" > deploy.sh && chmod +x deploy.sh
 - pip install -U pip
 - pip install wheel
-- mv .dockercfg ~
 env:
   global:
   - PIP_WHEEL_DIR=$HOME/.cache/pip/wheels
@@ -22,8 +20,7 @@ install:
 - pip wheel -r requirements.txt
 - pip install -r requirements.txt
 script:
-- cd src
-- python manage.py test
+- cd src && py.test --cov=./
 - cd $TRAVIS_BUILD_DIR
 deploy:
   skip_cleanup: true

@@ -1,0 +1,6 @@
+{name}.server:
+    image: {name}
+    command: python manage.py runserver 0:80 --settings=porkguy.production_settings
+    hostname: porkguy.test.gliacloud.com
+    ports:
+    - 80
