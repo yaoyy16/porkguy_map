@@ -52,3 +52,14 @@ pytest==2.8.3
 # https://pypi.python.org/pypi/pytest-cov/2.2.0
 pytest-cov==2.2.0
 
+
+
+# the modular source code checker: pep8, pyflakes and co
+# https://pypi.python.org/pypi/flake8/2.5.4
+flake8==2.5.4
+
+
+# A tool that automatically generate coverage report
+# https://pypi.python.org/pypi/autocov/2016.02.20.1
+autocov==2016.02.20.2
+
