@@ -1,34 +1,24 @@
-sudo: required
 language: python
-python:
-- '3.5'
 cache: pip
 services:
 - docker
-before_install:
-- openssl aes-256-cbc -K $encrypted_2e3704f31d08_key -iv $encrypted_2e3704f31d08_iv
-  -in swarm-master.tar.gz.enc -out swarm-master.tar.gz -d
-- tar zxvf swarm-master.tar.gz && rm swarm-master.tar.gz
-- echo "make deploy" > deploy.sh && chmod +x deploy.sh
-- pip install -U pip
-- pip install wheel
-env:
-  global:
-  - PIP_WHEEL_DIR=$HOME/.cache/pip/wheels
-  - PIP_FIND_LINKS=file://$HOME/.cache/pip/wheels
 install:
-- pip wheel -r requirements.txt
-- pip install -r requirements.txt
+- pip install -r ./requirements.txt -U
+- pip install docker-py docker-compose
 script:
-- cd src && py.test --cov=./
+- cd src
+- py.test --cov=./
+- flake8 ./
 - cd $TRAVIS_BUILD_DIR
+before_deploy:
+- curl -s https://raw.githubusercontent.com/gliacloud/deploy/master/src/deploy.py
+  > deploy.py && chmod +x deploy.py
 deploy:
   skip_cleanup: true
   provider: script
-  script: "$TRAVIS_BUILD_DIR/deploy.sh"
+  script: "$TRAVIS_BUILD_DIR/deploy.py"
   on:
     branch: master
-notifications:
-  slack:
-    rooms:
-      secure: jiOEjw3NgzmO79r/QpKAL/I1iKheYQAkJgXwshdyPDAoWdnvmWHOrX28pkh+ADv0KQU1QDoGtrUihb6EfC4cB0VP9DDGLLXprR7lu25LphMDJG5v/r8Sua4p+woiHZhypaZizd1dOIwmydxdqlf0YCAM8efAzGJ6PbRF1RPeZ0+bo4AUAJhbQb1VpQ7PzZZ05BseN4dDQOb0WxDKK6clryEKS6drbiDHjx04UWfWWwl0KG9H5hNkwhcLuBZL1AVOfv6X7K3GxkhoZDy1STuTMSi2CnVhHcuUQMrgrmi4/tB+jo2ao+RfSJDEp7ukC7Rij72BBBoEMbUDWs2QW/hk1R3f7yo8BE5+RgwBHUK63Rx8TJgdHpsLk8N28MrtsV+49UM5+yBk+jmPn8e65i75Wz/1Q4exXktk0+LqQpZ7uSCuC5Cf+i55I33G+kMrZHLgrfORlHt97FJGHvsu1MPFqiABUYgw79bc56tUqD3oCWLHTJiduPs7Z1Gn9gGEXu1BL2L9xALGwlYEZgUPlf6/rOrm3yFGpDwH9ugNY06VRyiqtPtkhnp7qPTV/7mvgCzU5KOHwFKKTl4R2TxCRvksuQ56sofmBg4ohoIquSJWXfSKPenzEJvqzwM+OuXFxPZx0YAhNxX2CnWtjNHNwNWROZn7HIlbhht0p4WfPRgdejY=
+env:
+  global:
+    secure: VpqzFD61krhtuAw1p+G8w8MSNL6ZhSDpIsc/iQimv9PkfWYeW+Wx/nhxS+631UN4ksFJOFMoPN3c9X8JgNAw785U3p10Fqd6DbnaRu3B730f+mEzdXfFKnTCo7+X00xJd2jPyKVzg/GH7nxGaEU+42hzJloZ8dHQ9DO5Jij1lHNr7ExuwRKWq/17CzuFMkzxE9Umnn6TGB0SO4ugw3XDy59xVxkij1GGeaWBfNBTCa65bgW4GYY8m5EOQdiAwa+cqnDVt+vFLIX7lOi9p9cep9yxVYCikdNoCTQ2Sw6491Z6cy9oimA5HIzW0+fwkoF2SIR004ef/ArAXhHtVUHG6NI3DlvpinQ67y4HF7Oe5eEUB/RG4yHrZnoWYVP4XAc6cwxBsgvytecud4XKzn8TGeKg0IiWz2pW1l6OFQH3NOrsv/cVyuVy5diEdz+WLb8P2O3E/Y9XY4yu0I3pCsYMo6lrQfD+AwD0zQxirKI0J1uZyn3qN7a6EWDL1hdxABoXgZPyYdFiqFkGNnTcf/RqH2fkA3l2uMo5x2cOlMkSZVd48af9CDnKQxpFJokSub3SC9Ojs/ivDaEqpnRy+dA+4xra9cfjTXbzjYJ+mnEV8DGbE86ObiN0g+zc77b/aFWs5r6VKGDRZoJRNP2wZNK4C5D5u8t8P8cX6RZ0XzHbYAc=

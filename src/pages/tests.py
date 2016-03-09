@@ -3,6 +3,7 @@ from django.test import Client
 
 # Create your tests here.
 
+
 class TestPage(TestCase):
     def test_index(self):
         c = Client()

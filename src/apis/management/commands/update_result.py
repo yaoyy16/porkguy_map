@@ -13,7 +13,8 @@ class Command(BaseCommand):
         sh = wb.sheet_by_index(0)
         for r in range(5, sh.nrows - 2):
             FundGet.objects.filter(index=sh.cell(r, 1).value).update(
-                result=sh.cell(r, 9).value)
+                result=sh.cell(r, 9).value
+            )
             print(sh.cell(r, 1).value)
             print(sh.cell(r, 9).value)
             print(r)

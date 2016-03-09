@@ -19,10 +19,15 @@ class FundGetSerializer(serializers.ModelSerializer):
     class Meta:
         model = FundGet
         fields = (
-            'year', 'city', 'org_name',
-            'organization', 'money',
-            'content', 'project',
-            'result',)
+            'year',
+            'city',
+            'org_name',
+            'organization',
+            'money',
+            'content',
+            'project',
+            'result',
+        )
 
 
 class LotteryStoreSerializer(serializers.ModelSerializer):
@@ -32,9 +37,9 @@ class LotteryStoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lottery_store
         fields = (
-            'name', 'city', 'address',
-            'longitude', 'latitude',
-            'first_prize_count')
+            'name', 'city', 'address', 'longitude', 'latitude',
+            'first_prize_count'
+        )
 
 
 class SurplusSerializer(serializers.ModelSerializer):

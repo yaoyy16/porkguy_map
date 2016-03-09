@@ -16,13 +16,16 @@ class Command(BaseCommand):
             if city.center_latitude == 0:
                 print(city.name)
                 url = "https://maps.googleapis.com/maps/api/geocode/json?address=%s" % loca[
-                    'name']
+                    'name'
+                ]
                 r = requests.get(url).json()["results"][0]["geometry"]
                 lat1, lng1 = r["location"]["lat"], r["location"]["lng"]
                 lat2, lng2 = r["bounds"]['northeast'][
-                    "lat"], r["bounds"]['northeast']["lng"]
+                    "lat"
+                ], r["bounds"]['northeast']["lng"]
                 lat3, lng3 = r["bounds"]['southwest'][
-                    "lat"], r["bounds"]['southwest']["lng"]
+                    "lat"
+                ], r["bounds"]['southwest']["lng"]
                 city.center_latitude = lat1
                 city.center_longitude = lng1
                 city.ne_latitude = lat2

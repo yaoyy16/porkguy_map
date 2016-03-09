@@ -15,7 +15,8 @@ class Command(BaseCommand):
             sh = wb.sheet_by_index(i)
             for r in range(5, sh.nrows - 1):
                 FundGet.objects.filter(index=sh.cell(r, 0).value).update(
-                    project=sh.cell(r, 2).value)
+                    project=sh.cell(r, 2).value
+                )
                 print(r)
 
         file101 = glob.glob("./docs/fundget/101*.xls")
@@ -25,7 +26,8 @@ class Command(BaseCommand):
             sh = wb.sheet_by_index(0)
             for r in range(5, sh.nrows - 1):
                 FundGet.objects.filter(index=sh.cell(r, 0).value).update(
-                    project=sh.cell(r, 2).value)
+                    project=sh.cell(r, 2).value
+                )
                 print(r)
 
         wb = xlrd.open_workbook('./docs/fundget/102.xls')
@@ -34,7 +36,8 @@ class Command(BaseCommand):
             sh = wb.sheet_by_index(i)
             for r in range(5, sh.nrows - 1):
                 FundGet.objects.filter(index=sh.cell(r, 0).value).update(
-                    project=sh.cell(r, 2).value)
+                    project=sh.cell(r, 2).value
+                )
                 print(r)
 
         file103 = glob.glob("./docs/fundget/103*.xls")
@@ -44,5 +47,6 @@ class Command(BaseCommand):
             sh = wb.sheet_by_index(0)
             for r in range(5, sh.nrows - 1):
                 FundGet.objects.filter(index=sh.cell(r, 0).value).update(
-                    project=sh.cell(r, 2).value)
+                    project=sh.cell(r, 2).value
+                )
                 print(r)
