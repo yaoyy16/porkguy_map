@@ -2,7 +2,10 @@ FROM debian:latest
 MAINTAINER lucemia <davidchen@gliacloud.com>
 # Install software
 RUN apt-get update -y
+RUN apt-get install python-lxml libpq-dev python-pip -y
+RUN apt-get install python-dev -y
 ADD requirements.txt /home/requirements.txt
+ADD requirements /home/requirements
 RUN pip install -r /home/requirements.txt
 
 
