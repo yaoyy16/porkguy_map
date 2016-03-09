@@ -29,12 +29,29 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin', 'django.contrib.auth',
-    'django.contrib.contenttypes', 'django.contrib.sessions',
-    'django.contrib.messages', 'django.contrib.staticfiles',
-    'django.contrib.humanize', 'corsheaders', 'rest_framework',
-    'rest_framework_swagger', 'map', 'apis', 'pages'
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.humanize',
+    'corsheaders',
+    'rest_framework',
+    'rest_framework_swagger',
+    'map',
+    'apis',
+    'pages',
+    'raven.contrib.django.raven_compat',
 )
+
+import raven
+RAVEN_CONFIG = {
+    'dsn': 'https://70ec19aff383429bb8b1e3a39e1669ef:164828bd5aa4456aaa1a90adf70b516a@app.getsentry.com/69881',
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    # 'release': raven.fetch_git_sha(os.path.dirname(__file__)),
+}
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

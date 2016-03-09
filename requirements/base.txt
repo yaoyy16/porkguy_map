@@ -36,3 +36,6 @@ django-rest-swagger==0.3.5
 # django-cors-headers is a Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS).
 # https://pypi.python.org/pypi/django-cors-headers/1.1.0
 django-cors-headers==1.1.0
+
+
+raven
