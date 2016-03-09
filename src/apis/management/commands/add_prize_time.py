@@ -60,7 +60,10 @@ class Command(BaseCommand):
         #         print("add store")
 
         #### add first prize times of 大樂透 ####
-        with open('./docs/firstprize/firstprize_big.txt', encoding='utf8') as f:
+        with open(
+            './docs/firstprize/firstprize_big.txt',
+            encoding='utf8'
+        ) as f:
             data = f.readlines()
         for line in data:
             string = line.split("   ")
@@ -74,7 +77,8 @@ class Command(BaseCommand):
 
             if len(Lottery_store.objects.filter(address=address)) > 0:
                 Lottery_store.objects.filter(address=address).update(
-                    firstprize_times=F('firstprize_times') + 1)
+                    firstprize_times=F('firstprize_times') + 1
+                )
                 print("find")
             else:
                 store_city = address[0:3]

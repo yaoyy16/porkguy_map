@@ -6,15 +6,20 @@ from django.db import models, migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
             name='City',
             fields=[
-                ('id', models.AutoField(auto_created=True,
-                                        primary_key=True, verbose_name='ID', serialize=False)),
+                (
+                    'id', models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        verbose_name='ID',
+                        serialize=False
+                    )
+                ),
                 ('city_id', models.IntegerField()),
                 ('name', models.CharField(max_length=10)),
                 ('center_longitude', models.FloatField()),
@@ -28,8 +33,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='FundGet',
             fields=[
-                ('index', models.CharField(
-                    primary_key=True, serialize=False, max_length=15)),
+                (
+                    'index', models.CharField(
+                        primary_key=True,
+                        serialize=False,
+                        max_length=15
+                    )
+                ),
                 ('year', models.IntegerField()),
                 ('org_name', models.CharField(max_length=30)),
                 ('money', models.IntegerField(default=0)),
@@ -40,8 +50,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Lottery_store',
             fields=[
-                ('id', models.AutoField(auto_created=True,
-                                        primary_key=True, verbose_name='ID', serialize=False)),
+                (
+                    'id', models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        verbose_name='ID',
+                        serialize=False
+                    )
+                ),
                 ('name', models.CharField(max_length=15)),
                 ('address', models.CharField(max_length=50)),
                 ('longitude', models.FloatField()),
@@ -53,8 +69,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Organization',
             fields=[
-                ('id', models.AutoField(auto_created=True,
-                                        primary_key=True, verbose_name='ID', serialize=False)),
+                (
+                    'id', models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        verbose_name='ID',
+                        serialize=False
+                    )
+                ),
                 ('name', models.CharField(max_length=15)),
                 ('address', models.CharField(max_length=50)),
                 ('longitude', models.FloatField()),
@@ -65,8 +87,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Surplus',
             fields=[
-                ('id', models.AutoField(auto_created=True,
-                                        primary_key=True, verbose_name='ID', serialize=False)),
+                (
+                    'id', models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        verbose_name='ID',
+                        serialize=False
+                    )
+                ),
                 ('year', models.IntegerField()),
                 ('month', models.IntegerField()),
                 ('surplus', models.IntegerField(default=0)),

@@ -10,7 +10,9 @@ def home(request):
 def project_detail(request, org_id):
     org = Organization.objects.get(id=org_id)
     project_list = FundGet.objects.filter(org_name=org.name).order_by('-year')
-    return render(request, 'org.html', {
-        'project_list': project_list,
-        'org': org
-    })
+    return render(
+        request, 'org.html', {
+            'project_list': project_list,
+            'org': org
+        }
+    )

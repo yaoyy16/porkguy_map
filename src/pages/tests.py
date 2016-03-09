@@ -5,7 +5,6 @@ from django.test import Client
 
 
 class TestPage(TestCase):
-
     def test_index(self):
         c = Client()
         response = c.get('/')

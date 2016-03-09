@@ -11,5 +11,4 @@ class Migration(migrations.Migration):
         ('apis', '0003_remove_city_city_id'),
     ]
 
-    operations = [
-    ]
+    operations = []

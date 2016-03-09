@@ -2,7 +2,6 @@ from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
-
     def handle(self, *args, **options):
 
         import urllib
@@ -32,8 +31,11 @@ class Command(BaseCommand):
 
         text_file = open("./docs/firstprize/firstprize539.txt", "wb")
         for i in range(1, 33):
-            data = open("./docs/firstprize/" + str(i) +
-                        ".html", 'r', encoding="utf-8").read()
+            data = open(
+                "./docs/firstprize/" + str(i) + ".html",
+                'r',
+                encoding="utf-8"
+            ).read()
             soup = BeautifulSoup(data, 'html.parser')
             prizes1 = soup.findAll("tr", {"class": "table_level_1"})
             prizes2 = soup.findAll("tr", {"class": "table_level_2"})

@@ -10,7 +10,8 @@ def csv_from_excel(fileName):
         wr.writerow(
             [
                 unicode(entry).encode("utf-8") for entry in sh.row_values(
-                    rownum)
+                    rownum
+                )
             ]
         )
     your_csv_file.close()
@@ -29,8 +30,10 @@ wb = xlrd.open_workbook('103(縣市).xls')
 sh = wb.sheet_by_index(0)
 for r in range(5, sh.nrows):
     for c in [0, 1]:
-        print sh.cell(r, c).value.encode(encoding="cp950",
-                                         errors="ignore"), "|",
+        print sh.cell(r, c).value.encode(
+            encoding="cp950",
+            errors="ignore"
+        ), "|",
     print sh.cell(r, 5).value, "|"
     print sh.cell(r, 7).value.encode(encoding="cp950", errors="ignore"), "|",
     print r
@@ -41,8 +44,10 @@ wb = xlrd.open_workbook('102年回饋金補助審核結果.xls')
 sh = wb.sheet_by_index(2)  # 分頁index
 for r in range(5, sh.nrows):
     for c in [0, 1]:
-        print sh.cell(r, c).value.encode(encoding="cp950",
-                                         errors="ignore"), "|",
+        print sh.cell(r, c).value.encode(
+            encoding="cp950",
+            errors="ignore"
+        ), "|",
     print sh.cell(r, 7).value, "|"
     print sh.cell(r, 9).value.encode(encoding="cp950", errors="ignore"), "|",
     print r
@@ -57,8 +62,10 @@ wb = xlrd.open_workbook('101苗栗縣.xls')
 sh = wb.sheet_by_index(0)
 for r in range(5, sh.nrows):
     for c in [0, 1]:
-        print sh.cell(r, c).value.encode(encoding="cp950",
-                                         errors="ignore"), "|",
+        print sh.cell(r, c).value.encode(
+            encoding="cp950",
+            errors="ignore"
+        ), "|",
     print sh.cell(r, 7).value, "|"
     print sh.cell(r, 9).value.encode(encoding="cp950", errors="ignore"), "|",
     print r
@@ -73,8 +80,10 @@ wb = xlrd.open_workbook('100年回饋金補助審核結果.xls')
 sh = wb.sheet_by_index(2)  # 分頁index
 for r in range(5, sh.nrows):
     for c in [0, 1]:
-        print sh.cell(r, c).value.encode(encoding="cp950",
-                                         errors="ignore"), "|",
+        print sh.cell(r, c).value.encode(
+            encoding="cp950",
+            errors="ignore"
+        ), "|",
     print sh.cell(r, 8).value, "|"
     print sh.cell(r, 10).value.encode(encoding="cp950", errors="ignore"), "|",
     print r
