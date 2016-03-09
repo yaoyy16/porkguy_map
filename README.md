@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/livingbio/porkguy_map.svg?branch=master)](https://travis-ci.org/livingbio/porkguy_map)
+[![Build Status](https://travis-ci.org/livingbio/porkguy.svg?branch=master)](https://travis-ci.org/livingbio/porkguy)
 
 # porkguy_map
 豬肉俠公益地圖
