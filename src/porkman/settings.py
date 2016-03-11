@@ -1,5 +1,5 @@
 """
-Django settings for porkguy project.
+Django settings for porkman project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -66,9 +66,9 @@ MIDDLEWARE_CLASSES = (
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-ROOT_URLCONF = 'porkguy.urls'
+ROOT_URLCONF = 'porkman.urls'
 
-WSGI_APPLICATION = 'porkguy.wsgi.application'
+WSGI_APPLICATION = 'porkman.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
