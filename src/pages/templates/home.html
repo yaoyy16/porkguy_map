@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>    
 <html lang="en">
 <head>
@@ -10,18 +11,18 @@
     <title>豬肉俠公益地圖</title>
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/static/pages/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href={% static "/static/pages/css/bootstrap.min.css" %} type="text/css">
 
     <!-- Custom Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="/static/pages/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href={% static "/static/pages/font-awesome/css/font-awesome.min.css" %} type="text/css">
 
     <!-- Plugin CSS -->
-    <link rel="stylesheet" href="/static/pages/css/animate.min.css" type="text/css">
+    <link rel="stylesheet" href={% static "/static/pages/css/animate.min.css" %} type="text/css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/static/pages/css/common.css" type="text/css">
-    <link rel="stylesheet" href="/static/pages/css/home.css" type="text/css">
+    <link rel="stylesheet" href={% static "/static/pages/css/common.css" %} type="text/css">
+    <link rel="stylesheet" href={% static "/static/pages/css/home.css" %} type="text/css">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -70,7 +71,7 @@
 
     <header>
         <!-- <div class="header-content">
-            <div class="header-img"><img src="/static/pages/img/pigman.png" id="porkimg"></div>
+            <div class="header-img"><img src={% static "/static/pages/img/pigman.png" %} id="porkimg"></div>
             <div class="header-content-inner">
                 <h1>豬肉俠公益地圖</h1>
                 <hr>
@@ -83,7 +84,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6">
-                    <div class="header-img"><img src="/static/img/pigman2.png" id="porkimg"></div>
+                    <div class="header-img"><img src={% static "/static/img/pigman2.png" %} id="porkimg"></div>
                 </div>
                 <div class="col-lg-8 col-md-6 text-center">
                     <div class="header-content-inner">
@@ -196,7 +197,7 @@
     </section>
 
     <!-- jQuery -->
-    <script src="/static/pages/js/jquery-1.11.3.min.js"></script>
+    <script src={% static "/static/pages/js/jquery-1.11.3.min.js" %}></script>
     <script>
         $(document).ready(function(){
             for(var i=0;i<1000;i++){
@@ -207,15 +208,15 @@
     </script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="/static/pages/js/bootstrap.min.js"></script>
+    <script src={% static "/static/pages/js/bootstrap.min.js" %}></script>
 
     <!-- Plugin JavaScript -->
-    <script src="/static/pages/js/jquery.easing.min.js"></script>
-    <script src="/static/pages/js/jquery.fittext.js"></script>
-    <script src="/static/pages/js/wow.min.js"></script>
+    <script src={% static "/static/pages/js/jquery.easing.min.js" %}></script>
+    <script src={% static "/static/pages/js/jquery.fittext.js" %}></script>
+    <script src={% static "/static/pages/js/wow.min.js" %}></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="/static/pages/js/creative.js"></script>
+    <script src={% static "/static/pages/js/creative.js" %}></script>
 
 </body>
 </html>
