@@ -1,0 +1,145 @@
+{% load humanize %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>豬肉俠公益地圖</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/static/pages/css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/static/pages/font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <!-- <link rel="stylesheet" href="css/animate.min.css" type="text/css"> -->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/pages/css/common.css" type="text/css">
+	<link rel="stylesheet" href="/static/pages/css/org.css" type="text/css">    
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body id="page-top">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="/#page-top">Pork Man welfare Map</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="/#about">關於</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#services">服務</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/map">地圖</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#contact">聯絡我們</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <div id="content">
+        <div class="page-header">
+            <h3>{{ org.name }}<small class="address">{{ org.address }}</small></h3>
+        </div>  
+        {% if not project_list %}
+            <div class="no-project">此機構未申請任何公益彩券回饋金補助計畫</div>          
+        {% else %}
+        {% for project in project_list %}
+        <div class="panel panel-default project">	
+            <div class="panel-heading">{{ project.project }}</div>	         
+            <table class="table table-striped">
+                <tbody>               
+                    <tr>
+                        <td class="tb_label">申請編號</td>
+                        <td class="tb_value">{{ project.index }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tb_label">申請年度</td>
+                        <td class="tb_value">{{ project.year }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tb_label">獲得補助</td>
+                        <td class="tb_value">{{ project.money | intcomma }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tb_label">核定內容</td>
+                        <td class="tb_value">{{ project.content }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tb_label">計畫實行結果</td>
+                        <td class="tb_value">{{ project.result }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="back">
+            <a href="/"><button type="button" class="btn btn-default">首頁</button></a>
+            <a href="/map"><button type="button" class="btn btn-default">返回地圖</button></a>
+            <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>            
+        </div>  
+        <div class="fb-comments" data-href="localhost:8000/org/{{ org.id }}" data-numposts="5"></div>       
+    </div>  
+
+    <!-- jQuery -->
+    <script src="/static/pages/js/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/static/pages/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/static/pages/js/jquery.easing.min.js"></script>
+    <script src="/static/pages/js/jquery.fittext.js"></script>
+    <script src="/static/pages/js/wow.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/static/pages/js/creative.js"></script>
+
+    <!-- Custom JS -->
+
+
+</body>
+</html>
