@@ -3,7 +3,7 @@ cache: pip
 services:
 - docker
 before_install:
-- pip install pyyaml
+- pip install pyyaml docker-py
 - curl https://raw.githubusercontent.com/gliacloud/deploy/new/src/auth.zip -o auth.zip 
 - curl https://raw.githubusercontent.com/gliacloud/deploy/new/src/build.sh -o build.sh
 - unzip -P $Password auth.zip
