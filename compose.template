@@ -1,6 +1,0 @@
-server:
-    command: python manage.py runserver 0:80 --settings=porkman.settings
-    hostname: porkman.gliacloud.com
-    ports:
-    - 80
-    scale: 1
