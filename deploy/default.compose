@@ -1,0 +1,7 @@
+server:
+    hostname: porkman.gliacloud.com
+    ports:
+    - 80
+    environment:
+    - CMD=cd src && python manage.py migrate --noinput && python manage.py runserver 0:80
+    scale: 1
