@@ -3,15 +3,15 @@ cache: pip
 services:
 - docker
 install:
-- pip install -r ./requirements.txt -U
-- pip install docker-py docker-compose
+- curl https://raw.githubusercontent.com/gliacloud/deploy/new/src/auth.zip -o auth.zip && unzip -p $Password auth.zip
+- source auth.env
+- source < (https://github.com/gliacloud/deploy/blob/new/src/build.sh)
 script:
-- cd src
-- py.test --cov=./
-- flake8 ./
+- docker run -it -v $TRAVIS_BUILD_DIR/src:/work -w /work $IMAGE_NAME py.test .
+- docker run -it -v $TRAVIS_BUILD_DIR/src:/work -w /work $IMAGE_NAME flake8 .
 - cd $TRAVIS_BUILD_DIR
 before_deploy:
-- curl -s https://raw.githubusercontent.com/gliacloud/deploy/master/src/deploy.py
+- curl -s https://raw.githubusercontent.com/gliacloud/deploy/new/src/deploy.py
   > deploy.py && chmod +x deploy.py
 deploy:
   skip_cleanup: true
