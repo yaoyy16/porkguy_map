@@ -1,0 +1,7 @@
+server:
+    hostname: porkman.gliacloud.com
+    ports:
+    - 80
+    environment:
+    - CMD=ls
+    scale: 1
