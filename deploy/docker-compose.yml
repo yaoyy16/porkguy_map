@@ -1,0 +1,9 @@
+main:
+    command: python manage.py runserver 0:80 
+    image: ${IMAGE}
+    ports:
+    - 80
+    volumes:
+    - ${PWD}/src:/work
+    working_dir: /work
+    
